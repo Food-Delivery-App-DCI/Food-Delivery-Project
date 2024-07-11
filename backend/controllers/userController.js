@@ -58,3 +58,58 @@ export async function loginUser(req, res, next) {
     next(createHttpError(500, "login unsuccessful"));
   }
 }
+
+export async function updateUser(req, res, next){
+  const { firstName, lastName, email, password } = req.body;
+  const { userId } = req.params;
+  console.log(userId);
+  try {
+    const user = await User.findById(userId);
+    if (user) {
+      const options = {
+        new: true,
+        runValidators: true
+      }
+      const updatedUser = await User.findByIdAndUpdate(userId, {
+        firstName, lastName, email, password
+      }, options)
+      res.status(200).json({message: `${updatedUser.firstName} updated successfully`})
+
+    } else {
+      return next(createHttpError(404, "User not found"))
+    }
+
+  } catch (error) {
+    res.status(400).send(`Error updating user`);
+    
+  }
+}
+
+export async function deleteUser(req, res, next){
+  const { userId } = req.params;
+  try {
+    await User.findByIdAndDelete(userId);
+    res.status(200).send(`User deleted successfully`);
+  } catch (error) {
+    res.status(400).send(`Error deleting user`);
+  }
+}
+
+export async function getUserData(req, res, next){
+  const { userId } = req.params;
+  try {
+    const user = await User.findById(userId)
+    if (user){
+      res.json({
+        id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email
+      })
+    } else {
+      return next(createHttpError(404, "User not found"));
+    }
+  } catch (error) {
+    return next(createHttpError(500, "Server error"));
+  }
+}

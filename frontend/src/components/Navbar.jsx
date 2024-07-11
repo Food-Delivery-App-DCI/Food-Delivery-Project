@@ -1,12 +1,18 @@
 import RegisterAndLogin from "./RegisterAndLogin";
 // import Basket from "./Basket";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "../contexts/DataContext";
+import UserProfile from "./UserProfile";
 
 
 function Navbar() {
 
   const { loggedInUser, logout } = useContext(DataContext);
+  const [showProfile, setShowProfile] = useState(false);
+
+  const toggleProfile = () => {
+    setShowProfile(!showProfile);
+  };
 
   return (
     <>
@@ -17,6 +23,9 @@ function Navbar() {
             <button className="logout-button" onClick={logout}>
               Logout
             </button> 
+            <button className="profile-button" onClick={toggleProfile}>
+               {showProfile ? `Hide Profile` : `Show Profile`}
+            </button>
           </div>
         ) : (
           <RegisterAndLogin />
@@ -24,6 +33,7 @@ function Navbar() {
         }
         {/* <Basket /> */}
       </nav>
+      {showProfile && <UserProfile />}
     </>
   );
 }
