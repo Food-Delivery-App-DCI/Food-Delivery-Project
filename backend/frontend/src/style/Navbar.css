@@ -17,13 +17,12 @@ nav {
 }
 
 nav h1 {
-  /* font-family: "Merienda", cursive; */
+  font-family: "Merienda", cursive;
   font-weight: bolder;
   font-size: 3.6rem;
   cursor: pointer;
   color: var(--color-1);
 }
-
 
 .basket-and-register-container {
   display: flex;
@@ -76,7 +75,7 @@ nav h1 {
   padding: 10px;
   margin: 10px;
   border: none;
-  border-radius: 30px;
+  border-radius: var(--button-border-radius);
   cursor: pointer;
   background-color: #266241;
   color: white;

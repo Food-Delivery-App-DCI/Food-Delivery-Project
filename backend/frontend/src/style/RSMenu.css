@@ -276,11 +276,11 @@
 }
 
 .rs-menu-container .buttons-container button {
-  padding: 10px;
+  padding: var(--button-padding);
   border: none;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: var(--button-border-radius);
 }
 
 .rs-menu-container .buttons-container .save1-button {

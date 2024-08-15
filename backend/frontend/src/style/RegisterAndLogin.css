@@ -102,7 +102,7 @@
 
 .register-login-page .buttons-container button {
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: var(--button-border-radius);
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
@@ -110,15 +110,21 @@
 }
 
 .register-login-page .buttons-container .submit-button {
-  background-color: #266241;
+  background-color: var(--button-primary-color);
   color: white;
 }
 
 .register-login-page .buttons-container .submit-button:hover {
-  background-color: #163825;
+  background-color: var(--button-primary-hover-color);
+}
+
+.register-login-page .buttons-container .submit-button:active {
+  background-color: var(--button-primary-active-color);
 }
 
 .register-login-page .buttons-container .cancel-button {
   margin-top: 0;
   width: fit-content;
+  border: var(--button-secondary-border-color);
+  color: var(--button-secondary-border-color);
 }
