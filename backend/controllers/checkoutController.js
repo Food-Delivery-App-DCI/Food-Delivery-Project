@@ -34,8 +34,14 @@ export async function checkout(req, res, next) {
       shipping_address_collection: {
         allowed_countries: ["DE"], // Allow only Germany
       },
-      success_url: "http://localhost:5173/success", // URL to redirect to upon successful payment.
-      cancel_url: `http://localhost:5173/restaurant/${id}`, // URL to redirect to if payment is canceled.
+      success_url:
+        process.env.NODE_ENV === "production"
+          ? "https://deliveats-food-delivery-app.onrender.com/success"
+          : "http://localhost:5173/success", // URL to redirect to upon successful payment.
+      cancel_url:
+        process.env.NODE_ENV === "production"
+          ? `https://deliveats-food-delivery-app.onrender.com/restaurant/${id}`
+          : `http://localhost:5173/restaurant/${id}`, // URL to redirect to if payment is canceled.
     });
 
     // Respond with the session ID for client-side handling.
