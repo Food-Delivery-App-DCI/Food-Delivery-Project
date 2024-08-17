@@ -76,82 +76,72 @@
 }
 
 .settings-save {
-  width: 36%;
-  padding: 10px;
+  width: 30%;
+  padding: var(--button-padding);
   background-color: var(--color-2);
   color: #fff;
-  border: none;
-  border-radius: 5px;
+  border: 1px solid var(--color-2);
+  border-radius: var(--button-border-radius);
+  margin: 0.5rem auto;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
   align-self: center;
 }
 
+
+.settings-save:hover {
+  background-color: var(--button-primary-hover-color);
+}
+.settings-save:active {
+  background-color: var(--button-primary-active-color);
+}
+
 .settings-cancel {
-  width: 36%;
-  padding: 10px;
-  background-color: #fff;
-  color: var(--color-2);
-  border: 1px solid var(--color-2);
-  border-radius: 5px;
-  font-size: 16px;
+  width: 30%;
+  background-color: var(--background-color);
+  background-color: white;
+  color: var(--button-primary-color);
+  border: 1px solid var(--button-primary-color);
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
   cursor: pointer;
+  width: 30%;
+  font-size: 16px;
   transition: background-color 0.3s;
   align-self: center;
+  margin: 0 auto;
+}
+
+.settings-cancel:hover {
+  background-color: var(--button-cancel-hover-color);
 }
 
 .settings-edit:hover {
   color: var(--color-1);
 }
 
-.settings-save,
-.settings-cancel {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 30%;
-}
-
-.settings-save {
-  border: 1px solid var(--color-2);
-  background-color: var(--color-2);
-  color: white;
-  margin: 0.5rem auto;
-}
-
-.settings-save:hover {
-  background-color: var(--color-1);
-}
-
-.settings-cancel {
-  background-color: white;
-  border: 1px solid var(--color-3);
-  color: var(--color-3);
-  margin: 0 auto;
-}
-.settings-cancel:hover {
-  background-color: #ffe;
-}
-
 /*  */
 .settings-delete {
-  background-color: #c36764;
-
+  background-color: var( --button-delete-color);
+  transition: background-color 0.3s;
   display: block;
   margin: 0 auto;
   margin-top: 20px;
   width: 40%;
   min-width: 100px;
-  padding: 10px 0;
+  padding: var(--button-padding);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--button-border-radius);
   cursor: pointer;
   font-size: 16px;
 }
 
 .settings-delete:hover {
-  background-color: #c9302c;
+  background-color: var(--button-delete-hover-color);
+}
+
+.settings-delete:active {
+  background-color: var(--button-delete-active-color);
 }
