@@ -68,6 +68,7 @@ form.address-edit {
   cursor: pointer;
   font-size: 16px;
   color: var(--color-2);
+  
 }
 
 .inputs-container {
@@ -89,10 +90,15 @@ form.address-edit {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
 }
 
 .add-address-button:hover {
-  background-color: var(--color-1);
+  background-color: var(--button-primary-hover-color);
+}
+.add-address-button:active {
+  background-color: var(--button-primary-active-color);
 }
 
 .address-edit input,
@@ -119,20 +125,27 @@ form.address-edit {
 }
 
 .address-save-cancel-container .save-button {
-  background-color: var(--color-2);
+  background-color: var(--button-primary-color);
   color: white;
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
 }
 
 .address-save-cancel-container .save-button:hover {
-  background-color: var(--color-1);
+  background-color: var(--button-primary-hover-color);
+}
+.address-save-cancel-container .save-button:active {
+  background-color: var(--button-primary-active-color) 
 }
 
 .address-save-cancel-container .cancel-button {
   background-color: white;
-  border: 1px solid var(--color-3);
-  color: var(--color-3);
+  border: 1px solid var(--button-primary-color);
+  color: var(--button-primary-color);
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
 }
 
 .address-save-cancel-container .cancel-button:hover {
-  background-color: #ffe;
+  background-color: var(--button-cancel-hover-color);
 }

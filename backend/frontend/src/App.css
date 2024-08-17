@@ -26,6 +26,7 @@
   --button-secondary-color: transparent;
   --button-secondary-border-color: 1px solid #519259;
   --button-secondary-hover-color: ;
+  --button-cancel-hover-color: #fbf9f2;
   --button-delete-color: rgb(179, 53, 53);
   --button-delete-hover-color: rgb(226, 82, 82);
   --button-delete-active-color: rgb(121, 37, 37);
