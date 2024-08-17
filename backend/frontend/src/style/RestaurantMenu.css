@@ -129,17 +129,21 @@
   }
 
   .offer-add-button {
-    background: var(--color-2);
-    color: #fff;
+    background: var(--button-primary-color);
+    color: #fbf9f5;
     border: none;
-    border-radius: 15px;
-    padding: 8px 16px;
+    border-radius: var(--button-border-radius);
+    /* padding: 8px 16px; */
+    padding: var(--button-padding);
     cursor: pointer;
     transition: background 0.3s ease;
   }
 
   .offer-add-button:hover {
-    background: var(--color-1);
+    background: var(--button-primary-hover-color);
+  }
+  .offer-add-button:active {
+    background: var(--button-primary-active-color);
   }
 
   /* OFFERS end */
@@ -215,18 +219,22 @@
   }
 
   .add-button {
-    background: var(--color-2);
-    color: #fff;
+    background: var(--button-primary-color);
+    color: #fbf9f5;
     border: none;
-    border-radius: 15px;
-    padding: 10px 20px;
+    border-radius: var(--button-border-radius);
+    padding: var(--button-padding);
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s ease;
     /* align-self: center; */
   }
 
   .add-button:hover {
-    background: var(--color-1);
+    background: var(--button-primary-hover-color);
+  }
+
+  .add-button:active {
+    background: var(--button-primary-active-color);
   }
 
   .not-found {

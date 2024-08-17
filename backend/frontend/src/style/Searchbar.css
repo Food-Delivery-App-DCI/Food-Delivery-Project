@@ -75,7 +75,7 @@
   padding: 10px 20px;
   border: none;
   border-radius: 0 30px 30px 0;
-  background-color: var(--color-2);
+  background-color: var(--button-primary-color);
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -83,7 +83,11 @@
 }
 
 .search-button:hover {
-  background-color: #163825;
+  /* background-color: #163825; */
+  background-color: var(--button-primary-hover-color)
+}
+.search-button:active {
+  background-color: var(--button-primary-active-color)
 }
 
 /* SEARCH BAR IN THE SEARCH-RESULTS PAGE */

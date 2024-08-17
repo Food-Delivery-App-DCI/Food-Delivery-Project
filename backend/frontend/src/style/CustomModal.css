@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   z-index: 10;
+  
 }
 
 .modal-content {
@@ -25,7 +26,22 @@
   right: 10px;
   background: transparent;
   border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  color: var(--color-5);
   font-size: 1.5rem;
   cursor: pointer;
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-color: var(--button-delete-color);
+  transition: background-color 0.3s ease;
+  
 }
+
+.modal-close-button:hover {
+  background-color: var(--button-delete-hover-color);
+}
+
+.modal-close-button:active {
+  background-color: var(--button-delete-active-color);
+}
+

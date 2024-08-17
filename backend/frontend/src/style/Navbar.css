@@ -38,8 +38,15 @@ nav h1 {
 .welcome-message {
   margin-right: 10px;
   font-weight: bolder;
-  color: var(--color-1);
+  color: var(--button-primary-color);
 }
+.welcome-message:hover {
+  color: var(--button-primary-hover-color);
+}
+.welcome-message:active {
+  color: var(--button-primary-active-color)
+}
+
 
 .dropdown-menu {
   display: flex;
@@ -77,19 +84,21 @@ nav h1 {
   border: none;
   border-radius: var(--button-border-radius);
   cursor: pointer;
-  background-color: #266241;
+  /* background-color: #266241; */
+  background-color: var(--button-primary-color);
   color: white;
   font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
-.logout-button.active {
-  background-color: var(--color-1);
+.logout-button:hover {
+  background-color: var(--button-primary-hover-color);
+}
+.logout-button:active {
+  background-color: var(--button-primary-active-color);
 }
 
-.logout-button:hover {
-  background-color: var(--color-1);
-}
+
 
 /* *********** basket ICON in the nav bar *********** */
 .cart-logo {
@@ -97,9 +106,18 @@ nav h1 {
   align-items: center;
   position: relative;
   margin-left: 20px;
-  color: #266241;
+  /* color: #266241; */
+  color: var(--button-primary-color);
   text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
 }
+/* .cart-logo svg:hover {
+  color: var(--button-primary-hover-color);
+}
+.cart-logo svg:active {
+  color: var(--button-primary-active-color);
+} */
 
 .cart-logo .item-count {
   background-color: var(--color-3);

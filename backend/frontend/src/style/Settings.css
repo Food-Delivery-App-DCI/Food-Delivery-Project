@@ -72,7 +72,14 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
-  color: var(--color-2);
+  color: var(--button-primary-color);
+  transition: color 0.3s;
+}
+.settings-edit:hover {
+  color: var(--button-primary-hover-color);
+}
+.settings-edit:active {
+  color: var(--button-primary-active-color)
 }
 
 .settings-save {
@@ -117,9 +124,7 @@
   background-color: var(--button-cancel-hover-color);
 }
 
-.settings-edit:hover {
-  color: var(--color-1);
-}
+
 
 /*  */
 .settings-delete {

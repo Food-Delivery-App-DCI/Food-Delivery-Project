@@ -20,19 +20,22 @@
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  background-color: #266241;
+  /* background-color: #266241; */
+  background-color : var(--button-primary-color);
   color: white;
   font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
-.toggle-button.active {
-  background-color: #57635c;
-  font-weight: bold;
-}
+
 
 .toggle-button:hover {
-  background-color: #163825;
+  background-color: var(--button-primary-hover-color);
+}
+.toggle-button:active {
+  /* background-color: #57635c; */
+  background-color: var(--button-primary-active-color);
+  font-weight: bold;
 }
 
 .form {
@@ -107,6 +110,7 @@
   font-size: 16px;
   transition: background-color 0.3s ease;
   border: none;
+  
 }
 
 .register-login-page .buttons-container .submit-button {
@@ -126,5 +130,10 @@
   margin-top: 0;
   width: fit-content;
   border: var(--button-secondary-border-color);
-  color: var(--button-secondary-border-color);
+  background-color: var(--button-cancel-primary-color);
+  color: var(--button-primary-color);
+}
+
+.register-login-page .buttons-container .cancel-button:hover {
+  background-color: var(--button-cancel-hover-color);
 }

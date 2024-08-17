@@ -67,9 +67,19 @@ form.address-edit {
   border: none;
   cursor: pointer;
   font-size: 16px;
-  color: var(--color-2);
-  transition: background-color 0.3s;
+  color: var(--button-primary-color);
+  transition: background-color 0.3s ease;
   
+}
+
+.edit-address-button:hover, 
+.delete-address-button:hover {
+  color: var(--button-primary-hover-color);
+}
+
+.edit-address-button:active, 
+.delete-address-button:active {
+  color: var(--button-primary-active-color);
 }
 
 .inputs-container {

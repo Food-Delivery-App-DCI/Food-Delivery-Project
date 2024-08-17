@@ -92,10 +92,10 @@ function Basket({ id }) {
                 </div>
                 <div className="basket-item-controls">
                   <div className="basket-item-quantity">
-                    <button onClick={() => decreaseItemQuantity(item._id)}>-</button>
+                    <button className="subtract" onClick={() => decreaseItemQuantity(item._id)}>-</button>
 
                     <span>{item.quantity}</span>
-                    <button onClick={() => increaseItemQuantity(item._id)}>+</button>
+                    <button className="add" onClick={() => increaseItemQuantity(item._id)}>+</button>
                   </div>
 
                   <span className="basket-item-total">€{(item.price * item.quantity).toFixed(2)}</span>
