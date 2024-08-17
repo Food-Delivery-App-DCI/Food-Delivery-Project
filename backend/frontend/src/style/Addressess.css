@@ -18,7 +18,8 @@ h3 {
 }
 
 .address-item {
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: var(--settings-cards-background);
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 15px;
@@ -39,7 +40,8 @@ h3 {
 
 form.address-edit {
   padding: 20px;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: var(--settings-cards-background);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -86,6 +88,7 @@ form.address-edit {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  
 }
 
 .add-address-button {
@@ -152,7 +155,8 @@ form.address-edit {
 }
 
 .address-save-cancel-container .cancel-button {
-  background-color: white;
+  /* background-color: white; */
+  background-color: var(--settings-cards-background);
   border: 1px solid var(--button-primary-color);
   color: var(--button-primary-color);
   border-radius: var(--button-border-radius);

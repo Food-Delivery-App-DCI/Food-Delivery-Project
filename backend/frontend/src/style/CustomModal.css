@@ -13,7 +13,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--background-color);
   padding: 20px;
   border-radius: 5px;
   position: relative;

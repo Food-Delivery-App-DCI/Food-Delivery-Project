@@ -25,19 +25,24 @@
 }
 
 .rs-section-register button {
-  padding: 10px 20px;
+  padding: var(--button-padding);
   margin-top: 20px;
   border: none;
-  border-radius: 30px;
+  border-radius: var(--button-border-radius);
   cursor: pointer;
-  background-color: var(--color-1);
-  color: white;
+  background-color: var(--button-primary-color);
+  color: var(--color-5);
   font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
 .rs-section-register button:hover {
-  background-color: #298b71;
+  /* background-color: #298b71; */
+  background-color: var(--button-primary-hover-color);
+}
+.rs-section-register button:active {
+  /* background-color: #298b71; */
+  background-color: var(--button-primary-active-color);
 }
 
 .rs-section-partner {

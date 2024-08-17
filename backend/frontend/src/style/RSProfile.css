@@ -80,44 +80,63 @@ strong {
 
 .rs-profile-section .edit-button {
   display: block;
-  padding: 10px 20px;
+  padding: var(--button-padding);
   margin: 2rem auto 1rem;
-  color: #fff;
-  background-color: var(--color-1);
+  color: var(--color-5);
+  background-color: var(--button-primary-color);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--button-border-radius);
   cursor: pointer;
 }
 
 .rs-profile-section .save-button {
-  padding: 10px 20px;
+  padding: var(--button-padding);
   color: #fff;
-  background-color: var(--color-1);
+  background-color: var(--button-primary-color);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--button-border-radius);
   cursor: pointer;
 }
+.rs-profile-section .save-button:hover {
+  background-color: var(--button-primary-hover-color);
+}
+.rs-profile-section .save-button:active {
+  background-color: var(--button-primary-active-color);
+}
+
 
 .rs-profile-section .buttons-container .cancel-button {
   /* display: block; */
-  padding: 10px 20px;
+  padding: var(--button-padding);
   background-color: transparent;
-  border: 1px solid #165e4b;
-  border-radius: 5px;
+  border: 1px solid var(--button-primary-color);
+  border-radius: var(--button-border-radius);
   cursor: pointer;
+  color: var(--button-primary-color);
+}
+.rs-profile-section .buttons-container .cancel-button:hover {
+  background-color: var(--button-cancel-hover-color);
+}
+.rs-profile-section .buttons-container .cancel-button:active {
+  background-color: var(--button-cancel-active-color);
 }
 
 .rs-profile-section .edit-button:hover {
-  background-color: #2a8f74;
+  /* background-color: #2a8f74; */
+  background-color: var(--button-primary-hover-color);
+}
+.rs-profile-section .edit-button:active {
+  /* background-color: #2a8f74; */
+  background-color: var(--button-primary-active-color);
 }
 
 .rs-profile-container .delete-account-button {
   display: block;
-  padding: 1rem 2rem;
+  padding: var(--button-padding);
   border: none;
   background-color: var(--button-delete-color);
   color: #fff;
-  border-radius: 5px;
+  border-radius: var(--button-border-radius);
   font-size: 1.6rem;
   margin: 0 auto;
   cursor: pointer;
