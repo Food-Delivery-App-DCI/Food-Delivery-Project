@@ -108,8 +108,9 @@
 
 .settings-cancel {
   width: 30%;
-  background-color: var(--background-color);
-  background-color: white;
+  /* background-color: var(--button-cancel-primary-color);
+  background-color: white; */
+  background-color: var(--button-cancel-exp-primary);
   color: var(--button-primary-color);
   border: 1px solid var(--button-primary-color);
   padding: var(--button-padding);
@@ -123,8 +124,12 @@
 }
 
 .settings-cancel:hover {
-  background-color: var(--button-cancel-hover-color);
+  background-color: var(--button-cancel-exp-hover);
 }
+.settings-cancel:active {
+  background-color: var(--button-cancel-exp-active);
+}
+
 
 
 
