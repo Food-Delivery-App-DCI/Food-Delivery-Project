@@ -20,33 +20,45 @@ function Footer() {
             <li>
               <a href="/">Home</a>
             </li>
-            {/* <li>
-              <a href="#">Menu</a>
-            </li> */}
-            {/* <li>
-              <a href="#">Orders</a>
-            </li> */}
-            {/* <li>
-              <a href="#">Contact</a>
-            </li> */}
             <li>
+
               {/* check this link */}
               <a href={loggedInRestaurant ? "/rs-home/orders-active" : "/rs-register"}>Register Restaurant</a>
+
             </li>
           </ul>
         </div>
         <div className="footer-section social">
           <h2>Follow Us</h2>
           <div className="social-icons">
-            <a href="#" className="social-icon">
+            <a
+              href="https://www.facebook.com/DelivEats"
+              className="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="#" className="social-icon">
+            <a
+              href="https://www.twitter.com/DelivEats"
+              className="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-twitter"></i>
             </a>
-            <a href="#" className="social-icon">
+            <a
+              href="https://www.instagram.com/DelivEats"
+              className="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-instagram"></i>
             </a>
+          </div>
+          <div className="contact-info">
+            <p>Contact Us: (123) 456-7890</p>
+            <p>Fax: (098) 765-4321</p>
           </div>
         </div>
       </div>

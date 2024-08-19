@@ -39,8 +39,8 @@
 }
 
 .rs-orderHistory-container .cards {
+  border-radius: var(--cards-border-radius);
   background: var(--cards-background-color);
-  border-radius: 0.8rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 2rem 0;
   padding: 2rem;

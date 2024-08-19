@@ -21,7 +21,7 @@
 
 .success-card {
   background-color: white;
-  border-radius: 0.8rem;
+  border-radius: var(--cards-border-radius);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   text-align: center;
@@ -44,7 +44,7 @@
   text-align: left;
   width: 100%;
   background-color: white;
-  border-radius: 0.8rem;
+  border-radius: var(--cards-border-radius);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 2rem;
 }
