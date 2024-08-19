@@ -61,6 +61,7 @@ function SuccessPage() {
           deliveryOption,
           restaurantName,
           restaurantAddress,
+          restaurantId,
         }),
         headers: {
           "Content-Type": "application/JSON",

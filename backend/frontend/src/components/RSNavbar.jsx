@@ -7,12 +7,8 @@ import "../style/RSNavbar.css";
 import RSNavStatus from "./RSNavStatus";
 
 function RSNavbar() {
-  const {
-    loggedInRestaurant,
-    logoutRestaurant,
-    setToggleRegisterOrLoginRestaurant,
-    setIsToRegisterRestaurant,
-  } = useContext(DataContext);
+  const { loggedInRestaurant, logoutRestaurant, setToggleRegisterOrLoginRestaurant, setIsToRegisterRestaurant } =
+    useContext(DataContext);
 
   // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -38,7 +34,12 @@ function RSNavbar() {
   return (
     <>
       <nav className="rs-nav">
-        <div className="logo-nav" onClick={() => navigate("/rs-register")}>
+        <div
+          className="logo-nav"
+          onClick={() => {
+            loggedInRestaurant ? navigate("/rs-home/orders-active") : navigate("/rs-register");
+          }}
+        >
           DelivEats
           <div>
             <small>for Restaurants</small>
@@ -51,10 +52,8 @@ function RSNavbar() {
           {loggedInRestaurant ? (
             <div className="user-info">
               <RSNavStatus />
-              <span className="welcome-message">
-                Welcome, {loggedInRestaurant.basicInfo.businessName}!
-              </span>
-              {/* <RSNavStatus /> */}
+
+              <span className="welcome-message">Welcome, {loggedInRestaurant.basicInfo.businessName}!</span>
               <button className="logout-button" onClick={logoutRestaurant}>
                 Logout
               </button>
@@ -64,7 +63,7 @@ function RSNavbar() {
               {/* <RSRegisterAndLogin /> */}
               <div className="button-container">
                 <button
-                  className={`toggle-button`}
+                  className="login-button"
                   onClick={() => {
                     setIsToRegisterRestaurant(false);
                     setToggleRegisterOrLoginRestaurant(true);
@@ -74,7 +73,7 @@ function RSNavbar() {
                   Login
                 </button>
                 <button
-                  className={`toggle-button`}
+                  className="register-button"
                   onClick={() => {
                     setIsToRegisterRestaurant(true);
                     setToggleRegisterOrLoginRestaurant(true);

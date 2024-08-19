@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 const orderItemsSchema = new Schema({
-  itemName: { type: String, required: true },
+  name: { type: String, required: true },
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
   description: { type: String, required: true },
@@ -21,6 +21,10 @@ const orderHistorySchema = new Schema(
   {
     restaurantName: { type: String, default: "No information" },
     restaurantAddress: { type: String, default: "No address information" },
+    restaurantId: {
+      type: Schema.Types.ObjectId,
+      ref: "Restaurant",
+    },
     items: {
       type: [orderItemsSchema],
       required: true,

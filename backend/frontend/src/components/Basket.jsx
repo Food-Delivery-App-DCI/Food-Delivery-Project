@@ -16,8 +16,11 @@ function Basket({ id }) {
     decreaseItemQuantity,
     totalSum,
     setOrderSent,
+    // isOrderAgain,
+    // setIsOrderAgain,
   } = useContext(BasketContext);
   const { restaurant } = useContext(DataContext);
+
   // const { setSessionId } = useContext(DataContext);
 
   const restaurantAddress = `${restaurant?.basicInfo.address.street}, ${restaurant?.basicInfo.address.postalCode}, ${restaurant?.basicInfo.address.city}`;
@@ -26,9 +29,11 @@ function Basket({ id }) {
     localStorage.setItem("basket", JSON.stringify(basket));
     localStorage.setItem("deliveryOption", deliveryOption);
     localStorage.setItem("restaurantName", JSON.stringify(restaurant?.basicInfo.businessName));
-    localStorage.setItem("restaurantId", JSON.stringify(restaurant?.restaurantId));
+    localStorage.setItem("restaurantId", JSON.stringify(restaurant?._id));
     localStorage.setItem("restaurantAddress", JSON.stringify(restaurantAddress));
-  }, [basket, deliveryOption, restaurant?.basicInfo.businessName, restaurant?.restaurantId, restaurantAddress]);
+  }, [basket, deliveryOption, restaurant?.basicInfo.businessName, restaurant?._id, restaurantAddress]);
+
+  console.log(id);
 
   async function handleCheckout() {
     const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
@@ -92,10 +97,10 @@ function Basket({ id }) {
                 </div>
                 <div className="basket-item-controls">
                   <div className="basket-item-quantity">
-                    <button onClick={() => decreaseItemQuantity(item._id)}>-</button>
+                    <button className="subtract" onClick={() => decreaseItemQuantity(item._id)}>-</button>
 
                     <span>{item.quantity}</span>
-                    <button onClick={() => increaseItemQuantity(item._id)}>+</button>
+                    <button className="add" onClick={() => increaseItemQuantity(item._id)}>+</button>
                   </div>
 
                   <span className="basket-item-total">€{(item.price * item.quantity).toFixed(2)}</span>

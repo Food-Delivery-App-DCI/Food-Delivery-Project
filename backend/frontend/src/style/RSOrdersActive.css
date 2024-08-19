@@ -3,9 +3,7 @@
 .rs-orders-active-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
-  /* flex-wrap: wrap; */
-  /* justify-content: space-around; */
-  padding: 20px;
+  padding: 2rem;
   background-color: #f9f9f9;
   position: relative;
 }
@@ -32,7 +30,7 @@
   padding: 0.6rem 1.6rem;
   text-align: left;
   font-size: 1.4rem;
-  margin: 4px 2px;
+  margin: 0.4rem 2rem;
   cursor: pointer;
   transition-duration: 0.4s;
 }
@@ -50,21 +48,20 @@
 
 .rs-orders-active-container .cards {
   background: white;
-  border-radius: 8px;
+  border-radius: var(--cards-border-radius);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  padding: 20px;
-  /* width: 300px; */
+  margin: 2rem;
+  padding: 2rem;
   transition: transform 0.2s;
 }
 
-.cards:hover {
+.rs-orders-active-container .cards:hover {
   transform: scale(1.01);
 }
 
-.cards p {
-  margin: 10px 0;
-  font-family: "Arial", sans-serif;
+.rs-orders-active-container .cards p {
+  margin: 1rem 0;
+  /* font-family: "Arial", sans-serif; */
   color: #333;
 }
 
@@ -73,7 +70,7 @@
 }
 
 .progress {
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .progress ul {
@@ -84,10 +81,10 @@
 .progress ul li {
   background: #e7f3ff;
   border-left: 5px solid #007bff;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 4px;
-  font-family: "Arial", sans-serif;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  /* font-family: "Arial", sans-serif; */
 }
 
 .progress ul li:nth-child(even) {

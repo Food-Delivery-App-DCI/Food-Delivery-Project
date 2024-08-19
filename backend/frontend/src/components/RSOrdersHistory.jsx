@@ -111,9 +111,28 @@ function RSOrdersHistory() {
                   <p>
                     <strong>Address:</strong> {eachOrder.customerAddress}
                   </p>
-                  <p>
-                    <strong>Items:</strong> {eachOrder.order.items?.map((item) => item.itemName).join(", ")}
+                  <p className="items-paragraph">
+                    <strong>Items:</strong>
+                    {/* {eachOrder.order.items?.map((item) => item.name).join(", ")} */}
                   </p>
+                  <div className="items-container">
+                    {eachOrder.order?.items.map((item) => {
+                      return (
+                        <div key={item._id} className="item">
+                          <p>{item.name}</p>
+                          <div className="calculations">
+                            <p>€{item.price}</p>
+                            <p>x{item.quantity}</p>
+                            <p>€{item.price * item.quantity}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                    <div className="total-sum">
+                      <p>Total Sum</p>
+                      <p>€{eachOrder.order?.totalSum}</p>
+                    </div>
+                  </div>
                   <p>
                     <strong>Payment:</strong> Confirmed
                   </p>

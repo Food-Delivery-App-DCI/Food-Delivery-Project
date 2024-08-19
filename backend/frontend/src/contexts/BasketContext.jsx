@@ -13,6 +13,8 @@ const BasketProvider = ({ children }) => {
   const [deliveryOption, setDeliveryOption] = useState("delivery");
   const [orderId, setOrderId] = useState("");
   const [orderSent, setOrderSent] = useState(JSON.parse(localStorage.getItem("orderSent")) || false);
+  const [isBasketModalOpen, setIsBasketModalOpen] = useState(false);
+  //  const [isOrderAgain, setIsOrderAgain] = useState(false);
 
   useEffect(() => {
     const savedBasket = localStorage.getItem("basket");
@@ -105,6 +107,11 @@ const BasketProvider = ({ children }) => {
         setOrderId,
         orderSent,
         setOrderSent,
+        isBasketModalOpen,
+        setIsBasketModalOpen,
+        setBasket,
+        // isOrderAgain,
+        // setIsOrderAgain,
       }}
     >
       {children}

@@ -1,17 +1,15 @@
 /*  RSRegisterPage.css */
 
-/* body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa;
-} */
-
 .rs-section-register {
-  margin-top: 70px;
+  margin-top: 7rem;
   padding: 10rem;
+  height: 40rem;
   text-align: center;
   background-color: rgb(78, 78, 78);
+  background-image: linear-gradient(#2b7a6573, #165e4b60), url("../../assets/mae-mu-AX_VWc7ORwY-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .rs-section-register h1 {
@@ -25,25 +23,53 @@
 }
 
 .rs-section-register button {
-  padding: 10px 20px;
-  margin-top: 20px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  background-color: var(--color-1);
-  color: white;
-  font-size: 16px;
+
+  padding: var(--button-padding);
+
+ 
+  border-radius: var(--button-border-radius);
+ 
+  background-color: var(--button-primary-color);
+  color: var(--color-5);
+ 
   transition: background-color 0.3s ease;
 }
 
 .rs-section-register button:hover {
-  background-color: #298b71;
+  /* background-color: #298b71; */
+  background-color: var(--button-primary-hover-color);
 }
+.rs-section-register button:active {
+  /* background-color: #298b71; */
+  background-color: var(--button-primary-active-color);
+
+ 
+  margin-top: 2rem;
+  border: none;
+
+  cursor: pointer;
+  
+  font-size: 1.6rem;
+  
+}
+
+.rs-section-register .register-button:hover {
+  background-color: var(--button-primary-hover-color);
+
+}
+
+.rs-section-register .register-button:active {
+  background-color: var(--button-primary-active-color);
+}
+
+/* .rs-section-register button:hover {
+  background-color: #298b71;
+} */
 
 .rs-section-partner {
   margin-top: 1rem;
-  padding: 10rem;
-  background-color: white;
+  padding: 5rem 10rem 10rem;
+  background-color: var(--background-color);
 }
 
 .rs-section-partner h2 {
@@ -55,14 +81,14 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 2rem;
-  padding: 3rem;
+  /* margin-top: 1rem; */
+  padding: 2rem;
 }
 
 .rs-section-partner div div {
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 0.8rem;
   max-width: 300px;
   margin: 1rem;
   padding: 2rem;
@@ -70,7 +96,7 @@
 }
 
 .rs-section-partner div div img {
-  border-radius: 8px 8px 0 0;
+  border-radius: 0.8rem 0.8rem 0 0;
   max-width: 100%;
   height: 30vh;
   object-fit: contain;
