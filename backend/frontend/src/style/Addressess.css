@@ -167,8 +167,8 @@ form.address-edit {
 .address-save-cancel-container .cancel-button {
   /* background-color: white; */
   /* background-color: var(--settings-cards-background); */
-  background-color: var(--button-cancel-exp-primary);
-  border: 1px solid var(--button-primary-color);
+  background-color: var(--button-secondary-color);
+  border: var(--button-secondary-border-color);
   color: var(--button-primary-color);
   border-radius: var(--button-border-radius);
   padding: var(--button-padding);
@@ -176,9 +176,9 @@ form.address-edit {
 
 .address-save-cancel-container .cancel-button:hover {
   /* background-color: var(--button-cancel-hover-color); */
-  background-color: var(--button-cancel-exp-hover);
+  background-color: var(--button-secondary-hover-color);
 }
 .address-save-cancel-container .cancel-button:active {
   /* background-color: var(--button-cancel-hover-color); */
-  background-color: var(--button-cancel-exp-active);
+  background-color: var(--button-secondary-active-color);
 }
