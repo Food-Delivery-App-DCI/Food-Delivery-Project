@@ -52,6 +52,7 @@ function RSNavbar() {
           {loggedInRestaurant ? (
             <div className="user-info">
               <RSNavStatus />
+
               <span className="welcome-message">Welcome, {loggedInRestaurant.basicInfo.businessName}!</span>
               <button className="logout-button" onClick={logoutRestaurant}>
                 Logout

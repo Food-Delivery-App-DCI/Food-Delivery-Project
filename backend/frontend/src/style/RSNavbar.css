@@ -11,15 +11,21 @@
   color: white;
 }
 
-.logo-nav {
+
+.rs-nav .logo-nav {
   font-size: 2.4rem;
+
   font-weight: bold;
   color: var(--color-1);
   cursor: pointer;
 }
 
-.buttons-nav {
+.rs-nav .buttons-nav {
   display: flex;
+}
+
+.rs-nav .welcome-message {
+  margin: 0 1rem;
 }
 
 .rs-nav button {
