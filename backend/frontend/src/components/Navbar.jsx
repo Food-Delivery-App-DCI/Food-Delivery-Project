@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, useRef } from "react";
+import { useContext, /*  useState, */ useEffect, useRef } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../contexts/DataContext";
@@ -9,6 +9,7 @@ import Basket from "./Basket";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import logo from "../../assets/Frame 168.png";
 
 import "../style/Navbar.css";
 
@@ -23,13 +24,13 @@ function Navbar() {
     setCompletedStages,
     setCurrentStage,
   } = useContext(DataContext);
-  const { totalItemCount } = useContext(BasketContext);
+  const { totalItemCount, isBasketModalOpen, setIsBasketModalOpen } = useContext(BasketContext);
 
   // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  const [isBasketModalOpen, setIsBasketModalOpen] = useState(false);
+  // const [isBasketModalOpen, setIsBasketModalOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -64,6 +65,11 @@ function Navbar() {
     localStorage.removeItem("completedStages");
     localStorage.removeItem("orderId");
     localStorage.removeItem("purchasedItems");
+    // localStorage.removeItem("sessionId");
+    // localStorage.removeItem("restaurantAddress");
+    // localStorage.removeItem("restaurantId");
+    // localStorage.removeItem("restaurantName");
+    // localStorage.removeItem("searchedRestaurantsResults");
     setCurrentStage(0);
     setCompletedStages([]);
     // setOrderId(null);
@@ -76,8 +82,8 @@ function Navbar() {
   return (
     <>
       <nav>
-        <h1 onClick={handleBackToMainPage}>DelivEats</h1>
-
+        {/* <h1 onClick={handleBackToMainPage}>DelivEats</h1> */}
+        <img className="logo" src={logo} alt="logo" onClick={handleBackToMainPage} />
         <div className="basket-and-register-container">
           {loggedInUser ? (
             <div className="user-info" ref={dropdownRef}>
@@ -88,7 +94,7 @@ function Navbar() {
 
               {isDropdownOpen && (
                 <div className="dropdown-menu">
-                  <Link to="/profile" className="dropdown-item" onClick={toggleDropdown}>
+                  <Link to="/profile/preferences" className="dropdown-item" onClick={toggleDropdown}>
                     Profile
                   </Link>
 
@@ -103,7 +109,7 @@ function Navbar() {
               {/* <RegisterAndLogin /> */}
               <div className="button-container">
                 <button
-                  className={`toggle-button`}
+                  className="login-button"
                   onClick={() => {
                     setIsToRegister(false);
                     setToggleRegisterOrLoginUser(true);
@@ -113,7 +119,7 @@ function Navbar() {
                   Login
                 </button>
                 <button
-                  className={`toggle-button`}
+                  className="register-button"
                   onClick={() => {
                     setIsToRegister(true);
                     setToggleRegisterOrLoginUser(true);

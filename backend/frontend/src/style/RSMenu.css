@@ -2,21 +2,27 @@
 
 .rs-menu-container {
   margin: 0 auto;
-  padding: 20px;
+  padding: 2rem;
   background-color: #fbfffc;
-  border-radius: 10px;
+  border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 900px;
 }
 
 .rs-menu-container .create-new-menu-button {
-  background-color: var(--color-1);
-  color: white;
+  background-color: var(--button-primary-color);
+  color: var(--color-5);
   font-size: 1.4rem;
-  padding: 0.8rem 2rem;
+  padding: var(--button-padding);
   border: none;
-  border-radius: 0.6rem;
+  border-radius: var(--button-border-radius);
   cursor: pointer;
+}
+.rs-menu-container .create-new-menu-button:hover {
+  background-color: var(--button-primary-hover-color);
+}
+.rs-menu-container .create-new-menu-button:active {
+  background-color: var(--button-primary-active-color);
 }
 
 .rs-menu-container .add-menu-form {
@@ -37,13 +43,19 @@
 
 .rs-menu-container .add-menu-form button {
   align-self: center;
-  background-color: var(--color-1);
+  background-color: var(--button-primary-color);
   color: white;
   font-size: 1.4rem;
-  padding: 0.8rem 2rem;
+  padding: var(--button-padding);
   border: none;
-  border-radius: 0.6rem;
+  border-radius: var(--button-border-radius);
   cursor: pointer;
+}
+.rs-menu-container .add-menu-form button:hover {
+  background-color: var(--button-primary-hover-color);
+}
+.rs-menu-container .add-menu-form button:active {
+  background-color: var(--button-primary-active-color);
 }
 
 .rs-menu-container .add-menu-form input {
@@ -95,16 +107,32 @@
   display: flex;
 }
 
-.rs-menu-container .edit-keywords .save-keywords-button {
-  background-color: var(--color-1);
+.rs-menu-container .menu-category .edit-form .buttons-container .save1-button {
+  background-color: var(--button-primary-color);
   color: white;
   font-size: 1.4rem;
+  border-radius: var(--button-border-radius);
+}
+.rs-menu-container .menu-category .edit-form .buttons-container .save1-button:hover {
+  background-color: var(--button-primary-hover-color)
+}
+.rs-menu-container .menu-category .edit-form .buttons-container .save1-button:active {
+  background-color: var(--button-primary-active-color)
 }
 
-.rs-menu-container .edit-keywords .cancel-keywords-button {
+
+.rs-menu-container .menu-category .edit-form .buttons-container .cancel1-button {
   font-size: 1.4rem;
-  border: 1px solid var(--color-1);
+  background-color: var(--button-cancel-primary-color);
+  border: 1px solid var(--button-primary-color);
   color: var(--color-1);
+  border-radius: var(--button-border-radius);
+}
+.rs-menu-container .menu-category .edit-form .buttons-container .cancel1-button:hover {
+  background-color: var(--button-cancel-hover-color)
+}
+.rs-menu-container .menu-category .edit-form .buttons-container .cancel1-button:active {
+  background-color: var(--button-cancel-active-color)
 }
 
 .keywords .keywords-edit-icon {
@@ -112,7 +140,7 @@
 }
 
 .menu-category {
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
 }
 
 .menu-category h2 {
@@ -126,7 +154,6 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  /* margin-bottom: 2rem; */
 }
 
 .menu-category .category-header label {
@@ -145,7 +172,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* align-items: flex-start; */
   padding: 2rem 1rem;
   border-bottom: 1px solid #ccc;
 }
@@ -180,7 +206,7 @@
 }
 
 .item-info p {
-  margin: 5px 0 0;
+  margin: 0.5rem 0 0;
   color: #6c757d;
 }
 
@@ -193,9 +219,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin: 3rem 0; */
   padding: 2rem 1rem;
-  /* gap: 2rem; */
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -210,14 +234,7 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-
-  /* width: fit-content; */
-  /* flex-wrap: wrap; */
 }
-
-/* .rs-menu-container .price-label {
-  width: 24%;
-} */
 
 .rs-menu-container .edit-item label input {
   padding: 0.6rem;
@@ -226,13 +243,17 @@
   border: 1px solid rgb(202, 202, 202);
 }
 
-/* .rs-menu-container .edit-item .price {
-  width: 70%;
-} */
-
 .rs-menu-container .delete-icon {
-  color: rgb(196, 50, 50);
+  color: var(--button-delete-color);
   cursor: pointer;
+}
+
+.rs-menu-container .delete-icon:hover {
+  color: var(--button-delete-hover-color);
+}
+
+.rs-menu-container .delete-icon:active {
+  color: var(--button-delete-active-color);
 }
 
 .rs-menu-container .add-item-container {
@@ -260,7 +281,7 @@
   background-color: var(--color-1);
   color: white;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   border: none;
 }
 
@@ -278,44 +299,91 @@
 .rs-menu-container .buttons-container button {
   padding: var(--button-padding);
   border: none;
-  font-size: 16px;
+  font-size: 1.6rem;
   cursor: pointer;
   border-radius: var(--button-border-radius);
 }
 
 .rs-menu-container .buttons-container .save1-button {
-  background-color: var(--color-1);
-  color: white;
+  background-color: var(--button-primary-color);
+  color: var(--color-5);
 }
 
-.rs-menu-container .buttons-container .cancel1-button {
-  background-color: transparent;
-  color: var(--color-1);
-  border: 1px solid var(--color-1);
+.rs-menu-container .menu-category .edit-form .buttons-container .cancel1-button {
+  background-color: var(--button-cancel-exp-primary);
+  color: var(--button-primary-color);
+  border: 1px solid var(--button-primary-color);
+}
+.rs-menu-container .menu-category .edit-form .buttons-container .cancel1-button:hover {
+  background-color: var(--button-cancel-exp-hover);
+}
+.rs-menu-container .menu-category .edit-form .buttons-container .cancel1-button:active {
+  background-color: var(--button-cancel-exp-active);
+}
+
+.rs-menu-container .buttons-container .save-keywords-button {
+  background-color: var(--button-primary-color);
+  color: var(--color-5);
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+}
+.rs-menu-container .buttons-container .save-keywords-button:hover {
+  background-color: var(--button-primary-hover-color);
+}
+.rs-menu-container .buttons-container .save-keywords-button:active {
+  background-color: var(--button-primary-active-color);
+}
+
+.rs-menu-container .buttons-container .cancel-keywords-button {
+  background-color: var(--button-cancel-exp-primary);
+  color: var(--button-primary-color);
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+  border: 1px solid var(--button-primary-color)
+}
+.rs-menu-container .buttons-container .cancel-keywords-button:hover {
+  background-color: var(--button-cancel-exp-hover);
+}
+.rs-menu-container .buttons-container .cancel-keywords-button:active {
+  background-color: var(--button-cancel-exp-active);
 }
 
 .rs-menu-container .edit-button {
   display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
+
+  
+  padding: var(--button-padding);
+
+  margin: 2rem auto;
+  
+
   color: #fff;
-  background-color: #165e4b;
+  /* background-color: #165e4b; */
+  background-color: var(--button-primary-color);
   border: none;
-  border-radius: 5px;
+
+  border-radius: var(--button-border-radius);
+
   cursor: pointer;
+}
+.rs-menu-container .edit-button:hover {
+  background-color: var(--button-primary-hover-color);
+}
+.rs-menu-container .edit-button:active {
+  background-color: var(--button-primary-active-color);
 }
 
 .update-button {
   display: block;
   margin: 0 auto;
-  padding: 10px;
+  padding: 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   background-color: #274691;
   color: white;
-  font-size: 16px;
+  font-size: 1.6rem;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .update-button:hover {

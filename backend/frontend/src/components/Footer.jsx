@@ -1,15 +1,17 @@
+import { useContext } from "react";
 import "../style/Footer.css";
+import { DataContext } from "../contexts/DataContext";
 
 function Footer() {
+  const { loggedInRestaurant } = useContext(DataContext);
   return (
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section">
           <h2>DelivEats</h2>
           <p>
-            DelivEats is your go-to app for fast, reliable food delivery from
-            your favorite restaurants. Savor the flavors of the city from the
-            comfort of your home!
+            DelivEats is your go-to app for fast, reliable food delivery from your favorite restaurants. Savor the
+            flavors of the city from the comfort of your home!
           </p>
         </div>
         <div className="footer-section">
@@ -19,7 +21,10 @@ function Footer() {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="rs-register">Register Restaurant</a>
+
+              {/* check this link */}
+              <a href={loggedInRestaurant ? "/rs-home/orders-active" : "/rs-register"}>Register Restaurant</a>
+
             </li>
           </ul>
         </div>

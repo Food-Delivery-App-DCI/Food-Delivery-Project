@@ -54,13 +54,13 @@ export async function checkout(req, res, next) {
 
 //* This function receives the basket, total sum, delivery option, and restaurant details, and saves them in the order history collection.
 export async function setOrder(req, res, next) {
-  const { basket, totalSum, deliveryOption, restaurantName, restaurantAddress } = req.body;
+  const { basket, totalSum, deliveryOption, restaurantName, restaurantAddress, restaurantId } = req.body;
 
   try {
     // Format the basket items for saving in the order history.
     const basketItems = basket.map((item) => {
       return {
-        itemName: item.name,
+        name: item.name,
         price: item.price,
         quantity: item.quantity,
         description: item.description,
@@ -71,6 +71,7 @@ export async function setOrder(req, res, next) {
     const orderHistorySaved = {
       restaurantName: restaurantName,
       restaurantAddress: restaurantAddress,
+      restaurantId: restaurantId,
       items: basketItems,
       totalSum: totalSum,
       paymentDetails: {

@@ -81,7 +81,7 @@ const promotionalInfoSchema = new Schema({
 });
 
 const orderItemsSchema = new Schema({
-  itemName: { type: String, required: true },
+  name: { type: String, required: true },
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
   description: { type: String, required: true },

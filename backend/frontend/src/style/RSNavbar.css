@@ -12,7 +12,7 @@
 }
 
 .logo-nav {
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: bold;
   color: var(--color-1);
   cursor: pointer;
@@ -23,17 +23,40 @@
 }
 
 .rs-nav button {
-  padding: 10px 20px;
-  margin: 0 10px;
+
+  padding: var(--button-padding);
+ 
+  
+  border-radius: var(--button-border-radius);
+
+ 
+  margin: 0 1rem;
   border: none;
-  border-radius: 30px;
+ 
+
   cursor: pointer;
-  background-color: var(--color-1);
+  background-color: var(--button-primary-color);
   color: white;
-  font-size: 16px;
+  font-size: 1.6rem;
   transition: background-color 0.3s ease;
 }
 
-.rs-nav button:hover {
-  background-color: #298b71;
+
+.rs-nav .register-button:hover {
+  background-color: var(--button-primary-hover-color);
 }
+
+.rs-nav .register-button:active {
+  background-color: var(--button-primary-active-color);
+}
+
+.rs-nav .login-button {
+  background-color: transparent;
+  color: var(--color-1);
+  border: 1px solid var(--color-1);
+
+}
+
+/* .rs-nav button:hover {
+  background-color: #298b71;
+} */

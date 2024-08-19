@@ -13,7 +13,8 @@ import {
   getAllAddresses,
   deleteOrderHistoryOfUser,
   deleteOrder,
-  // setFavorite,
+  setFavorite,
+  getFavorites,
 } from "../controllers/userController.js";
 import { authenticateToken } from "../middlewares/authenticateToken.js";
 
@@ -30,7 +31,8 @@ router.post("/editAddress/:userId/addresses/:id", editAddress);
 router.get("/getAllAddresses/:id", getAllAddresses);
 router.delete("/deleteOrderHistory/:id", deleteOrderHistoryOfUser);
 router.delete("/deleteOrder/:userId/:orderId", deleteOrder);
-// router.post("/favorite/:userId/:id", setFavorite);
+router.post("/favorite/:userId/:id", setFavorite);
+router.get("/get-favorites/:id", getFavorites);
 
 router.use(authenticateToken);
 router.get("/check-auth", checkAuthentication);

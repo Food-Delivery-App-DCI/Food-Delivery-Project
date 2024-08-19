@@ -1,6 +1,115 @@
-.order-again-container .order-history-container {
+.favorites-container h3 {
+  text-align: left;
+  margin: 2rem 0 0;
+}
+
+.favorites-container .info {
+  margin: 0.6rem 0 3rem;
+}
+
+.favorites-items-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 4rem;
+  /* padding-top: 2rem; */
+}
+
+.favorites-items-container .favorite-card {
+  display: flex;
+  gap: 2rem;
+  box-shadow: 1px 1px 10px rgb(219, 219, 219);
+  cursor: pointer;
+  background-color: var(--cards-background-color);
+  transition: all 0.3s;
+}
+
+.favorites-items-container .favorite-card:hover {
+  transform: scale(1.03);
+}
+
+.favorites-items-container .image-container {
+  width: 10rem;
+}
+
+.favorites-items-container .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.order-again-container {
+  margin-top: 7rem;
+}
+
+.order-again-container h3 {
+  text-align: left;
+}
+
+.order-again-container .order-again-items-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 4rem;
   padding-top: 2rem;
+}
+
+.order-again-items-container .order {
+  padding: 2rem;
+  box-shadow: 1px 1px 10px rgb(219, 219, 219);
+  background-color: var(--cards-background-color);
+  transition: all 0.3s;
+}
+
+.order-again-items-container .order:hover {
+  transform: scale(1.03);
+}
+
+.order-again-items-container h3 {
+  text-align: left;
+  text-decoration: underline;
+  font-size: 1.6rem;
+  margin: 1rem 0 0.4rem;
+}
+
+.order-again-items-container .items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.order-again-items-container .item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-again-items-container .calculations {
+  display: flex;
+  gap: 1rem;
+}
+
+.order-again-items-container .total-sum {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.order-again-items-container .order-again-button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 3rem;
+  margin-top: 2rem;
+  cursor: pointer;
+  background-color: var(--button-primary-color);
+  color: white;
+  font-size: 1.4rem;
+  transition: background-color 0.3s ease;
+}
+
+.order-again-items-container .order-again-button:hover {
+  background-color: var(--button-primary-hover-color);
+}
+
+.order-again-items-container .order-again-button:active {
+  background-color: var(--button-primary-active-color);
 }
