@@ -2,9 +2,9 @@
 
 .rs-menu-container {
   margin: 0 auto;
-  padding: 20px;
+  padding: 2rem;
   background-color: #fbfffc;
-  border-radius: 10px;
+  border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 900px;
 }
@@ -112,7 +112,7 @@
 }
 
 .menu-category {
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
 }
 
 .menu-category h2 {
@@ -126,7 +126,6 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  /* margin-bottom: 2rem; */
 }
 
 .menu-category .category-header label {
@@ -145,7 +144,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* align-items: flex-start; */
   padding: 2rem 1rem;
   border-bottom: 1px solid #ccc;
 }
@@ -180,7 +178,7 @@
 }
 
 .item-info p {
-  margin: 5px 0 0;
+  margin: 0.5rem 0 0;
   color: #6c757d;
 }
 
@@ -193,9 +191,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin: 3rem 0; */
   padding: 2rem 1rem;
-  /* gap: 2rem; */
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -210,14 +206,7 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-
-  /* width: fit-content; */
-  /* flex-wrap: wrap; */
 }
-
-/* .rs-menu-container .price-label {
-  width: 24%;
-} */
 
 .rs-menu-container .edit-item label input {
   padding: 0.6rem;
@@ -226,13 +215,17 @@
   border: 1px solid rgb(202, 202, 202);
 }
 
-/* .rs-menu-container .edit-item .price {
-  width: 70%;
-} */
-
 .rs-menu-container .delete-icon {
-  color: rgb(196, 50, 50);
+  color: var(--button-delete-color);
   cursor: pointer;
+}
+
+.rs-menu-container .delete-icon:hover {
+  color: var(--button-delete-hover-color);
+}
+
+.rs-menu-container .delete-icon:active {
+  color: var(--button-delete-active-color);
 }
 
 .rs-menu-container .add-item-container {
@@ -260,7 +253,7 @@
   background-color: var(--color-1);
   color: white;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   border: none;
 }
 
@@ -278,7 +271,7 @@
 .rs-menu-container .buttons-container button {
   padding: var(--button-padding);
   border: none;
-  font-size: 16px;
+  font-size: 1.6rem;
   cursor: pointer;
   border-radius: var(--button-border-radius);
 }
@@ -296,26 +289,26 @@
 
 .rs-menu-container .edit-button {
   display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
   color: #fff;
   background-color: #165e4b;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   cursor: pointer;
 }
 
 .update-button {
   display: block;
   margin: 0 auto;
-  padding: 10px;
+  padding: 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   background-color: #274691;
   color: white;
-  font-size: 16px;
+  font-size: 1.6rem;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .update-button:hover {

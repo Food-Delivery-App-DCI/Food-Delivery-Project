@@ -132,8 +132,9 @@ function RSRegisterAndLogin() {
         const data = await response.json();
         console.log(data.message);
         setLoggedInRestaurant(data.restaurant);
+        setToggleRegisterOrLoginRestaurant(false);
         // setIsModalOpen(false);
-        navigate("/rs-home");
+        navigate("/rs-home/orders-active");
       } else {
         const { error } = await response.json();
         throw new Error(error.message);

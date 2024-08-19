@@ -16,10 +16,6 @@ import { BounceLoader } from "react-spinners";
 import ProtectedRouteLoggedInUser from "./components/ProtectedRouteLoggedInUser";
 import RSProtectedRouteLoggedInRestaurant from "./components/RSProtectedRouteLoggedInRestaurant";
 
-// import RegisterLoginPage from "./pages/RegisterLoginPage";
-
-// import RestaurantHome from "./pages/RestaurantHome";
-
 // RESTAURANT SIDE
 import RSRegisterPage from "./pages/RSRegisterPage";
 import RSHomePage from "./pages/RSHomePage";
