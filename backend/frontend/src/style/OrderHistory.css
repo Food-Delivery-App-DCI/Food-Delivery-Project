@@ -19,14 +19,21 @@
   padding: 1rem 3rem;
   border-radius: 0.6rem;
   border: none;
-  background-color: rgb(211, 29, 29);
+  background-color: var(--button-delete-color);
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
   color: white;
   font-size: 1.4rem;
-  cursor: pointer;
+  cursor: pointer; 
+  transition: background-color 0.3s;
+
 }
 
 .order-history-container .delete-history-button:hover {
-  background-color: rgb(230, 63, 63);
+  background-color: var(--button-delete-hover-color);
+}
+.order-history-container .delete-history-button:active {
+  background-color: var(--button-delete-active-color);
 }
 
 .order-history-container .orders-container {
@@ -34,6 +41,28 @@
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 4rem;
   padding-top: 2rem;
+}
+
+.order-history-container .orders-container button {
+  margin: 2rem 0 0.4rem;
+  padding: 1rem 3rem;
+  border-radius: 0.6rem;
+  border: none;
+  background-color: var(--button-delete-color);
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.order-history-container .orders-container button:hover {
+  background-color: var(--button-delete-hover-color)
+}
+
+.order-history-container .orders-container button:active {
+  background-color: var(--button-delete-active-color) 
 }
 
 .order-history-container .order {

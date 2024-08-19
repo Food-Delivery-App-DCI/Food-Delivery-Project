@@ -40,6 +40,7 @@ function SearchResults() {
         <>
           <Searchbar className="results-searchbar" />
 
+
           {!loading ? (
             <div className="cards-results-container">
               {restaurants.map((restaurant) => {
@@ -59,8 +60,9 @@ function SearchResults() {
                       />
                     </div>
                     <div className="restaurant-info">
-                      <h1>{restaurant.basicInfo.venueName}</h1>
+                      
                       <div className="restaurant-card">
+                        <h1>{restaurant.basicInfo.venueName}</h1>
                         <div className="restaurant-details">
                           <p>
                             {restaurant.basicInfo.address.street}, {restaurant.basicInfo.address.postalCode},{" "}
@@ -69,7 +71,11 @@ function SearchResults() {
                           <small>Today: {todayHours}</small>
                         </div>
 
-                        <div className="restaurant-current-offers">
+                        
+
+
+                      </div>
+                           <div className="restaurant-current-offers">
                           <div>Offers</div>
                           <ul>
                             {restaurant.promotionalInfo.currentOffers.map((offer, index) => {
@@ -77,8 +83,6 @@ function SearchResults() {
                             })}
                           </ul>
                         </div>
-                      </div>
-                    </div>
                   </div>
                 );
               })}

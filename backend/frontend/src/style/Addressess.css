@@ -17,10 +17,12 @@ h3 {
 }
 
 .address-item {
-  background-color: #fff;
+
+  background-color: var(--settings-cards-background);
   border-radius: 0.8rem;
   padding: 2rem;
   margin-bottom: 1.5rem;
+
   box-shadow: 0 2px 4px var(--shadow-dark);
   display: flex;
   align-items: center;
@@ -37,9 +39,12 @@ h3 {
 }
 
 form.address-edit {
+
+  background-color: var(--settings-cards-background);
   padding: 2rem;
-  background-color: #fff;
+
   border-radius: 0.8rem;
+
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .address-label {
@@ -65,14 +70,32 @@ form.address-edit {
   background: none;
   border: none;
   cursor: pointer;
+
+ 
+  color: var(--button-primary-color);
+  transition: background-color 0.3s ease;
+  
+}
+
+.edit-address-button:hover, 
+.delete-address-button:hover {
+  color: var(--button-primary-hover-color);
+}
+
+.edit-address-button:active, 
+.delete-address-button:active {
+  color: var(--button-primary-active-color);
+
   font-size: 1.6rem;
-  color: var(--color-2);
+ 
+
 }
 
 .inputs-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
 }
 
 .add-address-button {
@@ -87,11 +110,20 @@ form.address-edit {
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+
+ 
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+  transition: background-color 0.3s;
   font-size: 1.6rem;
+
 }
 
 .add-address-button:hover {
-  background-color: var(--color-1);
+  background-color: var(--button-primary-hover-color);
+}
+.add-address-button:active {
+  background-color: var(--button-primary-active-color);
 }
 
 .address-edit input,
@@ -115,23 +147,38 @@ form.address-edit {
   cursor: pointer;
   width: 30%;
   margin-top: 1rem;
+  transition: background-color 0.3s;
 }
 
 .address-save-cancel-container .save-button {
-  background-color: var(--color-2);
+  background-color: var(--button-primary-color);
   color: white;
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
 }
 
 .address-save-cancel-container .save-button:hover {
-  background-color: var(--color-1);
+  background-color: var(--button-primary-hover-color);
+}
+.address-save-cancel-container .save-button:active {
+  background-color: var(--button-primary-active-color) 
 }
 
 .address-save-cancel-container .cancel-button {
-  background-color: white;
-  border: 1px solid var(--color-3);
-  color: var(--color-3);
+  /* background-color: white; */
+  /* background-color: var(--settings-cards-background); */
+  background-color: var(--button-cancel-exp-primary);
+  border: 1px solid var(--button-primary-color);
+  color: var(--button-primary-color);
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
 }
 
 .address-save-cancel-container .cancel-button:hover {
-  background-color: #ffe;
+  /* background-color: var(--button-cancel-hover-color); */
+  background-color: var(--button-cancel-exp-hover);
+}
+.address-save-cancel-container .cancel-button:active {
+  /* background-color: var(--button-cancel-hover-color); */
+  background-color: var(--button-cancel-exp-active);
 }
