@@ -39,8 +39,6 @@ function SearchResults() {
       ) : (
         <>
           <Searchbar className="results-searchbar" />
-
-
           {!loading ? (
             <div className="cards-results-container">
               {restaurants.map((restaurant) => {
@@ -60,7 +58,6 @@ function SearchResults() {
                       />
                     </div>
                     <div className="restaurant-info">
-                      
                       <div className="restaurant-card">
                         <h1>{restaurant.basicInfo.venueName}</h1>
                         <div className="restaurant-details">
@@ -70,19 +67,16 @@ function SearchResults() {
                           </p>
                           <small>Today: {todayHours}</small>
                         </div>
-
-                        
-
-
                       </div>
-                           <div className="restaurant-current-offers">
-                          <div>Offers</div>
-                          <ul>
-                            {restaurant.promotionalInfo.currentOffers.map((offer, index) => {
-                              return <li key={index}>{offer.category}</li>;
-                            })}
-                          </ul>
-                        </div>
+                      <div className="restaurant-current-offers">
+                        <div>Offers</div>
+                        <ul>
+                          {restaurant.promotionalInfo.currentOffers.map((offer, index) => {
+                            return <li key={index}>{offer.category}</li>;
+                          })}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 );
               })}
