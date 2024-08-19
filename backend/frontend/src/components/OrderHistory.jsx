@@ -35,22 +35,24 @@ function OrderHistory() {
   }
 
   async function handleDeleteOrder(orderId) {
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API}/users/deleteOrder/${loggedInUser.id}/${orderId}`, {
-        method: "DELETE",
-        credentials: "include",
-      });
-      if (response.ok) {
-        const { orderHistory } = await response.json();
-        setUserOrderHistory(orderHistory);
-        // Optionally notify user of successful deletion
-        // For example: notifyUser("Order successfully deleted");
-      } else {
-        const { error } = await response.json();
-        throw new Error(error.message);
+    if (confirm("Are you sure you want to delete this order?")) {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API}/users/deleteOrder/${loggedInUser.id}/${orderId}`, {
+          method: "DELETE",
+          credentials: "include",
+        });
+        if (response.ok) {
+          const { orderHistory } = await response.json();
+          setUserOrderHistory(orderHistory);
+          // Optionally notify user of successful deletion
+          // For example: notifyUser("Order successfully deleted");
+        } else {
+          const { error } = await response.json();
+          throw new Error(error.message);
+        }
+      } catch (error) {
+        console.error("Error deleting order:", error.message);
       }
-    } catch (error) {
-      console.error("Error deleting order:", error.message);
     }
   }
 
@@ -89,7 +91,7 @@ function OrderHistory() {
                       {order?.items.map((item) => {
                         return (
                           <div key={item._id} className="item">
-                            <p>{item.itemName}</p>
+                            <p>{item.name}</p>
                             <div className="calculations">
                               <p>€{item.price}</p>
                               <p>x{item.quantity}</p>

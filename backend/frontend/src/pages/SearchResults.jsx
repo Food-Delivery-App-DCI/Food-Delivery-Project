@@ -5,14 +5,14 @@ import Navbar from "../components/Navbar";
 import Searchbar from "../components/Searchbar";
 import Footer from "../components/Footer";
 import RegisterAndLogin from "../components/RegisterAndLogin";
-
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faAward } from "@fortawesome/free-solid-svg-icons";
 
 import "../style/SearchResults.css";
 
 function SearchResults() {
-  const { restaurants, getSearchedRestaurants, setRestaurant, toggleRegisterOrLoginUser } = useContext(DataContext);
+  const { restaurants, getSearchedRestaurants, setRestaurant, toggleRegisterOrLoginUser, loading } =
+    useContext(DataContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,48 +40,55 @@ function SearchResults() {
         <>
           <Searchbar className="results-searchbar" />
 
-          <div className="cards-results-container">
-            {restaurants.map((restaurant) => {
-              const todayHours = getTodayHours(restaurant.openAndCloseHours);
-              return (
-                <div key={restaurant._id} className="card-results" onClick={() => handleCardClick(restaurant._id)}>
-                  {" "}
-                  <div className="restaurant-image">
-                    <img
-                      src={
-                        restaurant.basicInfo.coverImage.startsWith("uploads")
-                          ? `${import.meta.env.VITE_API}/${restaurant.basicInfo.coverImage}`
-                          : restaurant.basicInfo.coverImage
-                      }
-                      alt=""
-                      // width={100}
-                    />
-                  </div>
-                  <div className="restaurant-info">
-                    <h1>{restaurant.basicInfo.venueName}</h1>
-                    <div className="restaurant-card">
-                      <div className="restaurant-details">
-                        <p>
-                          {restaurant.basicInfo.address.street}, {restaurant.basicInfo.address.postalCode},{" "}
-                          {restaurant.basicInfo.address.city}
-                        </p>
-                        <small>Today: {todayHours}</small>
-                      </div>
+          {!loading ? (
+            <div className="cards-results-container">
+              {restaurants.map((restaurant) => {
+                const todayHours = getTodayHours(restaurant.openAndCloseHours);
+                return (
+                  <div key={restaurant._id} className="card-results" onClick={() => handleCardClick(restaurant._id)}>
+                    {" "}
+                    <div className="restaurant-image">
+                      <img
+                        src={
+                          restaurant.basicInfo.coverImage.startsWith("uploads")
+                            ? `${import.meta.env.VITE_API}/${restaurant.basicInfo.coverImage}`
+                            : restaurant.basicInfo.coverImage
+                        }
+                        alt=""
+                        // width={100}
+                      />
+                    </div>
+                    <div className="restaurant-info">
+                      <h1>{restaurant.basicInfo.venueName}</h1>
+                      <div className="restaurant-card">
+                        <div className="restaurant-details">
+                          <p>
+                            {restaurant.basicInfo.address.street}, {restaurant.basicInfo.address.postalCode},{" "}
+                            {restaurant.basicInfo.address.city}
+                          </p>
+                          <small>Today: {todayHours}</small>
+                        </div>
 
-                      <div className="restaurant-current-offers">
-                        <div>Offers</div>
-                        <ul>
-                          {restaurant.promotionalInfo.currentOffers.map((offer, index) => {
-                            return <li key={index}>{offer.category}</li>;
-                          })}
-                        </ul>
+                        <div className="restaurant-current-offers">
+                          <div>Offers</div>
+                          <ul>
+                            {restaurant.promotionalInfo.currentOffers.map((offer, index) => {
+                              return <li key={index}>{offer.category}</li>;
+                            })}
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          ) : (
+            <>
+              {/* This empty div is internationally here to make sure that the loader is working properly */}
+              <div className="placeholder-div"></div>
+            </>
+          )}
         </>
       )}
       <Footer />

@@ -14,15 +14,15 @@
   margin: 4rem 0 2rem;
 }
 
-.toggle-button {
-  padding: 10px 20px;
-  margin: 0 10px;
+/* .toggle-button {
+  padding: 1rem 2rem;
+  margin: 0 1rem;
   border: none;
-  border-radius: 30px;
+  border-radius: 3rem;
   cursor: pointer;
   background-color: #266241;
   color: white;
-  font-size: 16px;
+  font-size: 1.6rem;
   transition: background-color 0.3s ease;
 }
 
@@ -33,7 +33,7 @@
 
 .toggle-button:hover {
   background-color: #163825;
-}
+} */
 
 .form {
   display: flex;
@@ -53,17 +53,17 @@
 .form-label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
-  font-size: 14px;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
   width: 100%;
 }
 
 .form-input {
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
   border: 1px solid #eee2e2;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   flex: 1;
 }
 
@@ -88,9 +88,9 @@
 
 .password-toggle-icon {
   position: absolute;
-  right: 10px;
+  right: 1rem;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 
 .register-login-page .buttons-container {
@@ -101,10 +101,10 @@
 }
 
 .register-login-page .buttons-container button {
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   border-radius: var(--button-border-radius);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1.6rem;
   transition: background-color 0.3s ease;
   border: none;
 }

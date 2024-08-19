@@ -8,13 +8,13 @@
 
 .tracking-container h2 {
   font-size: 1.5em;
-  padding-bottom: 15px;
+  padding-bottom: 1.5rem;
 }
 
 .timeline {
   border-left: 2px solid #ccc;
-  padding-left: 10px;
-  margin-left: 10px;
+  padding-left: 1rem;
+  margin-left: 1rem;
 }
 
 .timeline-item {
@@ -23,22 +23,19 @@
   margin-bottom: 2rem;
   position: relative;
   color: rgb(217, 207, 207);
-  /* background-color: #f0f0f0; */
 }
 
 .timeline-item.completed {
   color: black;
-  /* background-color: #e0ffe0; */
 }
 
 .timeline-item.current {
-  /* text-align: center; */
   color: black;
-  border-radius: 10px;
+  border-radius: 1rem;
   background-color: rgb(38, 98, 65, 0.2);
   padding: 1rem;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -47,12 +44,12 @@
 }
 
 .timeline-icon {
-  width: 10px;
-  height: 10px;
+  width: 1rem;
+  height: 1rem;
   background-color: #ccc;
   border-radius: 50%;
   position: absolute;
-  left: -16px;
+  left: -1.6rem;
 }
 
 .timeline-content {
@@ -71,22 +68,21 @@
 
 .completion {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 2rem;
   font-weight: bold;
-  /* background-color: rgb(38, 98, 65); */
-  border-radius: 10px;
+  border-radius: 1rem;
   color: white;
-  padding: 15px;
+  padding: 1.5rem;
 }
 
 .back-to-main-button {
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   background-color: rgb(38, 98, 65);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1.6rem;
   transition: background-color 0.3s ease;
 }
 

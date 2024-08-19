@@ -106,6 +106,11 @@ function DeliveryTracker() {
     localStorage.removeItem("completedStages");
     localStorage.removeItem("orderId");
     localStorage.removeItem("purchasedItems");
+    localStorage.removeItem("sessionId");
+    localStorage.removeItem("restaurantAddress");
+    localStorage.removeItem("restaurantId");
+    localStorage.removeItem("restaurantName");
+    localStorage.removeItem("searchedRestaurantsResults");
     setCurrentStage(0);
     setCompletedStages([]);
     setOrderId(null);

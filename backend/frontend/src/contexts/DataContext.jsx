@@ -31,7 +31,6 @@ function DataContextProvider({ children }) {
   //   const savedOrderId = localStorage.getItem("orderId");
   //   return savedOrderId || contextOrderId;
   // });
-
   const [orderCounts, setOrderCounts] = useState({
     received: 0,
     preparing: 0,
@@ -39,6 +38,10 @@ function DataContextProvider({ children }) {
     delivery: 0,
     completed: 0,
   });
+  const [loading, setLoading] = useState(false);
+  const [searchedRestaurantsResults, setSearchedRestaurantsResults] = useState(
+    JSON.parse(localStorage.getItem("searchedRestaurantsResults")) || []
+  );
 
   const navigate = useNavigate();
 
@@ -86,6 +89,9 @@ function DataContextProvider({ children }) {
         const { message } = await response.json();
         alert(message);
         setLoggedInUser(null);
+        localStorage.removeItem("searchedRestaurantsResults"); // Clear stored search results on logout
+        setSearchedRestaurantsResults([]); // Clear context state
+        setRestaurants([]);
         navigate("/");
       } else {
         const { error } = await response.json();
@@ -121,18 +127,20 @@ function DataContextProvider({ children }) {
   }
 
   async function getSearchedRestaurants() {
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API}/search/getRestaurants`);
-      if (response.ok) {
-        const data = await response.json();
-        setRestaurants(data);
-      } else {
-        const { error } = await response.json();
-        throw new Error(error.message);
-      }
-    } catch (error) {
-      alert(error.message);
-    }
+    // try {
+    //   const response = await fetch(`${import.meta.env.VITE_API}/search/getRestaurants`);
+    //   if (response.ok) {
+    //     const data = await response.json();
+    //     setRestaurants(data);
+    //   } else {
+    //     const { error } = await response.json();
+    //     throw new Error(error.message);
+    //   }
+    // } catch (error) {
+    //   alert(error.message);
+    // }
+
+    setRestaurants(searchedRestaurantsResults);
   }
 
   async function getRestaurantOrderHistory() {
@@ -313,6 +321,10 @@ function DataContextProvider({ children }) {
         // setOrderId,
         orderCounts,
         updateOrderCounts,
+        loading,
+        setLoading,
+        searchedRestaurantsResults,
+        setSearchedRestaurantsResults,
       }}
     >
       {children}

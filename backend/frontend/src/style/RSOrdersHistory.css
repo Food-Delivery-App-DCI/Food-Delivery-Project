@@ -1,6 +1,4 @@
 .rs-orderHistory-container {
-  /* display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); */
   position: relative;
   min-height: 100vh;
 }
@@ -28,24 +26,70 @@
 
 .rs-orderHistory-container .orders-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
   gap: 4rem;
   padding-top: 2rem 0;
 }
 
 .rs-orderHistory-container .cards {
-  background: #fbfffc;
-  border-radius: 8px;
+  background: var(--cards-background-color);
+  border-radius: 0.8rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
-  padding: 20px;
-  /* width: 300px; */
+  margin: 2rem 0;
+  padding: 2rem;
   transition: transform 0.2s;
+}
+
+.rs-orderHistory-container .cards:hover {
+  transform: scale(1.01);
 }
 
 .rs-orderHistory-container .cards p {
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid rgb(219, 219, 219);
+  padding: 1.6rem 0;
+}
+
+.rs-orderHistory-container .cards .items-paragraph {
+  border: none;
+  padding: 1.6rem 0 0.2rem;
+}
+
+.rs-orderHistory-container .items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgb(219, 219, 219);
+}
+
+.rs-orderHistory-container .item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rs-orderHistory-container .item p {
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+.rs-orderHistory-container .calculations {
+  display: flex;
+  gap: 1rem;
+}
+
+.rs-orderHistory-container .total-sum {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  /* margin-top: 1rem; */
+}
+
+.rs-orderHistory-container .total-sum p {
+  border: none;
+  padding: 0;
 }
 
 .rs-orderHistory-container .delete-button {

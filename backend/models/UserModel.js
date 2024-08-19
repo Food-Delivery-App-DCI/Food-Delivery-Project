@@ -33,12 +33,13 @@ const userSchema = new Schema(
       type: [addressesSchema],
       default: [],
     },
-    // favoriteRestaurants: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Restaurant",
-    //   },
-    // ],
+    //* new code
+    favoriteRestaurants: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Restaurant",
+      },
+    ],
   },
   { timestamps: true }
 );
