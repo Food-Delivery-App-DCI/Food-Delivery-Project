@@ -3,8 +3,7 @@
 .address-book {
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  padding: 2rem;
 }
 
 ul {
@@ -18,11 +17,12 @@ h3 {
 }
 
 .address-item {
-  /* background-color: #fff; */
+
   background-color: var(--settings-cards-background);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 15px;
+  border-radius: 0.8rem;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+
   box-shadow: 0 2px 4px var(--shadow-dark);
   display: flex;
   align-items: center;
@@ -39,28 +39,30 @@ h3 {
 }
 
 form.address-edit {
-  padding: 20px;
-  /* background-color: #fff; */
+
   background-color: var(--settings-cards-background);
-  border-radius: 8px;
+  padding: 2rem;
+
+  border-radius: 0.8rem;
+
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .address-label {
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 
 .address-details {
-  font-size: 14px;
+  font-size: 1.4rem;
   color: #888;
 }
 
 .address-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  margin-left: 20px;
+  gap: 1rem;
+  margin-left: 2rem;
 }
 
 .edit-address-button,
@@ -68,7 +70,8 @@ form.address-edit {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+
+ 
   color: var(--button-primary-color);
   transition: background-color 0.3s ease;
   
@@ -82,31 +85,38 @@ form.address-edit {
 .edit-address-button:active, 
 .delete-address-button:active {
   color: var(--button-primary-active-color);
+
+  font-size: 1.6rem;
+ 
+
 }
 
 .inputs-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  
+  gap: 1rem;
+
 }
 
 .add-address-button {
   display: block;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 2rem;
   width: 40%;
   min-width: 100px;
-  padding: 10px 0;
+  padding: 1rem 0;
   background-color: var(--color-2);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   cursor: pointer;
-  font-size: 16px;
+
+ 
   border-radius: var(--button-border-radius);
   padding: var(--button-padding);
   transition: background-color 0.3s;
+  font-size: 1.6rem;
+
 }
 
 .add-address-button:hover {
@@ -118,9 +128,9 @@ form.address-edit {
 
 .address-edit input,
 .address-edit .autocomplete {
-  padding: 8px;
-  margin-bottom: 10px;
-  border-radius: 4px;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 0.4rem;
   border: 1px solid #ccc;
 }
 
@@ -131,9 +141,9 @@ form.address-edit {
 
 .address-save-cancel-container .save-button,
 .address-save-cancel-container .cancel-button {
-  padding: 8px 16px;
+  padding: 0.8rem 1.6rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.4rem;
   cursor: pointer;
   width: 30%;
   margin-top: 1rem;

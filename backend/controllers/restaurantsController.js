@@ -1,8 +1,9 @@
 import createHttpError from "http-errors";
 import Restaurant from "../models/RestaurantModel.js";
+import OrderHistory from "../models/OrderHistoryModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import SearchedRestaurant from "../models/SearchedRestaurantsModel.js";
+// import SearchedRestaurant from "../models/SearchedRestaurantsModel.js";
 import { io } from "../index.js";
 
 //* Function to check the authentication of a restaurant
@@ -86,21 +87,23 @@ export async function getAllRestaurants(req, res, next) {
       return next(createHttpError(404, "We don't have any restaurant with your search query in our database")); // Error if no match
     }
 
+    //*removed code
     // Map filtered results to the SearchedRestaurant schema
-    const searchedRestaurantsData = filteredRestaurants.map((restaurant) => ({
-      restaurantId: restaurant._id,
-      basicInfo: restaurant.basicInfo,
-      openAndCloseHours: restaurant.openAndCloseHours,
-      keywords: restaurant.keywords,
-      restaurantType: restaurant.restaurantType,
-      menu: restaurant.menu,
-      digitalPresence: restaurant.digitalPresence,
-      promotionalInfo: restaurant.promotionalInfo,
-    }));
+    // const searchedRestaurantsData = filteredRestaurants.map((restaurant) => ({
+    //   restaurantId: restaurant._id,
+    //   basicInfo: restaurant.basicInfo,
+    //   openAndCloseHours: restaurant.openAndCloseHours,
+    //   keywords: restaurant.keywords,
+    //   restaurantType: restaurant.restaurantType,
+    //   menu: restaurant.menu,
+    //   digitalPresence: restaurant.digitalPresence,
+    //   promotionalInfo: restaurant.promotionalInfo,
+    // }));
 
+    //*removed code
     // Save filtered results to the database
-    await SearchedRestaurant.deleteMany({}); // Clear previous search results
-    await SearchedRestaurant.create(searchedRestaurantsData); // Save new search results
+    // await SearchedRestaurant.deleteMany({}); // Clear previous search results
+    // await SearchedRestaurant.create(searchedRestaurantsData); // Save new search results
 
     // Send filtered results as response
     res.status(200).json(filteredRestaurants);
@@ -111,20 +114,21 @@ export async function getAllRestaurants(req, res, next) {
 }
 
 //* Function to get previously searched restaurants
-export async function getSearchedRestaurants(req, res, next) {
-  try {
-    const restaurants = await SearchedRestaurant.find(); // Find all previously searched restaurants
+//* removed code
+// export async function getSearchedRestaurants(req, res, next) {
+//   try {
+//     const restaurants = await SearchedRestaurant.find(); // Find all previously searched restaurants
 
-    if (restaurants) {
-      // Send searched restaurants as response
-      res.json(restaurants);
-    } else {
-      return next(createHttpError(404, "No restaurants in database")); // Error if no restaurants found
-    }
-  } catch (error) {
-    next(createHttpError(500, "Server error getting restaurants"));
-  }
-}
+//     if (restaurants) {
+//       // Send searched restaurants as response
+//       res.json(restaurants);
+//     } else {
+//       return next(createHttpError(404, "No restaurants in database")); // Error if no restaurants found
+//     }
+//   } catch (error) {
+//     next(createHttpError(500, "Server error getting restaurants"));
+//   }
+// }
 
 //* Function to register a new restaurant
 export async function registerRestaurant(req, res, next) {
@@ -487,7 +491,8 @@ export async function deleteRestaurantAccount(req, res, next) {
 
   try {
     await Restaurant.findByIdAndDelete(id); // Delete the restaurant document by its ID
-    await SearchedRestaurant.findOneAndDelete({ restaurantId: id }); // Delete the associated record from the SearchedRestaurant collection
+    //*removed code
+    // await SearchedRestaurant.findOneAndDelete({ restaurantId: id }); // Delete the associated record from the SearchedRestaurant collection
 
     // Send a success message after deletion
     res.status(200).json({
@@ -556,5 +561,50 @@ export async function deleteOrderHistory(req, res, next) {
   } catch (error) {
     console.log(error);
     next(createHttpError(500, "Order history could not be deleted"));
+  }
+}
+
+export async function getFavoriteRestaurant(req, res, next) {
+  const { id } = req.params;
+
+  try {
+    const foundRestaurant = await Restaurant.findById(id);
+
+    if (!foundRestaurant) {
+      return next(createHttpError(404, "No restaurant found"));
+    }
+
+    res.json(foundRestaurant);
+  } catch (error) {
+    console.log(error);
+    next(createHttpError(500, "Server error getting the restaurant"));
+  }
+}
+
+export async function getOrderIdDetails(req, res, next) {
+  const { orderId } = req.params;
+
+  try {
+    const restaurantWithOrder = await OrderHistory.findById(orderId);
+
+    if (!restaurantWithOrder) {
+      return next(createHttpError(404, "There is no restaurant with that order id."));
+    }
+
+    const restaurant = await restaurantWithOrder.populate("restaurantId");
+    // console.log(restaurant);
+
+    const orderDetails = {
+      restaurantId: restaurant.restaurantId._id,
+      items: restaurant.items,
+      restaurantInfo: restaurant.restaurantId,
+    };
+
+    // console.log("Order Details:", orderDetails);
+
+    res.json(orderDetails);
+  } catch (error) {
+    console.log(error);
+    return next(createHttpError(500, "Server error getting the order details"));
   }
 }

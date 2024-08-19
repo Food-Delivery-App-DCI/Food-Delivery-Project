@@ -1,77 +1,72 @@
 /* Profile.css */
 
 .container-profile {
-    margin: 100px 50px;
-    min-height: 100vh;
-    /* width: 80%; */
-  }
+  margin: 10rem 5rem;
+  min-height: 100vh;
+}
 
-  .header-profile {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-  }
+.header-profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+}
 
-  .title-profile {
-    margin: 0;
-    font-size: 2.5em;
-  }
+.title-profile {
+  margin: 0;
+  font-size: 2.5em;
+}
 
-  .navbar-profile {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-  }
+.navbar-profile {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0 0;
+}
 
-  .navbar-profile ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    padding: 0;
-    margin: 0;
-  }
+.navbar-profile ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+}
 
-  .navbar-profile ul li {
-    padding: 5px;
-    border-radius: 15px;
+.navbar-profile ul li {
+  padding: 0.5rem 0 0;
+  border-radius: 1.5rem;
+}
 
-  }
+.navbar-profile ul li a {
+  text-decoration: none;
+  padding: 1rem;
+  display: block;
+  transition: background-color 0.3s;
+}
 
-  .navbar-profile ul li a {
-    text-decoration: none;
-    padding: 10px;
-    display: block;
-    transition: background-color 0.3s;
-  }
+.navbar-profile ul li a:visited {
+  text-decoration: none;
+  color: black;
+}
 
-  .navbar-profile ul li a:visited {
-    text-decoration: none;
-    color: black;
-  }
+.navbar-profile ul li a:hover {
+  border-bottom: 2px solid black;
+  transform: scale(1.05);
+}
 
-  .navbar-profile ul li a:hover {
-    border-bottom: 1px solid black;
-    transform: scale(1.05);
-  }
-  
-  .navbar-profile ul li a.active {
-    font-weight: bolder;
-    padding: 10px;
-    border-bottom: 1px solid #163825;
-    color: #163825;
-  }
+.navbar-profile ul li a.active {
+  font-weight: bolder;
+  padding: 1rem;
+  border-bottom: 2px solid #163825;
+  color: #163825;
+}
 
-  .navbar-profile ul li button {
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 10px;
-  }
+.navbar-profile ul li button {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 1rem;
+}
 
-  .navbar-profile ul li button:hover {
-    border-bottom: 2px solid #000;
-  }
-
-
-  /* .content-profile{} */
+.navbar-profile ul li button:hover {
+  border-bottom: 2px solid #000;
+}

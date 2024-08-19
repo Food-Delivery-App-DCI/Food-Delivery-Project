@@ -1,10 +1,6 @@
 /* OrderHistory.css */
 
 .order-history-container {
-  /* display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 4rem;
-  padding-top: 2rem; */
   position: relative;
 }
 
@@ -73,6 +69,7 @@
   padding: 2rem;
   box-shadow: 1px 1px 10px rgb(219, 219, 219);
   text-align: left;
+  background-color: var(--cards-background-color);
 }
 
 .order-history-container h3 {
@@ -83,7 +80,7 @@
 }
 
 .order-history-container p {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: rgb(59, 59, 59);
 }
 
@@ -91,7 +88,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-bottom: 2rem; */
 }
 
 .order-history-container .items-container,
@@ -127,4 +123,24 @@
 .order-history-container .order-time {
   display: flex;
   justify-content: space-between;
+}
+
+.order-history-container .delete-order-button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 3rem;
+  margin: 2rem 0 0;
+  cursor: pointer;
+  background-color: var(--button-delete-color);
+  color: white;
+  font-size: 1.4rem;
+  transition: background-color 0.3s ease;
+}
+
+.order-history-container .delete-order-button:hover {
+  background-color: var(--button-delete-hover-color);
+}
+
+.order-history-container .delete-order-button:active {
+  background-color: var(--button-delete-active-color);
 }

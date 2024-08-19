@@ -235,7 +235,7 @@ function RSOrdersActive() {
                   <strong>Address:</strong> {eachOrder.customerAddress}
                 </p>
                 <p>
-                  <strong>Items:</strong> {eachOrder.order.items?.map((item) => item.itemName).join(", ")}
+                  <strong>Items:</strong> {eachOrder.order.items?.map((item) => item.name).join(", ")}
                 </p>
                 <p>
                   <strong>Payment:</strong> Confirmed

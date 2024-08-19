@@ -13,6 +13,8 @@ import {
   deleteOrder,
   deleteOrderHistory,
   updateRestaurantOffers,
+  getFavoriteRestaurant,
+  getOrderIdDetails,
 } from "../controllers/restaurantsController.js";
 import { authenticateTokenOfRestaurant } from "../middlewares/authenticateToken.js";
 import upload from "../middlewares/multerConfig.js";
@@ -33,5 +35,7 @@ router.delete("/deleteRestaurantAccount/:id", deleteRestaurantAccount);
 router.post("/upload-image", upload.single("image"), uploadImage);
 router.delete("/deleteOrder/:id/:orderId", deleteOrder);
 router.delete("/deleteOrderHistory/:id", deleteOrderHistory);
+router.get("/get-favorite-restaurant/:id", getFavoriteRestaurant);
+router.get("/restaurant-with-order/:orderId", getOrderIdDetails);
 
 export default router;

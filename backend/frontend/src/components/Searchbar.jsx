@@ -2,16 +2,20 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../contexts/DataContext";
+import { BounceLoader } from "react-spinners";
 
 import "../style/Searchbar.css";
 
 function Searchbar({ className }) {
-  const { setRestaurants } = useContext(DataContext);
+  const { setRestaurants, loading, setLoading, setSearchedRestaurantsResults } = useContext(DataContext);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    // Start loading
+    setLoading(true);
 
     try {
       const settings = {
@@ -28,6 +32,8 @@ function Searchbar({ className }) {
       if (response.ok) {
         const data = await response.json();
         setRestaurants(data);
+        setSearchedRestaurantsResults(data);
+        localStorage.setItem("searchedRestaurantsResults", JSON.stringify(data));
         navigate("/search-results");
       } else {
         const { error } = await response.json();
@@ -35,6 +41,9 @@ function Searchbar({ className }) {
       }
     } catch (error) {
       alert(error.message);
+    } finally {
+      // Stop loading after the request is complete
+      setLoading(false);
     }
 
     setSearch("");
@@ -42,31 +51,38 @@ function Searchbar({ className }) {
 
   return (
     <>
-      <div className={`${className}`}>
-        <div className={`${className} search-container`}>
-          <form className="search-form" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              className="search-input"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="eg. Brazilian Berlin"
-            />
-            <button className="search-button">Search</button>
-          </form>
+      {loading ? (
+        <div className="loading-spinner">
+          <BounceLoader color={"#5f71ad"} loading={loading} size={40} />
+        </div>
+      ) : (
+        <div className={`${className}`}>
+          <div className={`${className} search-container`}>
+            <form className="search-form" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                className="search-input"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="eg. Brazilian Berlin"
+              />
+              <button className="search-button">Search</button>
+            </form>
 
-          <div className="cities-keywords-greet">
-            <p className="black">
-              We are proud to offer our services in <b>Berlin</b>, <b>Düsseldorf</b>, <b>Hannover</b> and <b>Leipzig</b>
-              .
-            </p>
-            <p className="black">
-              Search and find your next meal among{" "}
-              <b>Albanian, Brazilian, Croatian, French, Ghanaian, Italian, Turkish</b> and <b>Ukrainian</b> restaurants.
-            </p>
+            <div className="cities-keywords-greet">
+              <p className="black">
+                We are proud to offer our services in <b>Berlin</b>, <b>Düsseldorf</b>, <b>Hannover</b> and{" "}
+                <b>Leipzig</b>.
+              </p>
+              <p className="black">
+                Search and find your next meal among{" "}
+                <b>Albanian, Brazilian, Croatian, French, Ghanaian, Italian, Turkish</b> and <b>Ukrainian</b>{" "}
+                restaurants.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

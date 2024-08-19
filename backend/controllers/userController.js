@@ -1,4 +1,6 @@
 import User from "../models/UserModel.js";
+import Restaurant from "../models/RestaurantModel.js";
+// import SearchedRestaurant from "../models/SearchedRestaurantsModel.js";
 import createHttpError from "http-errors";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -24,6 +26,7 @@ export async function registerUser(req, res, next) {
 
       // Populate the user's order history (initially empty) before returning the response
       await newUser.populate("orderHistory");
+      // await newUser.populate("favoriteRestaurants");
 
       // Generate access and refresh tokens for the newly registered user
       const accessToken = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY, { expiresIn: "15m" });
@@ -57,6 +60,7 @@ export async function registerUser(req, res, next) {
         email: newUser.email,
         orderHistory: newUser.orderHistory,
         addresses: newUser.addresses,
+        favoriteRestaurants: newUser.favoriteRestaurants.map((restaurantId) => restaurantId.toString()),
       });
     } else {
       return next(createHttpError(409, "User already exists")); // If the user already exists, return a conflict error
@@ -85,6 +89,7 @@ export async function loginUser(req, res, next) {
 
       // Populate the user's order history before returning the response
       await foundUser.populate("orderHistory");
+      // await foundUser.populate("favoriteRestaurants");
 
       // Generate access and refresh tokens for the logged-in user
       const accessToken = jwt.sign({ id: foundUser._id }, process.env.JWT_SECRET_KEY, { expiresIn: "15m" });
@@ -120,6 +125,7 @@ export async function loginUser(req, res, next) {
         email: foundUser.email,
         orderHistory: foundUser.orderHistory,
         addresses: foundUser.addresses,
+        favoriteRestaurants: foundUser.favoriteRestaurants.map((restaurantId) => restaurantId.toString()),
       });
     } else {
       // If no user is found with the provided email, return a not found error
@@ -144,6 +150,7 @@ export async function checkAuthentication(req, res, next) {
 
     // Populate the user's order history before returning the response
     await user.populate("orderHistory");
+    // await user.populate("favoriteRestaurants");
 
     // Return the authenticated user's details in the response
     res.json({
@@ -151,6 +158,9 @@ export async function checkAuthentication(req, res, next) {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
+      // orderHistory: user.orderHistory,
+      // addresses: user.addresses,
+      favoriteRestaurants: user.favoriteRestaurants.map((restaurantId) => restaurantId.toString()),
     });
   } catch (error) {
     return next(createHttpError(500, "Authentication failed! Please login again."));
@@ -188,6 +198,7 @@ export async function updateUser(req, res, next) {
 
       // Populate the user's order history before returning the response
       await updatedUser.populate("orderHistory");
+      // await updateUser.populate("favoriteRestaurants");
 
       // Return the updated user's details in the response
       res.status(201).json({
@@ -196,6 +207,9 @@ export async function updateUser(req, res, next) {
         lastName: updatedUser.lastName,
         email: updatedUser.email,
         message: `User updated successfully`,
+        // orderHistory: updatedUser.orderHistory,
+        // addresses: updatedUser.addresses,
+        favoriteRestaurants: updatedUser.favoriteRestaurants.map((restaurantId) => restaurantId.toString()),
       });
     } else {
       return next(createHttpError(404, "User not found")); // If the user is not found, return a not found error
@@ -226,12 +240,16 @@ export async function getUserData(req, res, next) {
 
     if (user) {
       await user.populate("orderHistory");
+      // await user.populate("favoriteRestaurants");
 
       res.json({
         id: user._id,
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        // orderHistory: user.orderHistory,
+        // addresses: user.addresses,
+        favoriteRestaurants: user.favoriteRestaurants.map((restaurantId) => restaurantId.toString()),
       });
     } else {
       return next(createHttpError(404, "User not found"));
@@ -351,6 +369,7 @@ export async function deleteOrderHistoryOfUser(req, res, next) {
     await foundUser.save();
 
     await foundUser.populate("orderHistory");
+    // await foundUser.populate("favoriteRestaurants");
 
     res.json({ message: "Order history successfully deleted", orderHistory: foundUser.orderHistory });
   } catch (error) {
@@ -370,8 +389,11 @@ export async function deleteOrder(req, res, next) {
     // Remove the order from the order history
     user.orderHistory = user.orderHistory.filter((order) => order._id.toString() !== orderId);
     await user.save();
+
     // Optionally, repopulate orderHistory if needed
     await user.populate("orderHistory");
+    // await user.populate("favoriteRestaurants");
+
     res.json({
       message: "Order successfully deleted",
       orderHistory: user.orderHistory,
@@ -382,72 +404,80 @@ export async function deleteOrder(req, res, next) {
   }
 }
 
-// export async function setFavorite(req, res, next) {
-//   const { isFavorited } = req.body;
-//   const { userId, id } = req.params;
+export async function setFavorite(req, res, next) {
+  const { isFavorited } = req.body;
+  const { userId, id } = req.params;
 
-//   try {
-//     const foundUser = await User.findById(userId);
+  try {
+    // Find the user by ID
+    const foundUser = await User.findById(userId);
 
-//     if (!foundUser) {
-//       return next(createHttpError(404, "No user found"));
-//     }
+    if (!foundUser) {
+      return next(createHttpError(404, "No user found"));
+    }
 
-//     const restaurants = await Restaurant.find();
+    // Find the restaurant by ID to ensure it exists
+    const restaurant = await Restaurant.findById(id);
+    if (!restaurant) {
+      return next(createHttpError(404, "No restaurant found"));
+    }
 
-//     if (!restaurants) {
-//       return next(createHttpError(404, "No restaurants found"));
-//     }
+    if (isFavorited) {
+      // Add restaurant to favorites if not already present
+      if (!foundUser.favoriteRestaurants.includes(restaurant._id)) {
+        foundUser.favoriteRestaurants.push(restaurant._id);
+      }
+    } else {
+      // Remove restaurant from favorites
+      foundUser.favoriteRestaurants = foundUser.favoriteRestaurants.filter(
+        (restaurantId) => restaurantId.toString() !== id
+      );
+    }
 
-//     const restaurant = restaurants.find((restaurant) => restaurant._id.toString() === id);
+    await foundUser.save();
 
-//     if (!restaurant) {
-//       return next(createHttpError(404, "No restaurant found"));
-//     }
+    // Send back the updated list of favorite restaurants with the restaurant documents populated
+    const updatedUser = await User.findById(userId);
 
-//     restaurant.favorited = isFavorited;
+    await updatedUser.populate("orderHistory");
+    // await updatedUser.populate("favoriteRestaurants");
 
-//     console.log(restaurant);
-//     res.json({ favoritedRestaurant: restaurant });
-//   } catch (error) {
-//     console.error(error);
-//     return next(createHttpError(500, "Server error"));
-//   }
-// }
+    res.json({
+      id: updatedUser._id,
+      firstName: updatedUser.firstName,
+      lastName: updatedUser.lastName,
+      email: updatedUser.email,
+      orderHistory: updatedUser.orderHistory,
+      addresses: updatedUser.addresses,
+      favoriteRestaurants: foundUser.favoriteRestaurants.map((restaurantId) => restaurantId.toString()),
+    });
+  } catch (error) {
+    console.error(error);
+    return next(createHttpError(500, "Server error"));
+  }
+}
 
-// export async function setFavorite(req, res, next) {
-//   const { userId, restaurantId } = req.params;
+export async function getFavorites(req, res, next) {
+  const { id } = req.params;
 
-//   try {
-//     const foundUser = await User.findById(userId);
+  try {
+    const user = await User.findById(id);
 
-//     if (!foundUser) {
-//       return next(createHttpError(404, "No user found"));
-//     }
+    if (!user) {
+      return next(createHttpError(404, "No user found"));
+    }
 
-//     const restaurant = await Restaurant.findById(restaurantId);
+    await user.populate("favoriteRestaurants");
 
-//     if (!restaurant) {
-//       return next(createHttpError(404, "No restaurant found"));
-//     }
+    const favoriteRestaurants = user.favoriteRestaurants.map((restaurant) => ({
+      _id: restaurant._id,
+      basicInfo: restaurant.basicInfo,
+      menu: restaurant.menu,
+    }));
 
-//     const isFavorited = foundUser.favoriteRestaurants.includes(restaurantId);
-
-//     if (isFavorited) {
-//       foundUser.favoriteRestaurants.pull(restaurantId);
-//     } else {
-//       foundUser.favoriteRestaurants.push(restaurantId);
-//     }
-
-//     await foundUser.save();
-
-//     await foundUser.populate("favoriteRestaurants");
-
-//     console.log(foundUser.favoriteRestaurants);
-
-//     res.json({ favoriteRestaurants: foundUser.favoriteRestaurants });
-//   } catch (error) {
-//     console.error(error);
-//     return next(createHttpError(500, "Server error"));
-//   }
-// }
+    res.json(favoriteRestaurants);
+  } catch (error) {
+    console.error(error);
+    return next(createHttpError(500, "Server error getting favorite restaurants"));
+  }
+}
