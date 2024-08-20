@@ -18,7 +18,7 @@ h3 {
 
 .address-item {
 
-  background-color: var(--settings-cards-background);
+  background-color: var(--cards-background-color);
   border-radius: 0.8rem;
   padding: 2rem;
   margin-bottom: 1.5rem;
@@ -40,7 +40,7 @@ h3 {
 
 form.address-edit {
 
-  background-color: var(--settings-cards-background);
+  background-color: var(--cards-background-color);
   padding: 2rem;
 
   border-radius: 0.8rem;
