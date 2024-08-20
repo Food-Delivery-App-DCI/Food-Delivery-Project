@@ -37,25 +37,15 @@
 }
 
 .rs-register-login-page .toggle-button {
-
   padding: var(--button-padding);
-  
   border: var(--button-secondary-border-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
   /* background-color: #266241; */
   background-color: var(--button-primary-color);
   color: var(--color-5);
- 
-
-
   margin: 0 1rem;
-  
- 
-
- 
   font-size: 1.6rem;
-
   transition: background-color 0.3s ease;
 }
 
@@ -66,8 +56,6 @@
 .rs-register-login-page .toggle-button:active {
   background-color: var(--button-primary-active-color);
 }
-
-
 
 .rs-register-login-page .form-label {
   margin-bottom: 0.5rem;
@@ -80,6 +68,7 @@
   border: 1px solid #eee2e2;
   border-radius: 0.5rem;
   background-color: white;
+  font-size: 1.6rem;
 }
 
 .rs-register-login-page .form-label select:focus {
@@ -111,11 +100,9 @@
   margin-top: 1.6rem;
 }
 
-
-.rs-register-login-page .buttons-container button  {
+.rs-register-login-page .buttons-container button {
   padding: var(--button-padding);
   border-radius: var(--button-border-radius);
-
   cursor: pointer;
   font-size: 1.6rem;
   transition: background-color 0.3s ease;
@@ -140,7 +127,7 @@
   margin-top: 0;
   width: fit-content;
   color: var(--button-primary-color);
-  background-color: var(--button-secondary-color)
+
 }
 .rs-register-login-page .cancel-button:hover {
   /* background-color: #163825; */
@@ -148,5 +135,7 @@
 }
 .rs-register-login-page .cancel-button:active {
   /* background-color: #163825; */
+
   background-color: var(--button-secondary-active-color);
 }
+

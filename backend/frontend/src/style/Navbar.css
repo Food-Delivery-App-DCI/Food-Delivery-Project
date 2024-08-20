@@ -49,9 +49,8 @@ nav .logo {
   color: var(--button-primary-hover-color);
 }
 .welcome-message:active {
-  color: var(--button-primary-active-color)
+  color: var(--button-primary-active-color);
 }
-
 
 .basket-and-register-container button {
   padding: 1rem 2rem;
@@ -83,7 +82,6 @@ nav .logo {
   background-color: #163825;
 }
 
-
 .dropdown-menu {
   display: flex;
   flex-direction: column;
@@ -108,8 +106,13 @@ nav .logo {
   border-bottom: 1px solid rgb(195, 190, 190);
 }
 
+.dropdown-item:visited {
+  color: inherit;
+}
+
 .dropdown-item:hover {
-  background-color: var(--color-5);
+  background-color: var(--button-primary-hover-color);
+  color: white;
 }
 
 .dropdown-menu .logout-button {
@@ -127,13 +130,10 @@ nav .logo {
 
 .logout-button:hover {
   background-color: var(--button-primary-hover-color);
-
 }
 .logout-button:active {
   background-color: var(--button-primary-active-color);
 }
-
-
 
 /* *********** basket ICON in the nav bar *********** */
 .cart-logo {
@@ -141,12 +141,10 @@ nav .logo {
   align-items: center;
   position: relative;
 
-  
   /* color: #266241; */
   color: var(--button-primary-color);
 
   margin-left: 2rem;
-
 
   text-decoration: none;
   transition: color 0.3s ease;

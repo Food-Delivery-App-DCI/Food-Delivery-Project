@@ -8,7 +8,7 @@ function BasketPage({ id, restaurants }) {
   const { basket, removeItemFromBasket, increaseItemQuantity, decreaseItemQuantity, totalSum } =
     useContext(BasketContext);
 
-  const [deliveryOption, setDeliveryOption] = useState("delivery");
+  const [deliveryOption, setDeliveryOption] = useState("Delivery");
   const [searchQuery, setSearchQuery] = useState("");
 
   async function handleCheckout() {
@@ -52,12 +52,12 @@ function BasketPage({ id, restaurants }) {
 
         <div className="delivery-toggle">
           <button
-            className={deliveryOption === "delivery" ? "active" : ""}
-            onClick={() => setDeliveryOption("delivery")}
+            className={deliveryOption === "Delivery" ? "active" : ""}
+            onClick={() => setDeliveryOption("Delivery")}
           >
             Delivery
           </button>
-          <button className={deliveryOption === "pickup" ? "active" : ""} onClick={() => setDeliveryOption("pickup")}>
+          <button className={deliveryOption === "Pickup" ? "active" : ""} onClick={() => setDeliveryOption("Pickup")}>
             Pickup
           </button>
         </div>

@@ -38,7 +38,7 @@ function Preferences() {
     }
   }, [loggedInUser]);
 
-  console.log(favorites);
+  // console.log(favorites);
 
   async function handleCardClick(id) {
     try {
@@ -58,17 +58,15 @@ function Preferences() {
   }
 
   async function orderAgain(orderId) {
-    console.log(orderId);
+    // console.log(orderId);
     try {
       const response = await fetch(`${import.meta.env.VITE_API}/restaurants/restaurant-with-order/${orderId}`);
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setRestaurant(data.restaurantInfo);
         setBasket(data.items);
-        // setIsOrderAgain(true)
-
         setIsBasketModalOpen(true);
       } else {
         const { error } = await response.json();
@@ -79,7 +77,7 @@ function Preferences() {
     }
   }
 
-  console.log(userOrderHistory);
+  // console.log(userOrderHistory);
 
   return (
     <>
@@ -144,38 +142,75 @@ function Preferences() {
               You can order again your favorite orders again by clicking on the order again button on an order card.
             </p>
             <div className="order-again-items-container">
-              {userOrderHistory?.map((order) => {
-                return (
-                  <div key={order._id} className="order">
-                    <div className="restaurant-name-container">
-                      <h2>{order.restaurantName}</h2>
-                      <p>{order.restaurantAddress}</p>
-                    </div>
-                    <h3>Items</h3>
-                    <div className="items-container">
-                      {order?.items.map((item) => {
-                        return (
-                          <div key={item._id} className="item">
-                            <p>{item.name}</p>
-                            <div className="calculations">
-                              <p>€{item.price}</p>
-                              <p>x{item.quantity}</p>
-                              <p>€{item.price * item.quantity}</p>
-                            </div>
-                          </div>
-                        );
-                      })}
-                      <div className="total-sum">
-                        <p>Total Sum</p>
-                        <p>€{order?.totalSum}</p>
+              {userOrderHistory
+                ?.slice()
+                .reverse()
+                .map((order) => {
+                  {
+                    /* const date = new Date(order.date);
+                  const updateDate = new Date(order.updatedAt);
+                  const formattedDate = isNaN(date.getTime())
+                    ? "Invalid Date"
+                    : date.toLocaleString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        second: "numeric",
+                        hour12: true,
+                      });
+                  const formattedUpdatedDate = isNaN(updateDate.getTime())
+                    ? "Invalid Date"
+                    : updateDate.toLocaleString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        second: "numeric",
+                        hour12: true,
+                      }); */
+                  }
+                  return (
+                    <div key={order._id} className="order">
+                      <div className="restaurant-name-container">
+                        <h2>{order.restaurantName}</h2>
+                        <p>{order.restaurantAddress}</p>
                       </div>
+                      {/* <div className="order-date">
+                        <p>Date Ordered</p>
+                        <p>{formattedDate}</p>
+                      </div>
+                      <div className="order-date">
+                        <p>Date Delivered</p>
+                        <p>{formattedUpdatedDate}</p>
+                      </div> */}
+                      <h3>Items</h3>
+                      <div className="items-container">
+                        {order?.items.map((item) => {
+                          return (
+                            <div key={item._id} className="item">
+                              <p>{item.name}</p>
+                              <div className="calculations">
+                                <p>€{item.price}</p>
+                                <p>x{item.quantity}</p>
+                                <p>€{item.price * item.quantity}</p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                        <div className="total-sum">
+                          <p>Total Sum</p>
+                          <p>€{order?.totalSum}</p>
+                        </div>
+                      </div>
+                      <button onClick={() => orderAgain(order._id)} className="order-again-button">
+                        Order Again
+                      </button>
                     </div>
-                    <button onClick={() => orderAgain(order._id)} className="order-again-button">
-                      Order Again
-                    </button>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </div>
           </>
         )}

@@ -355,8 +355,6 @@ export async function getAllAddresses(req, res, next) {
 export async function deleteOrderHistoryOfUser(req, res, next) {
   const { id } = req.params;
 
-  console.log(id);
-
   try {
     const foundUser = await User.findById(id);
 

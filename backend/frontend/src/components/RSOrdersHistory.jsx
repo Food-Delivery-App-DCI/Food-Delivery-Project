@@ -69,82 +69,85 @@ function RSOrdersHistory() {
             Delete All
           </button>
           <div className="orders-container">
-            {loggedInRestaurant.orderHistory.map((eachOrder) => {
-              const date = new Date(eachOrder.date);
-              const updateDate = new Date(eachOrder.updatedAt);
-              const formattedDate = isNaN(date.getTime())
-                ? "Invalid Date"
-                : date.toLocaleString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "numeric",
-                    minute: "numeric",
-                    second: "numeric",
-                    hour12: true,
-                  });
-              const formattedUpdatedDate = isNaN(updateDate.getTime())
-                ? "Invalid Date"
-                : updateDate.toLocaleString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "numeric",
-                    minute: "numeric",
-                    second: "numeric",
-                    hour12: true,
-                  });
-              return (
-                <div className="cards" key={eachOrder._id}>
-                  <p>
-                    <strong>Order ID:</strong> {eachOrder.order._id}
-                  </p>
-                  <p>
-                    <strong>Order Received Date:</strong> {formattedDate}
-                  </p>
-                  <p>
-                    <strong>Order Delivery Date:</strong> {formattedUpdatedDate}
-                  </p>
-                  <p>
-                    <strong>Customer:</strong> {eachOrder.customerName}
-                  </p>
-                  <p>
-                    <strong>Address:</strong> {eachOrder.customerAddress}
-                  </p>
-                  <p className="items-paragraph">
-                    <strong>Items:</strong>
-                    {/* {eachOrder.order.items?.map((item) => item.name).join(", ")} */}
-                  </p>
-                  <div className="items-container">
-                    {eachOrder.order?.items.map((item) => {
-                      return (
-                        <div key={item._id} className="item">
-                          <p>{item.name}</p>
-                          <div className="calculations">
-                            <p>€{item.price}</p>
-                            <p>x{item.quantity}</p>
-                            <p>€{item.price * item.quantity}</p>
+            {loggedInRestaurant.orderHistory
+              .slice()
+              .reverse()
+              .map((eachOrder) => {
+                const date = new Date(eachOrder.date);
+                const updateDate = new Date(eachOrder.updatedAt);
+                const formattedDate = isNaN(date.getTime())
+                  ? "Invalid Date"
+                  : date.toLocaleString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "numeric",
+                      second: "numeric",
+                      hour12: true,
+                    });
+                const formattedUpdatedDate = isNaN(updateDate.getTime())
+                  ? "Invalid Date"
+                  : updateDate.toLocaleString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "numeric",
+                      second: "numeric",
+                      hour12: true,
+                    });
+                return (
+                  <div className="cards" key={eachOrder._id}>
+                    <p>
+                      <strong>Order ID:</strong> {eachOrder.order._id}
+                    </p>
+                    <p>
+                      <strong>Date Received:</strong> {formattedDate}
+                    </p>
+                    <p>
+                      <strong>Date Delivered:</strong> {formattedUpdatedDate}
+                    </p>
+                    <p>
+                      <strong>Customer Name:</strong> {eachOrder.customerName}
+                    </p>
+                    <p>
+                      <strong>Customer Address:</strong> {eachOrder.customerAddress}
+                    </p>
+                    <p className="items-paragraph">
+                      <strong>Items:</strong>
+                      {/* {eachOrder.order.items?.map((item) => item.name).join(", ")} */}
+                    </p>
+                    <div className="items-container">
+                      {eachOrder.order?.items.map((item) => {
+                        return (
+                          <div key={item._id} className="item">
+                            <p>{item.name}</p>
+                            <div className="calculations">
+                              <p>€{item.price}</p>
+                              <p>x{item.quantity}</p>
+                              <p>€{item.price * item.quantity}</p>
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
-                    <div className="total-sum">
-                      <p>Total Sum</p>
-                      <p>€{eachOrder.order?.totalSum}</p>
+                        );
+                      })}
+                      <div className="total-sum">
+                        <p>Total Sum</p>
+                        <p>€{eachOrder.order?.totalSum}</p>
+                      </div>
                     </div>
+                    <p>
+                      <strong>Payment:</strong> Confirmed
+                    </p>
+                    <p>
+                      <strong>Delivery Option:</strong> {eachOrder.order.additionalInfo?.orderType}
+                    </p>
+                    <button onClick={() => handleDeleteOrder(eachOrder._id)} className="delete-button">
+                      Delete
+                    </button>
                   </div>
-                  <p>
-                    <strong>Payment:</strong> Confirmed
-                  </p>
-                  <p>
-                    <strong>Delivery Option:</strong> {eachOrder.order.additionalInfo?.orderType}
-                  </p>
-                  <button onClick={() => handleDeleteOrder(eachOrder._id)} className="delete-button">
-                    Delete
-                  </button>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
         </>
       )}

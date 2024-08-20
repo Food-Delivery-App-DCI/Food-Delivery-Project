@@ -53,7 +53,7 @@ function Searchbar({ className }) {
     <>
       {loading ? (
         <div className="loading-spinner">
-          <BounceLoader color={"#5f71ad"} loading={loading} size={40} />
+          <BounceLoader color={"#165e4b"} loading={loading} size={40} />
         </div>
       ) : (
         <div className={`${className}`}>

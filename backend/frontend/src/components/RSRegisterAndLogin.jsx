@@ -130,7 +130,7 @@ function RSRegisterAndLogin() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data.message);
+        // console.log(data.message);
         setLoggedInRestaurant(data.restaurant);
         setToggleRegisterOrLoginRestaurant(false);
         // setIsModalOpen(false);

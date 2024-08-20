@@ -84,7 +84,6 @@ function Settings() {
           method: "DELETE",
         };
         const response = await fetch(`${import.meta.env.VITE_API}/users/delete/${loggedInUser.id}`, settings);
-        console.log(response);
 
         if (response.ok) {
           const { message } = await response.json();

@@ -38,6 +38,10 @@ const orderHistorySchema = new Schema(
       type: additionalInfoSchema,
       required: true,
     },
+    date: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { timestamps: true }
 );

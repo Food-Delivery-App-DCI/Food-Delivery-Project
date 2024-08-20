@@ -167,7 +167,7 @@ function SuccessPage() {
             <h1 className="success-title">Thank you! 🎉</h1>
             <h1 className="success-title">Order Successful.</h1>
             <p className="success-message">
-              Your order will be {deliveryOption === "delivery" ? "delivered" : "ready for pickup"} soon.
+              Your order will be {deliveryOption === "Delivery" ? "delivered" : "ready for pickup"} soon.
             </p>
           </div>
           <div className="success-card-order-details">

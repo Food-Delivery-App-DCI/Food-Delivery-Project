@@ -80,7 +80,7 @@ export async function setOrder(req, res, next) {
       },
       additionalInfo: {
         orderType: deliveryOption,
-        orderStatus: "delivered",
+        orderStatus: "Delivered",
       },
     };
 
