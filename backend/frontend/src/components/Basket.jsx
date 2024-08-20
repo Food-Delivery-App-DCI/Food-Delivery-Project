@@ -75,12 +75,12 @@ function Basket({ id }) {
 
         <div className="delivery-toggle">
           <button
-            className={deliveryOption === "delivery" ? "active" : ""}
-            onClick={() => setDeliveryOption("delivery")}
+            className={deliveryOption === "Delivery" ? "active" : ""}
+            onClick={() => setDeliveryOption("Delivery")}
           >
             delivery
           </button>
-          <button className={deliveryOption === "pickup" ? "active" : ""} onClick={() => setDeliveryOption("pickup")}>
+          <button className={deliveryOption === "Pickup" ? "active" : ""} onClick={() => setDeliveryOption("Pickup")}>
             pickup
           </button>
         </div>
@@ -97,10 +97,14 @@ function Basket({ id }) {
                 </div>
                 <div className="basket-item-controls">
                   <div className="basket-item-quantity">
-                    <button className="subtract" onClick={() => decreaseItemQuantity(item._id)}>-</button>
+                    <button className="subtract" onClick={() => decreaseItemQuantity(item._id)}>
+                      -
+                    </button>
 
                     <span>{item.quantity}</span>
-                    <button className="add" onClick={() => increaseItemQuantity(item._id)}>+</button>
+                    <button className="add" onClick={() => increaseItemQuantity(item._id)}>
+                      +
+                    </button>
                   </div>
 
                   <span className="basket-item-total">€{(item.price * item.quantity).toFixed(2)}</span>

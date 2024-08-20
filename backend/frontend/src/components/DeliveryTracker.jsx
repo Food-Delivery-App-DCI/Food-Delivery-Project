@@ -47,7 +47,7 @@ function DeliveryTracker() {
   });
   const navigate = useNavigate();
 
-  const stages = deliveryOption === "delivery" ? deliveryStages : pickupStages;
+  const stages = deliveryOption === "Delivery" ? deliveryStages : pickupStages;
 
   useEffect(() => {
     if (orderId) {

@@ -2,7 +2,7 @@
 
 .address-book {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 2rem auto;
   padding: 2rem;
 }
 
@@ -17,7 +17,6 @@ h3 {
 }
 
 .address-item {
-
   background-color: var(--settings-cards-background);
   border-radius: 0.8rem;
   padding: 2rem;
@@ -39,7 +38,6 @@ h3 {
 }
 
 form.address-edit {
-
   background-color: var(--settings-cards-background);
   padding: 2rem;
 
@@ -71,31 +69,26 @@ form.address-edit {
   border: none;
   cursor: pointer;
 
- 
   color: var(--button-primary-color);
   transition: background-color 0.3s ease;
-  
 }
 
-.edit-address-button:hover, 
+.edit-address-button:hover,
 .delete-address-button:hover {
   color: var(--button-primary-hover-color);
 }
 
-.edit-address-button:active, 
+.edit-address-button:active,
 .delete-address-button:active {
   color: var(--button-primary-active-color);
 
   font-size: 1.6rem;
- 
-
 }
 
 .inputs-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
 }
 
 .add-address-button {
@@ -111,12 +104,10 @@ form.address-edit {
   border-radius: 0.5rem;
   cursor: pointer;
 
- 
   border-radius: var(--button-border-radius);
   padding: var(--button-padding);
   transition: background-color 0.3s;
   font-size: 1.6rem;
-
 }
 
 .add-address-button:hover {
@@ -161,7 +152,7 @@ form.address-edit {
   background-color: var(--button-primary-hover-color);
 }
 .address-save-cancel-container .save-button:active {
-  background-color: var(--button-primary-active-color) 
+  background-color: var(--button-primary-active-color);
 }
 
 .address-save-cancel-container .cancel-button {

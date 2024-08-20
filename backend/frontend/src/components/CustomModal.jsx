@@ -48,7 +48,7 @@ function CustomModal({ isOpen, onClose, children }) {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()} data-aos="fade-down" data-aos-duration="500">
         <button className="modal-close-button" onClick={onClose}>
           X
         </button>

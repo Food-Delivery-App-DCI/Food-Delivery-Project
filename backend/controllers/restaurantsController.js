@@ -191,7 +191,7 @@ export async function registerRestaurant(req, res, next) {
   }
 }
 
-// Function to log in a restaurant
+//* Function to log in a restaurant
 export async function loginRestaurant(req, res, next) {
   const { email, password } = req.body;
 

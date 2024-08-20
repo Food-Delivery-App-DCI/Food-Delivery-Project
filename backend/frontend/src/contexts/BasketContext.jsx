@@ -10,7 +10,7 @@ const BasketProvider = ({ children }) => {
     const savedPurchasedItems = localStorage.getItem("purchasedItems");
     return savedPurchasedItems ? JSON.parse(savedPurchasedItems) : [];
   });
-  const [deliveryOption, setDeliveryOption] = useState("delivery");
+  const [deliveryOption, setDeliveryOption] = useState("Delivery");
   const [orderId, setOrderId] = useState("");
   const [orderSent, setOrderSent] = useState(JSON.parse(localStorage.getItem("orderSent")) || false);
   const [isBasketModalOpen, setIsBasketModalOpen] = useState(false);

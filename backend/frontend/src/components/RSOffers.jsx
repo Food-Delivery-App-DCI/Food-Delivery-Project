@@ -79,8 +79,6 @@ function RSOffers() {
 
     updatedOfferData.items = updatedItems;
 
-    // const updatedMenuData = { ...newMenuData, category: newCategoryName };
-
     const updatedOffer = loggedInRestaurant.promotionalInfo.currentOffers.map((offer) =>
       offer.category === editingOfferName ? updatedOfferData : offer
     );
@@ -150,9 +148,6 @@ function RSOffers() {
 
     setNewItem({ name: "", description: "", price: "" });
     setToggleAddNewOffer(false);
-    // setImage("");
-    // imageInput.current.value = "";
-    // editedImageInput.current.value = "";
   }
 
   async function handleAddNewItemForEdit(e) {
@@ -163,7 +158,7 @@ function RSOffers() {
     if (image) {
       const formData = new FormData();
       formData.append("image", image);
-      // Assuming there's an endpoint for uploading images
+
       const imageUploadResponse = await fetch(`${import.meta.env.VITE_API}/restaurants/upload-image`, {
         method: "POST",
         body: formData,
@@ -208,9 +203,6 @@ function RSOffers() {
         if (response.ok) {
           const data = await response.json();
           setLoggedInRestaurant(data);
-          // setNewOfferName("");
-          // setNewOffer([]);
-          // setToAddNewOffer(false);
         } else {
           const { error } = await response.json();
           throw new Error(error.message);
@@ -265,6 +257,7 @@ function RSOffers() {
                 value={newOfferName}
                 onChange={(e) => setNewOfferName(e.target.value)}
                 placeholder="New Offer"
+                required
               />
               {newOffer.map((item, index) => (
                 <div key={index} className="new-item">
@@ -279,6 +272,7 @@ function RSOffers() {
                 value={newItem.name}
                 onChange={handleNewItemChange}
                 placeholder="Item Name"
+                required
               />
               <input
                 type="text"
@@ -286,6 +280,7 @@ function RSOffers() {
                 value={newItem.description}
                 onChange={handleNewItemChange}
                 placeholder="Item Description"
+                required
               />
               <input
                 type="number"
@@ -294,196 +289,205 @@ function RSOffers() {
                 value={newItem.price}
                 onChange={handleNewItemChange}
                 placeholder="Item Price"
+                required
               />
             </div>
             <button>Add Offer</button>
           </form>
         </>
       )}
-      <h2 style={{ textAlign: "center", margin: "2rem 0" }}> Current Offers</h2>
-      {loggedInRestaurant.promotionalInfo.currentOffers.map((offer) => {
-        return (
-          <div key={offer._id} className="menu-category">
-            <div className="category-header">
-              {editingOfferName === offer.category ? (
-                <>
-                  <label>
-                    Offer Name:
-                    <input
-                      type="text"
-                      value={newOfferNameChange}
-                      onChange={(e) => setNewOfferNameChange(e.target.value)}
-                      placeholder="Edit Offer Name"
-                      className="edit-category-name-input"
-                    />
-                  </label>
-                  <MdOutlineDeleteForever
-                    onClick={() => handleDeleteOffer(offer.category)}
-                    size="2.5rem"
-                    className="delete-icon"
-                  />
-                </>
-              ) : (
-                <h2>{offer.category}</h2>
-              )}
-            </div>
-
-            {editingOfferName === offer.category ? (
-              <div className="edit-form">
-                {newOfferData.items.map((item, index) => (
-                  <div key={index} className="edit-item">
-                    <img
-                      src={item.image.startsWith("uploads") ? `${import.meta.env.VITE_API}/${item.image}` : item.image}
-                      alt=""
-                      width={100}
-                    />
-                    <div className="labels-container">
+      {loggedInRestaurant.promotionalInfo.currentOffers.length !== 0 && (
+        <>
+          <h2 style={{ textAlign: "center", margin: "2rem 0" }}> Current Offers</h2>
+          {loggedInRestaurant.promotionalInfo.currentOffers.map((offer) => {
+            return (
+              <div key={offer._id} className="menu-category">
+                <div className="category-header">
+                  {editingOfferName === offer.category ? (
+                    <>
                       <label>
-                        Name:
+                        Offer Name:
                         <input
                           type="text"
-                          value={item.name}
-                          onChange={(e) => handleInputChange(index, "name", e.target.value)}
+                          value={newOfferNameChange}
+                          onChange={(e) => setNewOfferNameChange(e.target.value)}
+                          placeholder="Edit Offer Name"
+                          className="edit-category-name-input"
                         />
                       </label>
-                      <label>
-                        Description:
-                        <input
-                          type="text"
-                          value={item.description}
-                          onChange={(e) => handleInputChange(index, "description", e.target.value)}
-                        />
-                      </label>
-                    </div>
-                    <div className="labels-container">
-                      <label className="price-label">
-                        Price:
-                        <input
-                          type="number"
-                          className="price"
-                          step="0.01"
-                          value={item.price}
-                          onChange={(e) => handleInputChange(index, "price", e.target.value)}
-                        />
-                      </label>
-                      <label>
-                        Image:
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={(e) => handleImageChange(e, index)}
-                          ref={editedImageInput}
-                        />
-                      </label>
-                    </div>
-                    <MdOutlineDeleteForever
-                      onClick={() => handleDeleteItem(index)}
-                      size="2.5rem"
-                      className="delete-icon"
-                      title="delete item"
-                    />
-                  </div>
-                ))}
-                <div className="add-item-container">
-                  {toggleAdd ? (
-                    <FaSquarePlus
-                      className="add-icon"
-                      size="4rem"
-                      onClick={() => {
-                        setToAddNewItem(!toAddNewItem);
-                        setToggleAdd(false);
-                      }}
-                    />
+                      <MdOutlineDeleteForever
+                        onClick={() => handleDeleteOffer(offer.category)}
+                        size="2.5rem"
+                        className="delete-icon"
+                      />
+                    </>
                   ) : (
-                    <FaSquareMinus
-                      className="add-icon"
-                      size="4rem"
-                      onClick={() => {
-                        setToAddNewItem(!toAddNewItem);
-                        setToggleAdd(true);
-                      }}
-                    />
-                  )}
-
-                  {toAddNewItem && (
-                    <form className="new-item-form" onSubmit={handleAddNewItemForEdit}>
-                      <input
-                        type="text"
-                        name="name"
-                        value={newItemForEdit.name}
-                        onChange={handleNewItemForEditChange}
-                        placeholder="Item Name"
-                        required
-                      />
-                      <input
-                        type="text"
-                        name="description"
-                        value={newItemForEdit.description}
-                        onChange={handleNewItemForEditChange}
-                        placeholder="Item Description"
-                        required
-                      />
-                      <input
-                        type="number"
-                        step="0.01"
-                        name="price"
-                        value={newItemForEdit.price}
-                        onChange={handleNewItemForEditChange}
-                        placeholder="Item Price"
-                        required
-                      />
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => setImage(e.target.files[0])}
-                        required
-                        ref={imageInput}
-                      />
-                      <button>Add Item</button>
-                    </form>
+                    <h2>{offer.category}</h2>
                   )}
                 </div>
 
-                <div className="buttons-container">
-                  <button className="cancel1-button" onClick={handleCancelClick}>
-                    Cancel
-                  </button>
-                  <button className="save1-button" onClick={handleSaveClick}>
-                    Save
-                  </button>
-                </div>
-              </div>
-            ) : (
-              offer.items.map((item) => {
-                return (
-                  <div key={item._id} className="menu-item">
-                    <div className="image-and-info-container">
-                      <div className="image-container">
+                {editingOfferName === offer.category ? (
+                  <div className="edit-form">
+                    {newOfferData.items.map((item, index) => (
+                      <div key={index} className="edit-item">
                         <img
                           src={
                             item.image.startsWith("uploads") ? `${import.meta.env.VITE_API}/${item.image}` : item.image
                           }
                           alt=""
+                          width={100}
+                        />
+                        <div className="labels-container">
+                          <label>
+                            Name:
+                            <input
+                              type="text"
+                              value={item.name}
+                              onChange={(e) => handleInputChange(index, "name", e.target.value)}
+                            />
+                          </label>
+                          <label>
+                            Description:
+                            <input
+                              type="text"
+                              value={item.description}
+                              onChange={(e) => handleInputChange(index, "description", e.target.value)}
+                            />
+                          </label>
+                        </div>
+                        <div className="labels-container">
+                          <label className="price-label">
+                            Price:
+                            <input
+                              type="number"
+                              className="price"
+                              step="0.01"
+                              value={item.price}
+                              onChange={(e) => handleInputChange(index, "price", e.target.value)}
+                            />
+                          </label>
+                          <label>
+                            Image:
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => handleImageChange(e, index)}
+                              ref={editedImageInput}
+                            />
+                          </label>
+                        </div>
+                        <MdOutlineDeleteForever
+                          onClick={() => handleDeleteItem(index)}
+                          size="2.5rem"
+                          className="delete-icon"
+                          title="delete item"
                         />
                       </div>
-                      <div className="item-info">
-                        <h3>{item.name}</h3>
-                        <p>{item.description}</p>
-                      </div>
+                    ))}
+                    <div className="add-item-container">
+                      {toggleAdd ? (
+                        <FaSquarePlus
+                          className="add-icon"
+                          size="4rem"
+                          onClick={() => {
+                            setToAddNewItem(!toAddNewItem);
+                            setToggleAdd(false);
+                          }}
+                        />
+                      ) : (
+                        <FaSquareMinus
+                          className="add-icon"
+                          size="4rem"
+                          onClick={() => {
+                            setToAddNewItem(!toAddNewItem);
+                            setToggleAdd(true);
+                          }}
+                        />
+                      )}
+
+                      {toAddNewItem && (
+                        <form className="new-item-form" onSubmit={handleAddNewItemForEdit}>
+                          <input
+                            type="text"
+                            name="name"
+                            value={newItemForEdit.name}
+                            onChange={handleNewItemForEditChange}
+                            placeholder="Item Name"
+                            required
+                          />
+                          <input
+                            type="text"
+                            name="description"
+                            value={newItemForEdit.description}
+                            onChange={handleNewItemForEditChange}
+                            placeholder="Item Description"
+                            required
+                          />
+                          <input
+                            type="number"
+                            step="0.01"
+                            name="price"
+                            value={newItemForEdit.price}
+                            onChange={handleNewItemForEditChange}
+                            placeholder="Item Price"
+                            required
+                          />
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => setImage(e.target.files[0])}
+                            required
+                            ref={imageInput}
+                          />
+                          <button>Add Item</button>
+                        </form>
+                      )}
                     </div>
-                    <div className="item-price">€{Number(item.price).toFixed(2)}</div>
+
+                    <div className="buttons-container">
+                      <button className="cancel1-button" onClick={handleCancelClick}>
+                        Cancel
+                      </button>
+                      <button className="save1-button" onClick={handleSaveClick}>
+                        Save
+                      </button>
+                    </div>
                   </div>
-                );
-              })
-            )}
-            {editingOfferName !== offer.category && (
-              <button className="edit-button" onClick={() => handleEditClick(offer.category)}>
-                Edit
-              </button>
-            )}
-          </div>
-        );
-      })}
+                ) : (
+                  offer.items.map((item) => {
+                    return (
+                      <div key={item._id} className="menu-item">
+                        <div className="image-and-info-container">
+                          <div className="image-container">
+                            <img
+                              src={
+                                item.image.startsWith("uploads")
+                                  ? `${import.meta.env.VITE_API}/${item.image}`
+                                  : item.image
+                              }
+                              alt=""
+                            />
+                          </div>
+                          <div className="item-info">
+                            <h3>{item.name}</h3>
+                            <p>{item.description}</p>
+                          </div>
+                        </div>
+                        <div className="item-price">€{Number(item.price).toFixed(2)}</div>
+                      </div>
+                    );
+                  })
+                )}
+                {editingOfferName !== offer.category && (
+                  <button className="edit-button" onClick={() => handleEditClick(offer.category)}>
+                    Edit
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </>
+      )}
     </div>
   );
 }

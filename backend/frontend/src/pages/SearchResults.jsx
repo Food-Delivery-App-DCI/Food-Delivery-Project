@@ -30,7 +30,7 @@ function SearchResults() {
     return openAndCloseHours[today];
   };
 
-  console.log(restaurants);
+  // console.log(restaurants);
   return (
     <div className="search-results-page">
       <Navbar />
@@ -40,7 +40,7 @@ function SearchResults() {
         <>
           <Searchbar className="results-searchbar" />
           {!loading ? (
-            <div className="cards-results-container">
+            <div className="cards-results-container" data-aos="zoom-in" data-aos-duration="500">
               {restaurants.map((restaurant) => {
                 const todayHours = getTodayHours(restaurant.openAndCloseHours);
                 return (

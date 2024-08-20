@@ -1,6 +1,6 @@
 import "./App.css";
 import Home from "./pages/Home";
-import { Routes, Route /* useLocation, useNavigate */ } from /* Navigate */ "react-router-dom";
+import { Routes, Route /* useLocation, useNavigate */, useLocation } from /* Navigate */ "react-router-dom";
 import SearchResults from "./pages/SearchResults";
 import RestaurantMenu from "./pages/RestaurantMenu";
 import SuccessPage from "./components/SuccessPage";
@@ -23,6 +23,8 @@ import RSOrdersActive from "./components/RSOrdersActive";
 import RSOrdersHistory from "./components/RSOrdersHistory";
 import RSMenu from "./components/RSMenu";
 import RSProfile from "./components/RSProfile";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function App() {
   const {
@@ -33,6 +35,17 @@ function App() {
     handleHTTPRequestWithTokenRestaurant,
   } = useContext(DataContext);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
+  // This code helps to go to the top of a page anytime its route is clicked
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  useEffect(() => {
+    Aos.init();
+    Aos.refresh();
+  }, []);
 
   useEffect(() => {
     async function checkAuthentication() {
@@ -106,7 +119,7 @@ function App() {
   if (isInitialLoad) {
     return (
       <div className="loading-spinner">
-        <BounceLoader color={"#5f71ad"} loading={isInitialLoad} size={40} />
+        <BounceLoader color={"#165e4b"} loading={isInitialLoad} size={40} />
       </div>
     ); // Show the spinner while checking authentication
   }

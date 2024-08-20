@@ -143,7 +143,7 @@ const restaurantSchema = new Schema({
     type: promotionalInfoSchema,
     /* required: true, */
     default: {
-      currentOffers: [offerSchema],
+      currentOffers: [],
       loyaltyPrograms: "no loyalties",
     },
   },

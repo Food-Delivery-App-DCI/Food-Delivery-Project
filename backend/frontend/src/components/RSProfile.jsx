@@ -95,7 +95,7 @@ function RSProfile() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         switch (section) {
           case "basicInfo":
             setBasicInfo(data.basicInfo);

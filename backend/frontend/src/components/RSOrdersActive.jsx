@@ -173,30 +173,6 @@ function RSOrdersActive() {
     return statusOrder.indexOf(status);
   };
 
-  // useEffect(() => {
-  //   async function getRestaurantOrderHistory() {
-  //     try {
-  //       const response = await fetch(
-  //         `http://localhost:5002/restaurants/get-restaurant-order-history/${loggedInRestaurant._id}`
-  //       );
-
-  //       if (response.ok) {
-  //         const updatedRestaurant = await response.json();
-  //         setLoggedInRestaurant(updatedRestaurant);
-  //       } else {
-  //         const { error } = await response.json();
-  //         throw new Error(error.message);
-  //       }
-  //     } catch (error) {
-  //       console.log(error.message);
-  //     }
-  //   }
-
-  //   if (loggedInRestaurant._id) {
-  //     getRestaurantOrderHistory();
-  //   }
-  // }, [loggedInRestaurant]);
-
   console.log(loggedInRestaurant);
 
   return (
@@ -221,7 +197,7 @@ function RSOrdersActive() {
             const currentStatusOrder = getStatusOrder(orderStatuses[eachOrder.order._id]);
 
             return (
-              <div className="cards" key={eachOrder._id}>
+              <div className="cards" key={eachOrder._id} data-aos="zoom-in" data-aos-duration="500">
                 <p>
                   <strong>Order ID:</strong> {eachOrder.order._id}
                 </p>
@@ -296,7 +272,7 @@ function RSOrdersActive() {
                           </p>
                         )}
                     </li>
-                    {eachOrder.order.additionalInfo?.orderType === "delivery" && (
+                    {eachOrder.order.additionalInfo?.orderType === "Delivery" && (
                       <>
                         <li>
                           <button

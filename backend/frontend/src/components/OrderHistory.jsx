@@ -56,6 +56,8 @@ function OrderHistory() {
     }
   }
 
+  console.log(userOrderHistory);
+
   return (
     <>
       <div className="order-history-container">
@@ -67,82 +69,101 @@ function OrderHistory() {
               Delete All
             </button>
             <div className="orders-container">
-              {userOrderHistory?.map((order) => {
-                const date = new Date(order.createdAt);
-                const formattedDate = isNaN(date.getTime())
-                  ? "Invalid Date"
-                  : date.toLocaleString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                      hour: "numeric",
-                      minute: "numeric",
-                      second: "numeric",
-                      hour12: true,
-                    });
-                return (
-                  <div key={order?._id} className="order">
-                    <div className="restaurant-name-container">
-                      <h2>{order?.restaurantName}</h2>
-                    </div>
-                    <p>{order?.restaurantAddress}</p>
-                    <h3>Items</h3>
-                    <div className="items-container">
-                      {order?.items.map((item) => {
-                        return (
-                          <div key={item._id} className="item">
-                            <p>{item.name}</p>
-                            <div className="calculations">
-                              <p>€{item.price}</p>
-                              <p>x{item.quantity}</p>
-                              <p>€{item.price * item.quantity}</p>
+              {userOrderHistory
+                ?.slice()
+                .reverse()
+                .map((order) => {
+                  const date = new Date(order.date);
+                  const updateDate = new Date(order.updatedAt);
+                  const formattedDate = isNaN(date.getTime())
+                    ? "Invalid Date"
+                    : date.toLocaleString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        second: "numeric",
+                        hour12: true,
+                      });
+                  const formattedUpdatedDate = isNaN(updateDate.getTime())
+                    ? "Invalid Date"
+                    : updateDate.toLocaleString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        second: "numeric",
+                        hour12: true,
+                      });
+                  return (
+                    <div key={order?._id} className="order">
+                      <div className="restaurant-name-container">
+                        <h2>{order?.restaurantName}</h2>
+                      </div>
+                      <p>{order?.restaurantAddress}</p>
+                      <h3>Items</h3>
+                      <div className="items-container">
+                        {order?.items.map((item) => {
+                          return (
+                            <div key={item._id} className="item">
+                              <p>{item.name}</p>
+                              <div className="calculations">
+                                <p>€{item.price}</p>
+                                <p>x{item.quantity}</p>
+                                <p>€{item.price * item.quantity}</p>
+                              </div>
                             </div>
+                          );
+                        })}
+                        <div className="total-sum">
+                          <p>Total Sum</p>
+                          <p>€{order?.totalSum}</p>
+                        </div>
+                      </div>
+                      <div>
+                        <h3>Payment Details</h3>
+                        <div className="payment-details">
+                          <div className="payment-method">
+                            <p>Payment Method</p>
+                            <p>{order?.paymentDetails.paymentMethod}</p>
                           </div>
-                        );
-                      })}
-                      <div className="total-sum">
-                        <p>Total Sum</p>
-                        <p>€{order?.totalSum}</p>
-                      </div>
-                    </div>
-                    <div>
-                      <h3>Payment Details</h3>
-                      <div className="payment-details">
-                        <div className="payment-method">
-                          <p>Payment Method</p>
-                          <p>{order?.paymentDetails.paymentMethod}</p>
+                          <div className="charged-amount">
+                            <p>Charged Amount</p>
+                            <p>€{order?.paymentDetails.chargedAmount}</p>
+                          </div>
                         </div>
-                        <div className="charged-amount">
-                          <p>Charged Amount</p>
-                          <p>€{order?.paymentDetails.chargedAmount}</p>
-                        </div>
-                      </div>
-                      <h3>Additional Order Information</h3>
-                      <div className="additional-info">
-                        <div className="order-type">
-                          <p>Order Type</p>
-                          <p>{order?.additionalInfo.orderType}</p>
-                        </div>
-                        <div className="order-status">
-                          <p>Order Status</p>
-                          <p>{order?.additionalInfo.orderStatus}</p>
-                        </div>
-                        <div className="order-date">
-                          <p>Order Date</p>
-                          <p>{formattedDate}</p>
-                        </div>
-                        {/* <div className="order-time">
+                        <h3>Additional Order Information</h3>
+                        <div className="additional-info">
+                          <div className="order-type">
+                            <p>Order Type</p>
+                            <p>{order?.additionalInfo.orderType}</p>
+                          </div>
+                          <div className="order-status">
+                            <p>Order Status</p>
+                            <p>{order?.additionalInfo.orderStatus}</p>
+                          </div>
+                          <div className="order-date">
+                            <p>Date Ordered</p>
+                            <p>{formattedDate}</p>
+                          </div>
+                          <div className="order-date">
+                            <p>Date Delivered</p>
+                            <p>{formattedUpdatedDate}</p>
+                          </div>
+                          {/* <div className="order-time">
                           <p>Order Time</p>
                           <p>{order?.createdAt.slice(11, 16)}</p>
                         </div> */}
+                        </div>
                       </div>
+                      <button className="delete-order-button" onClick={() => handleDeleteOrder(order._id)}>
+                        Delete Order
+                      </button>
                     </div>
-                    <button className="delete-order-button" onClick={() => handleDeleteOrder(order._id)}>
-                      Delete Order
-                    </button>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </div>
           </>
         )}

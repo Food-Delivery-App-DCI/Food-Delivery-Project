@@ -265,7 +265,7 @@ function RSMenu() {
     if (image) {
       const formData = new FormData();
       formData.append("image", image);
-      // Assuming there's an endpoint for uploading images
+
       const imageUploadResponse = await fetch(`${import.meta.env.VITE_API}/restaurants/upload-image`, {
         method: "POST",
         body: formData,
@@ -276,9 +276,6 @@ function RSMenu() {
       }
     }
 
-    // const updatedItems = [...newMenuData.items, newItemForEdit];
-
-    //*new
     const updatedItems = [...newMenuData.items, { ...newItemForEdit, image: imageURL }]; // Updated: Add image URL to item
 
     setNewMenuData({ ...newMenuData, items: updatedItems });
@@ -366,6 +363,7 @@ function RSMenu() {
                 value={newCategory}
                 onChange={handleNewCategoryChange}
                 placeholder="New Category"
+                required
               />
               {newMenu.map((item, index) => (
                 <div key={index} className="new-item">
@@ -380,6 +378,7 @@ function RSMenu() {
                 value={newItem.name}
                 onChange={handleNewItemChange}
                 placeholder="Item Name"
+                required
               />
               <input
                 type="text"
@@ -387,6 +386,7 @@ function RSMenu() {
                 value={newItem.description}
                 onChange={handleNewItemChange}
                 placeholder="Item Description"
+                required
               />
               <input
                 type="number"
@@ -395,6 +395,7 @@ function RSMenu() {
                 value={newItem.price}
                 onChange={handleNewItemChange}
                 placeholder="Item Price"
+                required
               />
             </div>
             <button>Add Category</button>
