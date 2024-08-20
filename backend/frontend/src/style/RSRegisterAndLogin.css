@@ -127,12 +127,15 @@
   margin-top: 0;
   width: fit-content;
   color: var(--button-primary-color);
+
 }
 .rs-register-login-page .cancel-button:hover {
   /* background-color: #163825; */
-  background-color: var(--button-cancel-hover-color);
+  background-color: var(--button-secondary-hover-color);
 }
 .rs-register-login-page .cancel-button:active {
   /* background-color: #163825; */
-  background-color: var(--button-cancel-active-color);
+
+  background-color: var(--button-secondary-active-color);
 }
+

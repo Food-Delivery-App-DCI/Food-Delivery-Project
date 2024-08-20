@@ -25,17 +25,20 @@
   --button-primary-active-color: #165e4b;
   --button-secondary-color: transparent;
   --button-secondary-border-color: 1px solid #519259;
-  --button-secondary-hover-color: #fbf9f291;
-  --button-secondary-active-color: #fbf9f25d;
+  --button-secondary-hover-color: #f5f5f5;
+  --button-secondary-active-color: #eaeaea;
+  /* --button-secondary-hover-color: #fbf9f291;
+  --button-secondary-active-color: #fbf9f25d; */
   --button-cancel-primary-color: #fbf9f5;
   --button-delete-color: rgb(179, 53, 53);
   --button-delete-hover-color: rgb(226, 82, 82);
   --button-delete-active-color: rgb(121, 37, 37);
   --cards-border-radius: 0.8rem;
-  --settings-cards-background: #fafafa06;
+  /* --settings-cards-background: #fbfffc; */
+  /* --settings-cards-background: #fafafa06;
   --button-cancel-exp-primary: #eee;
   --button-cancel-exp-hover: #00000017;
-  --button-cancel-exp-active: #00000026;
+  --button-cancel-exp-active: #00000026; */
   --cards-background-color: #fbfffc;
 }
 
