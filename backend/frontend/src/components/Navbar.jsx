@@ -64,6 +64,7 @@ function Navbar() {
     setCurrentStage(0);
     setCompletedStages([]);
     setToggleRegisterOrLoginUser(false);
+    setBasket([]);
 
     // Navigate back to the main page
     navigate("/");
