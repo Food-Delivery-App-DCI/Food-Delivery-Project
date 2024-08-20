@@ -244,7 +244,7 @@
   padding: 5px;
 }
 
-.offer-add-button {
+.offer-category .offer-total-price .offer-add-button {
   background: var(--button-primary-color);
   color: #fbf9f5;
   border: none;
@@ -252,13 +252,13 @@
   /* padding: 8px 16px; */
   padding: var(--button-padding);
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.offer-add-button:hover {
+.offer-category .offer-total-price .offer-add-button:hover {
   background: var(--button-primary-hover-color);
 }
-.offer-add-button:active {
+.offer-category .offer-total-price .offer-add-button:active {
   background: var(--button-primary-active-color);
 }
 
@@ -334,7 +334,7 @@
   /* margin-bottom: 10px; */
 }
 
-.add-button {
+.menu-item-card .item-details .add-button {
   background: var(--button-primary-color);
   color: #fbf9f5;
   border: none;
@@ -345,11 +345,11 @@
   /* align-self: center; */
 }
 
-.add-button:hover {
+.menu-item-card .item-details .add-button:hover {
   background: var(--button-primary-hover-color);
 }
 
-.add-button:active {
+.menu-item-card .item-details .add-button:active {
   background: var(--button-primary-active-color);
 }
 

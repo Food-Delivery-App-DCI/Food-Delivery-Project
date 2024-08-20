@@ -13,7 +13,7 @@
 
   /* background-color: #fff; */
   /* background-color: rgba(0, 0, 0, 0.01); */
-  background-color: var(--settings-cards-background);
+  background-color: var(--cards-background-color);
  
 
  
@@ -91,7 +91,7 @@
   color: var(--button-primary-active-color)
 }
 
-.settings-save {
+.settings-save-cancel-button-container .settings-save {
   width: 30%;
   padding: var(--button-padding);
   background-color: var(--color-2);
@@ -109,7 +109,7 @@ cursor: pointer;
 
 
 
-.settings-cancel {
+/* .settings-cancel {
   width: 36%;
   padding: 1rem;
   background-color: #fff;
@@ -122,7 +122,7 @@ cursor: pointer;
   transition: background-color 0.3s;
   align-self: center;
 }
-
+ */
 
 .settings-save:hover {
   background-color: var(--button-primary-hover-color);
@@ -131,14 +131,14 @@ cursor: pointer;
   background-color: var(--button-primary-active-color);
 }
 
-.settings-cancel {
+.settings-save-cancel-button-container .settings-cancel {
 
   width: 30%;
   /* background-color: var(--button-cancel-primary-color);
   background-color: white; */
-  background-color: var(--button-cancel-exp-primary);
+  background-color: var(--button-secondary-color);
   color: var(--button-primary-color);
-  border: 1px solid var(--button-primary-color);
+  border: var(--button-secondary-border-color);
   padding: var(--button-padding);
   border-radius: var(--button-border-radius);
 
@@ -150,11 +150,11 @@ cursor: pointer;
   margin: 0 auto;
 }
 
-.settings-cancel:hover {
-  background-color: var(--button-cancel-exp-hover);
+.settings-save-cancel-button-container .settings-cancel:hover {
+  background-color: var(--button-secondary-hover-color);
 }
-.settings-cancel:active {
-  background-color: var(--button-cancel-exp-active);
+.settings-save-cancel-button-container .settings-cancel:active {
+  background-color: var(--button-secondary-active-color);
 }
 
 

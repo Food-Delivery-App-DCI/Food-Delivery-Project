@@ -31,20 +31,21 @@
 
 .delivery-toggle {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 2rem;
   margin-bottom: 2rem;
   background-color: #eee;
-
   border-radius: var(--button-border-radius);
 }
 
 
 .delivery-toggle button {
    padding: var(--button-padding);
-  margin: 0 0.5rem;
+  /* margin: 0 0.1rem; */
  
   border: none;
-  background-color: #eee;
+  background-color: var(--button-secondary-color);
+  /* background-color: #eee; */
   /* background-color: var(--background-color); */
   cursor: pointer;
 
@@ -57,12 +58,15 @@
   font-size: 1.6rem;
   transition: background-color 0.3s ease;
   color: var(--button-primary-color);
+  border: var(--button-secondary-border-color)
 }
 .delivery-toggle button:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--button-secondary-hover-color);
 }
 .delivery-toggle button:active {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--button-secondary-active-color);
+  color: var(--color-1);
+  
 }
 
 .delivery-toggle button.active {
@@ -119,26 +123,45 @@
   font-size: 16px;
   transition: background-color 0.3s ease;
 }
+.basket .basket-item-quantity .add {
+  font-size: 18px;
+  padding: 0.3rem 1rem;
+  /* padding-left: 1.2rem;
+  padding-right: 1.2rem; */ 
+  border: var(--button-secondary-border-color);
+}
 
 .basket .basket-item-quantity .subtract {
   font-size: 18px;
-  padding: 4px 12px;
+  font-weight: 700;
+  padding: 0.3rem 1.2rem;
   /* padding-left: 1.2rem;
   padding-right: 1.2rem; */ 
+  border: var(--button-secondary-border-color);
+}
+.basket .basket-item-quantity .subtract:hover {
+  padding: 0.3rem 1.2rem;
+  background-color: var(--button-secondary-hover-color);
+
+}
+.basket .basket-item-quantity .subtract:active {
+  padding: 0.3rem 1.2rem;
+  background-color: var(--button-secondary-active-color);
+
 }
 
 .basket .basket-item-quantity button:hover {
   /* background-color: #ddd; */
-  background-color: rgba(0, 0, 0, 0.1)
+  background-color: var(--button-secondary-hover-color);
 
 
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   cursor: pointer;
-  font-size: 1.6rem;
+  font-size: 18px;
 
 }
 .basket .basket-item-quantity button:active {
-  background-color: rgba(0, 0, 0, 0.3)
+  background-color: var(--button-secondary-active-color);
 }
 
 
@@ -154,14 +177,14 @@
 
 .basket .basket-remove-button {
 
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.2rem;
   border: none;
   border-radius: 2rem;
   background-color: var(--button-delete-color);
-
+  transition: background-color 0.3s ease;
   color: white;
   cursor: pointer;
-  font-size: 1.6rem;
+  font-size: 17px;
 }
 
 .basket .basket-remove-button:hover {

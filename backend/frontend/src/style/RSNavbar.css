@@ -47,6 +47,9 @@
   transition: background-color 0.3s ease;
 }
 
+.rs-nav .register-button {
+  border: var(--button-primary-color);
+}
 
 .rs-nav .register-button:hover {
   background-color: var(--button-primary-hover-color);
@@ -62,7 +65,26 @@
   border: 1px solid var(--color-1);
 
 }
+.rs-nav .login-button:hover {
+  background-color: var(--button-secondary-hover-color);
+}
+.rs-nav .login-button:active {
+  background-color: var(--button-secondary-active-color);
+}
 
 /* .rs-nav button:hover {
   background-color: #298b71;
+} */
+
+/* .rs-section-register .register-button {
+  background-color: var(--button-primary-color);
+  border: 1px solid var(--button-primary-color);
+}
+.rs-section-register .register-button:hover {
+  background-color: var(--button-primary-hover-color);
+}
+.rs-section-register .register-button:active {
+  
+  transform: translate(0px, 0px);
+  position: fixed;
 } */
