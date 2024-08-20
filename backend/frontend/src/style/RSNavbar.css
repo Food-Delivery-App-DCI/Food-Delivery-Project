@@ -76,7 +76,7 @@
   background-color: #298b71;
 } */
 
-.rs-section-register .register-button {
+/* .rs-section-register .register-button {
   background-color: var(--button-primary-color);
   border: 1px solid var(--button-primary-color);
 }
@@ -86,5 +86,5 @@
 .rs-section-register .register-button:active {
   
   transform: translate(0px, 0px);
-  /* position: fixed; */
-}
+  position: fixed;
+} */

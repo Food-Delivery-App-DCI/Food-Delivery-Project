@@ -101,7 +101,16 @@
   top: 3.5rem;
   left: 20rem;
   cursor: pointer;
+  color: var(--button-primary-color);
+  transition: color 0.3s ease;
 }
+.rs-menu-container .edit-keywords .add-keywords-icon:hover {
+  color: var(--button-primary-hover-color);
+}
+.rs-menu-container .edit-keywords .add-keywords-icon:active {
+  color: var(--button-primary-active-color);
+}
+
 
 .rs-menu-container .edit-keywords .buttons-container {
   display: flex;
@@ -127,6 +136,7 @@
   border: 1px solid var(--button-primary-color);
   color: var(--color-1);
   border-radius: var(--button-border-radius);
+  transition: background-color 0.3s ease;
 }
 .rs-menu-container .menu-category .edit-form .buttons-container .cancel1-button:hover {
   background-color: var(--button-cancel-hover-color)
@@ -137,6 +147,14 @@
 
 .keywords .keywords-edit-icon {
   cursor: pointer;
+  color: var(--button-primary-color);
+  transition: color 0.3s ease;
+}
+.keywords .keywords-edit-icon:hover {
+  color: var(--button-primary-hover-color);
+}
+.keywords .keywords-edit-icon:active {
+  color: var(--button-primary-active-color);
 }
 
 .menu-category {
@@ -278,15 +296,32 @@
 
 .rs-menu-container .new-item-form button {
   padding: 0 1rem;
-  background-color: var(--color-1);
-  color: white;
+  background-color: var(--button-primary-color);
+  color: var(--color-5);
   cursor: pointer;
-  border-radius: 0.5rem;
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
   border: none;
+  transition: background-color 0.3s ease;
+  
+}
+.rs-menu-container .new-item-form button:hover {
+  background-color: var(--button-primary-hover-color);
+}
+.rs-menu-container .new-item-form button:active {
+  background-color: var(--button-primary-active-color);
 }
 
 .rs-menu-container .add-icon {
   cursor: pointer;
+  color: var(--button-primary-color);
+  transition: color 0.3s ease;
+}
+.rs-menu-container .add-icon:hover {
+  color: var(--button-primary-hover-color);
+}
+.rs-menu-container .add-icon:active {
+  color: var(--button-primary-active-color);
 }
 
 .rs-menu-container .buttons-container {
@@ -302,6 +337,7 @@
   font-size: 1.6rem;
   cursor: pointer;
   border-radius: var(--button-border-radius);
+  transition: background-color 0.3s ease;
 }
 
 .rs-menu-container .buttons-container .save1-button {
@@ -313,6 +349,7 @@
   background-color: var(--button-secondary-color);
   color: var(--button-primary-color);
   border: 1px solid var(--button-primary-color);
+  transition: background-color 0.3s ease;
 }
 .rs-menu-container .menu-category .edit-form .buttons-container .cancel1-button:hover {
   background-color: var(--button-secondary-hover-color);
@@ -326,6 +363,7 @@
   color: var(--color-5);
   border-radius: var(--button-border-radius);
   padding: var(--button-padding);
+  transition: background-color 0.3s ease;
 }
 .rs-menu-container .buttons-container .save-keywords-button:hover {
   background-color: var(--button-primary-hover-color);
@@ -339,7 +377,8 @@
   color: var(--button-primary-color);
   border-radius: var(--button-border-radius);
   padding: var(--button-padding);
-  border: 1px solid var(--button-primary-color)
+  border: 1px solid var(--button-primary-color);
+  transition: background-color 0.3s ease;
 }
 .rs-menu-container .buttons-container .cancel-keywords-button:hover {
   background-color: var(--button-secondary-hover-color);
@@ -350,21 +389,15 @@
 
 .rs-menu-container .edit-button {
   display: block;
-
-  
   padding: var(--button-padding);
-
   margin: 2rem auto;
-  
-
   color: #fff;
   /* background-color: #165e4b; */
   background-color: var(--button-primary-color);
   border: none;
-
   border-radius: var(--button-border-radius);
-
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 .rs-menu-container .edit-button:hover {
   background-color: var(--button-primary-hover-color);
@@ -379,13 +412,20 @@
   padding: 1rem;
   border: none;
   border-radius: 0.5rem;
-  background-color: #274691;
+  background-color: var(--button-primary-color);
+  /* background-color: #274691; */
   color: white;
   font-size: 1.6rem;
   cursor: pointer;
   margin-top: 2rem;
+  transition: background-color 0.3s ease;
 }
 
 .update-button:hover {
-  background-color: #3c3572;
+  /* background-color: #3c3572; */
+  background-color: var(--button-primary-hover-color)
+}
+.update-button:active {
+  /* background-color: #3c3572; */
+  background-color: var(--button-primary-active-color)
 }
