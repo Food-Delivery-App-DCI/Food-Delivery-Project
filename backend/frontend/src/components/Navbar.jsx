@@ -79,7 +79,7 @@ function Navbar() {
             <div className="user-info" ref={dropdownRef}>
               <span className="welcome-message" onClick={toggleDropdown}>
                 Welcome, {loggedInUser.firstName}! {""}
-                <FontAwesomeIcon icon={faCaretDown} style={{ color: "#266241" }} />
+                <FontAwesomeIcon icon={faCaretDown} style={{ color: "#296341" }} />
               </span>
 
               {isDropdownOpen && (

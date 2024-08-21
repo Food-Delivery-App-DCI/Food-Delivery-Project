@@ -16,7 +16,7 @@
 .rs-item-count {
   position: absolute;
   background-color: var(--color-3);
-  color: #fff;
+  color: black;
   border-radius: 50%;
   top: -2rem;
   font-size: 1.2rem;
@@ -25,4 +25,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
+}
+
+.rs-nav-status .received,
+.rs-nav-status .preparing,
+.rs-nav-status .ready,
+.rs-nav-status .delivery,
+.rs-nav-status .completed {
+  color: var(--button-primary-color);
 }

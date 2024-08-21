@@ -24,9 +24,8 @@
   padding: var(--button-padding);
   color: white;
   font-size: 1.4rem;
-  cursor: pointer; 
+  cursor: pointer;
   transition: background-color 0.3s;
-
 }
 
 .order-history-container .delete-history-button:hover {
@@ -58,11 +57,11 @@
 }
 
 .order-history-container .orders-container button:hover {
-  background-color: var(--button-delete-hover-color)
+  background-color: var(--button-delete-hover-color);
 }
 
 .order-history-container .orders-container button:active {
-  background-color: var(--button-delete-active-color) 
+  background-color: var(--button-delete-active-color);
 }
 
 .order-history-container .order {
@@ -70,6 +69,7 @@
   box-shadow: 1px 1px 10px rgb(219, 219, 219);
   text-align: left;
   background-color: var(--cards-background-color);
+  border-radius: var(--cards-border-radius);
 }
 
 .order-history-container h3 {

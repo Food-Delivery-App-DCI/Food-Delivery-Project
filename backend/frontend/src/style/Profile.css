@@ -40,6 +40,7 @@
   padding: 1rem;
   display: block;
   transition: background-color 0.3s;
+  color: black;
 }
 
 .navbar-profile ul li a:visited {

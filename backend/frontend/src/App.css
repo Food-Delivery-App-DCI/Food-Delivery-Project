@@ -20,11 +20,11 @@
   --shadow-dark: rgba(0, 0, 0, 0.15);
   --button-border-radius: 3rem;
   --button-padding: 1rem 3rem;
-  --button-primary-color: #519259;
-  --button-primary-hover-color: #64af6c;
-  --button-primary-active-color: #165e4b;
+  --button-primary-color: #296341;
+  --button-primary-hover-color: #3a8b5c;
+  --button-primary-active-color: #135a1c;
   --button-secondary-color: transparent;
-  --button-secondary-border-color: 1px solid #519259;
+  --button-secondary-border-color: 1px solid #3b8b43;
   --button-secondary-hover-color: #f5f5f5;
   --button-secondary-active-color: #eaeaea;
   /* --button-secondary-hover-color: #fbf9f291;
