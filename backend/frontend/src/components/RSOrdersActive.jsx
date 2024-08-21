@@ -316,7 +316,7 @@ function RSOrdersActive() {
                         </li>
                       </>
                     )}
-                    {eachOrder.order.additionalInfo?.orderType === "pickup" && (
+                    {eachOrder.order.additionalInfo?.orderType === "Pickup" && (
                       <>
                         <li>
                           <button

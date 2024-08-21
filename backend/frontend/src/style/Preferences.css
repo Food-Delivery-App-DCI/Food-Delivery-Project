@@ -21,6 +21,7 @@
   cursor: pointer;
   background-color: var(--cards-background-color);
   transition: all 0.3s;
+  border-radius: var(--cards-border-radius);
 }
 
 .favorites-items-container .favorite-card:hover {
@@ -57,6 +58,7 @@
   box-shadow: 1px 1px 10px rgb(219, 219, 219);
   background-color: var(--cards-background-color);
   transition: all 0.3s;
+  border-radius: var(--cards-border-radius);
 }
 
 .order-again-items-container .order:hover {

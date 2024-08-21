@@ -4,8 +4,8 @@
 .search-results-page {
   /* display: flex;
   flex-direction: column; */
-  display: grid;
-  grid-template-rows: 7rem 1fr 25.8rem;
+  /* display: grid; */
+  /* grid-template-rows: 7rem 1fr 25.8rem; */
   min-height: 100vh;
 }
 
@@ -15,7 +15,7 @@
   flex-direction: column;
   gap: 2rem;
   padding: 2rem;
-  margin: 12rem auto 5rem;
+  margin: 3rem auto 5rem;
   width: 90%;
   max-width: 1000px;
   min-height: 10rem;

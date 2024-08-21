@@ -83,7 +83,7 @@
 
 .offer-category h3 {
   background-color: var(--color-3);
-  color: white;
+  color: #444;
   padding: 1.5rem;
   text-align: center;
 }
@@ -139,7 +139,6 @@
   padding: 0.5rem;
 }
 
-
 .offer-category .offer-total-price .offer-add-button {
   background: var(--button-primary-color);
 
@@ -151,13 +150,11 @@
   transition: background-color 0.3s ease;
 }
 
-
 .offer-category .offer-total-price .offer-add-button:hover {
   background: var(--button-primary-hover-color);
 }
 .offer-category .offer-total-price .offer-add-button:active {
   background: var(--button-primary-active-color);
-
 }
 
 /* OFFERS end */
@@ -212,7 +209,6 @@
   align-items: flex-end;
 }
 
-
 .item-price {
   font-size: 1.2em;
   /* margin-bottom: 10px; */
@@ -228,7 +224,6 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 
 .menu-item-card .item-details .add-button:hover {
   background: var(--button-primary-hover-color);
@@ -347,7 +342,6 @@
 
 .add-button:hover {
   background: var(--color-1);
-
 }
 
 .not-found {

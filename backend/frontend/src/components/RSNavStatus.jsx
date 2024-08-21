@@ -19,29 +19,23 @@ function RSNavStatus() {
     <>
       <div className="rs-nav-status">
         <div className="received">
-          <FontAwesomeIcon
-            icon={faClipboardList}
-            style={{ color: "#266241" }}
-          />
+          <FontAwesomeIcon icon={faClipboardList} />
           <span className="rs-item-count">{orderCounts.received}</span>
         </div>
         <div className="preparing">
-          <FontAwesomeIcon icon={faMortarPestle} style={{ color: "#266241" }} />
+          <FontAwesomeIcon icon={faMortarPestle} />
           <span className="rs-item-count">{orderCounts.preparing}</span>
         </div>
         <div className="ready">
-          <FontAwesomeIcon icon={faUtensils} style={{ color: "#266241" }} />
+          <FontAwesomeIcon icon={faUtensils} />
           <span className="rs-item-count">{orderCounts.ready}</span>
         </div>
         <div className="delivery">
-          <FontAwesomeIcon icon={faTruck} style={{ color: "#266241" }} />
+          <FontAwesomeIcon icon={faTruck} />
           <span className="rs-item-count">{orderCounts.delivery}</span>
         </div>
         <div className="completed">
-          <FontAwesomeIcon
-            icon={faClipboardCheck}
-            style={{ color: "#266241" }}
-          />
+          <FontAwesomeIcon icon={faClipboardCheck} />
           <span className="rs-item-count">{orderCounts.completed}</span>
         </div>
       </div>

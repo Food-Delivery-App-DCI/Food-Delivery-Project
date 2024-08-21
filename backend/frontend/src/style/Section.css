@@ -12,7 +12,7 @@
 /* Header Styling */
 .love {
   font-size: 3.2rem;
-  color: #53a05f;
+  color: var(--button-primary-color);
   margin-bottom: 1rem;
   text-align: center;
   letter-spacing: 1.5px;
