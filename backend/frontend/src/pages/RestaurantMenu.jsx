@@ -166,15 +166,7 @@ function RestaurantMenu() {
                       <h2>{item.category}</h2>
                       {item.items.map((food) => (
                         <div className="item-details" key={food._id}>
-                          <img
-                            src={
-                              food.image.startsWith("uploads")
-                                ? `${import.meta.env.VITE_API}/${food.image}`
-                                : food.image
-                            }
-                            alt=""
-                            width={100}
-                          />
+                          <img src={food.image} alt="" width={100} />
 
                           <div>
                             <p className="item-name">{food.name}</p>

@@ -127,7 +127,7 @@ function RSMenu() {
 
           if (imageUploadResponse.ok) {
             const imageData = await imageUploadResponse.json();
-            imageURL = imageData.imageUrl;
+            imageURL = imageData.cloudImageUrl;
           }
         }
 
@@ -209,7 +209,7 @@ function RSMenu() {
     //   });
     //   if (imageUploadResponse.ok) {
     //     const imageData = await imageUploadResponse.json();
-    //     imageURL = imageData.imageUrl;
+    //     imageURL = imageData.cloudImageUrl;
     //   }
     // }
 
@@ -272,7 +272,7 @@ function RSMenu() {
       });
       if (imageUploadResponse.ok) {
         const imageData = await imageUploadResponse.json();
-        imageURL = imageData.imageUrl;
+        imageURL = imageData.cloudImageUrl;
       }
     }
 
@@ -470,11 +470,7 @@ function RSMenu() {
               <div className="edit-form">
                 {newMenuData.items.map((item, index) => (
                   <div key={index} className="edit-item">
-                    <img
-                      src={item.image.startsWith("uploads") ? `${import.meta.env.VITE_API}/${item.image}` : item.image}
-                      alt=""
-                      width={100}
-                    />
+                    <img src={item.image} alt="" width={100} />
                     <div className="labels-container">
                       <label>
                         Name:
@@ -596,12 +592,7 @@ function RSMenu() {
                 <div key={item._id} className="menu-item">
                   <div className="image-and-info-container">
                     <div className="image-container">
-                      <img
-                        src={
-                          item.image.startsWith("uploads") ? `${import.meta.env.VITE_API}/${item.image}` : item.image
-                        }
-                        alt=""
-                      />
+                      <img src={item.image} alt="" />
                     </div>
                     <div className="item-info">
                       <h3>{item.name}</h3>

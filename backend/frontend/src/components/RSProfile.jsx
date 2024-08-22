@@ -254,14 +254,7 @@ function RSProfile() {
               <div className="label-image">
                 <strong>Cover Image:</strong>
                 <div className="image-container">
-                  <img
-                    src={
-                      basicInfo.coverImage.startsWith("uploads")
-                        ? `${import.meta.env.VITE_API}/${basicInfo.coverImage}`
-                        : basicInfo.coverImage
-                    }
-                    alt=""
-                  />
+                  <img src={basicInfo.coverImage} alt="" />
                 </div>
               </div>
               <button className="edit-button" onClick={() => handleEdit("basicInfo")}>

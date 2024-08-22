@@ -48,11 +48,7 @@ function SearchResults() {
                     {" "}
                     <div className="restaurant-image">
                       <img
-                        src={
-                          restaurant.basicInfo.coverImage.startsWith("uploads")
-                            ? `${import.meta.env.VITE_API}/${restaurant.basicInfo.coverImage}`
-                            : restaurant.basicInfo.coverImage
-                        }
+                        src={restaurant.basicInfo.coverImage}
                         alt=""
                         // width={100}
                       />
