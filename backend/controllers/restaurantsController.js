@@ -4,6 +4,7 @@ import OrderHistory from "../models/OrderHistoryModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 // import SearchedRestaurant from "../models/SearchedRestaurantsModel.js";
+import cloudinary from "../middlewares/cloudinaryConfig.js";
 import { io } from "../index.js";
 
 //* Function to check the authentication of a restaurant
@@ -283,7 +284,10 @@ export async function updateRestaurant(req, res, next) {
       case "basicInfo":
         restaurant.basicInfo = updateData;
         if (req.file) {
-          restaurant.basicInfo.coverImage = req.file.path; // If an image file is provided, update the cover image path
+          const cloudImageUrl = await cloudinary.uploader.upload(req.file.path, {
+            folder: "/delivEats-food-delivery-app",
+          });
+          restaurant.basicInfo.coverImage = cloudImageUrl.secure_url; // If an image file is provided, update the cover image path
         }
         break;
       case "contact":
@@ -325,10 +329,17 @@ export async function uploadImage(req, res, next) {
       return next(createHttpError(400, "No image file uploaded")); // Return a 400 error if no image file is provided
     }
 
-    const imageUrl = req.file.path; // Construct the image URL or path
+    const cloudImage = await cloudinary.uploader.upload(req.file.path, {
+      folder: "/delivEats-food-delivery-app",
+    });
+
+    // console.log(cloudImage);
+
+    const cloudImageUrl = cloudImage.secure_url;
+    // const imageUrl = req.file.path; // Construct the image URL or path
 
     // Send the image URL as the response
-    res.json({ imageUrl });
+    res.json({ cloudImageUrl });
   } catch (error) {
     console.log(error);
     return next(createHttpError(500, "Server error uploading image"));
