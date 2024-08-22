@@ -122,3 +122,21 @@
 .register-login-page .buttons-container .cancel-button:hover {
   background-color: var(--button-cancel-hover-color);
 }
+
+
+@media screen and (max-width: 768px) {
+  .form {
+    width: 100%;
+    
+    
+  }
+
+  .register-login-page {
+    /* height: 80vh; */
+    padding: 2rem;
+    /* margin-top: 5rem;
+    position: relative; */
+  }
+
+}
+
