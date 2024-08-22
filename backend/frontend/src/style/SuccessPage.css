@@ -91,3 +91,12 @@
 .back-to-main-button:active {
   background-color: var(--button-primary-active-color);
 }
+
+@media (max-width: 530px) {
+  .successPage .tracking-container, 
+  .successPage .success-card-container .succes-card,
+  .successPage .success-card-container .success-card-order-details{
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
