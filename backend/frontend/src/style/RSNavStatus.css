@@ -35,3 +35,25 @@
 .rs-nav-status .completed {
   color: var(--button-primary-color);
 }
+
+/* Tooltip styles */
+.rs-nav-status div::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-3);
+  color: black;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  font-size: 1.2rem;
+}
+
+.rs-nav-status div:hover::after {
+  opacity: 1;
+}
