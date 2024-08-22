@@ -59,8 +59,9 @@ function SearchResults() {
                     </div>
                     <div className="restaurant-info">
                       <div className="restaurant-card">
-                        <h1>{restaurant.basicInfo.venueName}</h1>
+                      <h1>{restaurant.basicInfo.venueName}</h1>
                         <div className="restaurant-details">
+                        
                           <p>
                             {restaurant.basicInfo.address.street}, {restaurant.basicInfo.address.postalCode},{" "}
                             {restaurant.basicInfo.address.city}
