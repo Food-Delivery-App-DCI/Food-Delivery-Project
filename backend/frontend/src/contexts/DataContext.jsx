@@ -143,23 +143,23 @@ function DataContextProvider({ children }) {
     setRestaurants(searchedRestaurantsResults);
   }
 
-  async function getRestaurantOrderHistory() {
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API}/restaurants/get-restaurant-order-history/${loggedInRestaurant._id}`
-      );
+  // async function getRestaurantOrderHistory() {
+  //   try {
+  //     const response = await fetch(
+  //       `${import.meta.env.VITE_API}/restaurants/get-restaurant-order-history/${loggedInRestaurant._id}`
+  //     );
 
-      if (response.ok) {
-        const updatedRestaurant = await response.json();
-        setLoggedInRestaurant(updatedRestaurant);
-      } else {
-        const { error } = await response.json();
-        throw new Error(error.message);
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
+  //     if (response.ok) {
+  //       const updatedRestaurant = await response.json();
+  //       setLoggedInRestaurant(updatedRestaurant);
+  //     } else {
+  //       const { error } = await response.json();
+  //       throw new Error(error.message);
+  //     }
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }
 
   async function handleHTTPRequestWithToken(url, settings) {
     const firstAccessResponse = await fetch(url, settings);
@@ -301,7 +301,7 @@ function DataContextProvider({ children }) {
         logoutRestaurant,
         getUserOrderHistory,
         handleHTTPRequestWithTokenRestaurant,
-        getRestaurantOrderHistory,
+        // getRestaurantOrderHistory,
         isToRegister,
         setIsToRegister,
         isToRegisterRestaurant,

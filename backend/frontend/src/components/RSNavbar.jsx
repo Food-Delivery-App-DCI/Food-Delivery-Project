@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { DataContext } from "../contexts/DataContext";
 // import RSRegisterAndLogin from "./RSRegisterAndLogin";
 import "../style/RSNavbar.css";
-
 import RSNavStatus from "./RSNavStatus";
+import RSLogo from "../../assets/DelivEats-for-restaurants.png";
 
 function RSNavbar() {
   const { loggedInRestaurant, logoutRestaurant, setToggleRegisterOrLoginRestaurant, setIsToRegisterRestaurant } =
@@ -34,7 +34,7 @@ function RSNavbar() {
   return (
     <>
       <nav className="rs-nav">
-        <div
+        {/* <div
           className="logo-nav"
           onClick={() => {
             loggedInRestaurant ? navigate("/rs-home/orders-active") : navigate("/rs-register");
@@ -44,7 +44,15 @@ function RSNavbar() {
           <div>
             <small>for Restaurants</small>
           </div>
-        </div>
+        </div> */}
+        <img
+          className="rs-logo"
+          src={RSLogo}
+          alt="logo"
+          onClick={() => {
+            loggedInRestaurant ? navigate("/rs-home/orders-active") : navigate("/rs-register");
+          }}
+        />
 
         {/* <RSNavStatus /> */}
 

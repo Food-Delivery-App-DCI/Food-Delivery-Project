@@ -3,11 +3,31 @@ import { DataContext } from "../contexts/DataContext";
 import "../style/RSOrdersHistory.css";
 
 function RSOrdersHistory() {
-  const { loggedInRestaurant, getRestaurantOrderHistory, setLoggedInRestaurant } = useContext(DataContext);
+  const { loggedInRestaurant, /* getRestaurantOrderHistory */ setLoggedInRestaurant } = useContext(DataContext);
 
   useEffect(() => {
-    getRestaurantOrderHistory();
-  }, [loggedInRestaurant]);
+    async function getRestaurantOrderHistory() {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API}/restaurants/get-restaurant-order-history/${loggedInRestaurant._id}`
+        );
+
+        if (response.ok) {
+          const updatedRestaurant = await response.json();
+          setLoggedInRestaurant(updatedRestaurant);
+        } else {
+          const { error } = await response.json();
+          throw new Error(error.message);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    if (loggedInRestaurant && !loggedInRestaurant.orderHistory) {
+      getRestaurantOrderHistory();
+    }
+  }, [loggedInRestaurant, setLoggedInRestaurant]);
 
   async function handleDeleteOrder(orderId) {
     if (confirm("Are you sure you want to delete this order?")) {
@@ -124,16 +144,16 @@ function RSOrdersHistory() {
                           <div key={item._id} className="item">
                             <p>{item.name}</p>
                             <div className="calculations">
-                              <p>€{item.price}</p>
+                              <p>€{item.price.toFixed(2)}</p>
                               <p>x{item.quantity}</p>
-                              <p>€{item.price * item.quantity}</p>
+                              <p>€{(item.price * item.quantity).toFixed(2)}</p>
                             </div>
                           </div>
                         );
                       })}
                       <div className="total-sum">
                         <p>Total Sum</p>
-                        <p>€{eachOrder.order?.totalSum}</p>
+                        <p>€{eachOrder.order?.totalSum.toFixed(2)}</p>
                       </div>
                     </div>
                     <p>

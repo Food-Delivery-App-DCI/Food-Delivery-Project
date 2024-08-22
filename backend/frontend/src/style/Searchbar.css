@@ -44,6 +44,10 @@
   height: 70vh;
 }
 
+.search-container .black {
+  text-align: center;
+}
+
 .search-form {
   width: 80%;
   display: flex;
@@ -124,6 +128,34 @@
   display: none;
 }
 
-/* .results-searchbar .cities-keywords-greet .black {
-  color: var(--color-1);
-} */
+/* 
+@media (min-width: 300px) {
+  .container {
+  width: 80%
+  }
+}
+
+@media (min-width: 800px) {
+  .container {
+  width: 100%
+  }
+}
+*/
+
+@media (max-width: 1200px) {
+  .search-container {
+    /* background-image: url("https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); */
+    padding: 20rem 2rem;
+    /* background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  height: 70vh; */
+  }
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    padding: 20rem 1rem;
+  }
+}
