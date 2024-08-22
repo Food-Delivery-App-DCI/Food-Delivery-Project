@@ -37,19 +37,25 @@ function RSRegisterPage() {
 
           <section className="rs-section-partner">
             <h2>Why partner with us? </h2>
-            <div>
-              <div>
-                <img src={growth} alt="" width={400} />
+            <div className="rs-section-container">
+              <div className="rs-section-card">
+                <div className="image-container">
+                  <img src={growth} alt="" />
+                </div>
                 <h3>Grow with DelivEats</h3>
                 <p>Unlock new growth opportunities with DelivEats – where your restaurant's success is our mission.</p>
               </div>
-              <div>
-                <img src={moreOrders} alt="" width={400} />
+              <div className="rs-section-card">
+                <div className="image-container">
+                  <img src={moreOrders} alt="" />
+                </div>
                 <h3>Get more orders</h3>
                 <p>More visibility means more orders – partner with DelivEats today and keep your kitchen busy.</p>
               </div>
-              <div>
-                <img src={delivery} alt="" width={400} />
+              <div className="rs-section-card">
+                <div className="image-container">
+                  <img src={delivery} alt="" />
+                </div>
                 <h3>Deliver to more customers</h3>
                 <p>
                   Reach customers far and wide with DelivEats – delivering your delicious meals to every corner of the

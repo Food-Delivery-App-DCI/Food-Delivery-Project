@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/Frame 168.png";
 import "../style/Navbar.css";
+import { FaHamburger } from "react-icons/fa";
 
 function Navbar() {
   const {
@@ -124,6 +125,7 @@ function Navbar() {
             <span className="item-count">{totalItemCount}</span>
           </div>
         </div>
+        <FaHamburger size="3rem" style={{ color: "#266241" }} />
       </nav>
 
       <CustomModal isOpen={isBasketModalOpen} onClose={closeBasketModal}>

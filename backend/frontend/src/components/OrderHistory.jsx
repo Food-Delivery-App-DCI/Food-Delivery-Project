@@ -110,16 +110,16 @@ function OrderHistory() {
                             <div key={item._id} className="item">
                               <p>{item.name}</p>
                               <div className="calculations">
-                                <p>€{item.price}</p>
+                                <p>€{item.price.toFixed(2)}</p>
                                 <p>x{item.quantity}</p>
-                                <p>€{item.price * item.quantity}</p>
+                                <p>€{(item.price * item.quantity).toFixed(2)}</p>
                               </div>
                             </div>
                           );
                         })}
                         <div className="total-sum">
                           <p>Total Sum</p>
-                          <p>€{order?.totalSum}</p>
+                          <p>€{order?.totalSum.toFixed(2)}</p>
                         </div>
                       </div>
                       <div>
@@ -131,7 +131,7 @@ function OrderHistory() {
                           </div>
                           <div className="charged-amount">
                             <p>Charged Amount</p>
-                            <p>€{order?.paymentDetails.chargedAmount}</p>
+                            <p>€{order?.paymentDetails.chargedAmount.toFixed(2)}</p>
                           </div>
                         </div>
                         <h3>Additional Order Information</h3>

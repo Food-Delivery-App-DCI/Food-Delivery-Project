@@ -37,10 +37,12 @@
   }
 
   .restaurant-image {
+    width: 40rem;
     height: 22rem;
   }
 
   .restaurant-image img {
+    width: 100%;
     height: 100%;
     object-fit: cover;
     border-bottom: 1px solid #eee;
@@ -102,5 +104,12 @@
     margin: 0;
     border-radius: 0.8rem;
     text-align: center;
+  }
+}
+
+@media (max-width: 1050px) {
+  .cards-results-container .restaurant-info {
+    /* display: flex; */
+    flex-direction: column;
   }
 }

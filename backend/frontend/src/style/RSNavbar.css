@@ -18,6 +18,11 @@
   cursor: pointer;
 }
 
+.rs-nav .rs-logo {
+  width: 23rem;
+  cursor: pointer;
+}
+
 .rs-nav .buttons-nav {
   display: flex;
 }

@@ -21,7 +21,7 @@ function RSOrdersActive() {
   const {
     loggedInRestaurant,
     setLoggedInRestaurant,
-    getRestaurantOrderHistory,
+    // getRestaurantOrderHistory,
     // orderCounts,
     updateOrderCounts,
   } = useContext(DataContext);
@@ -44,6 +44,24 @@ function RSOrdersActive() {
       hour12: true,
     });
   };
+
+  async function getRestaurantOrderHistory() {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API}/restaurants/get-restaurant-order-history/${loggedInRestaurant._id}`
+      );
+
+      if (response.ok) {
+        const updatedRestaurant = await response.json();
+        setLoggedInRestaurant(updatedRestaurant);
+      } else {
+        const { error } = await response.json();
+        throw new Error(error.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   useEffect(() => {
     if (loggedInRestaurant?._id) {

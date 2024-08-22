@@ -142,13 +142,13 @@ function RestaurantMenu() {
                                 <p className="offer-description">{item.description}</p>
                               </div>
                               <div>
-                                <p className="offer-price">€{item.price}</p>
+                                <p className="offer-price">€{item.price.toFixed(2)}</p>
                               </div>
                             </div>
                           ))}
                         </div>
                         <div className="offer-total-price">
-                          <p>Offer: €{totalOfferPrice}</p>
+                          <p>Offer: €{totalOfferPrice.toFixed(2)}</p>
                           <button className="offer-add-button" onClick={() => addItemToBasket(offerCategoryMenu)}>
                             Add
                           </button>
@@ -179,7 +179,7 @@ function RestaurantMenu() {
                           <div>
                             <p className="item-name">{food.name}</p>
                             <p className="item-description">{food.description}</p>
-                            <p className="item-price">€{food.price}</p>
+                            <p className="item-price">€{food.price.toFixed(2)}</p>
                           </div>
                           <button className="add-button" onClick={() => addItemToBasket(food)}>
                             Add
