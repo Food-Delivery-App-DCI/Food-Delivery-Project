@@ -5,9 +5,11 @@ import { DataContext } from "../contexts/DataContext";
 import { BounceLoader } from "react-spinners";
 
 import "../style/Searchbar.css";
+import CarLoader from "./CarLoader";
 
 function Searchbar({ className }) {
-  const { setRestaurants, loading, setLoading, setSearchedRestaurantsResults } = useContext(DataContext);
+  const { setRestaurants, loading, setLoading, setSearchedRestaurantsResults } =
+    useContext(DataContext);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
@@ -27,13 +29,19 @@ function Searchbar({ className }) {
         credentials: "include",
       };
 
-      const response = await fetch(`${import.meta.env.VITE_API}/search/restaurants`, settings);
+      const response = await fetch(
+        `${import.meta.env.VITE_API}/search/restaurants`,
+        settings
+      );
 
       if (response.ok) {
         const data = await response.json();
         setRestaurants(data);
         setSearchedRestaurantsResults(data);
-        localStorage.setItem("searchedRestaurantsResults", JSON.stringify(data));
+        localStorage.setItem(
+          "searchedRestaurantsResults",
+          JSON.stringify(data)
+        );
         navigate("/search-results");
       } else {
         const { error } = await response.json();
@@ -53,7 +61,7 @@ function Searchbar({ className }) {
     <>
       {loading ? (
         <div className="loading-spinner">
-          <BounceLoader color={"#165e4b"} loading={loading} size={40} />
+          <CarLoader />
         </div>
       ) : (
         <div className={`${className}`}>
@@ -71,13 +79,16 @@ function Searchbar({ className }) {
 
             <div className="cities-keywords-greet">
               <p className="black">
-                We are proud to offer our services in <b>Berlin</b>, <b>Düsseldorf</b>, <b>Hannover</b> and{" "}
-                <b>Leipzig</b>.
+                We are proud to offer our services in <b>Berlin</b>,{" "}
+                <b>Düsseldorf</b>, <b>Hannover</b> and <b>Leipzig</b>.
               </p>
               <p className="black">
                 Search and find your next meal among{" "}
-                <b>Albanian, Brazilian, Croatian, French, Ghanaian, Italian, Turkish</b> and <b>Ukrainian</b>{" "}
-                restaurants.
+                <b>
+                  Albanian, Brazilian, Croatian, French, Ghanaian, Italian,
+                  Turkish
+                </b>{" "}
+                and <b>Ukrainian</b> restaurants.
               </p>
             </div>
           </div>
