@@ -1,6 +1,10 @@
 import "./App.css";
 import Home from "./pages/Home";
-import { Routes, Route /* useLocation, useNavigate */, useLocation } from /* Navigate */ "react-router-dom";
+import {
+  Routes,
+  Route /* useLocation, useNavigate */,
+  useLocation,
+} from /* Navigate */ "react-router-dom";
 import SearchResults from "./pages/SearchResults";
 import RestaurantMenu from "./pages/RestaurantMenu";
 import SuccessPage from "./components/SuccessPage";
@@ -14,7 +18,7 @@ import { useContext, useEffect, useState } from "react";
 import { DataContext } from "./contexts/DataContext";
 import { BounceLoader } from "react-spinners";
 import ProtectedRouteLoggedInUser from "./components/ProtectedRouteLoggedInUser";
-import RSProtectedRouteLoggedInRestaurant from "./components/RSProtectedRouteLoggedInRestaurant";
+import CarLoader from "./components/CarLoader";
 
 // RESTAURANT SIDE
 import RSRegisterPage from "./pages/RSRegisterPage";
@@ -23,6 +27,7 @@ import RSOrdersActive from "./components/RSOrdersActive";
 import RSOrdersHistory from "./components/RSOrdersHistory";
 import RSMenu from "./components/RSMenu";
 import RSProfile from "./components/RSProfile";
+import RSProtectedRouteLoggedInRestaurant from "./components/RSProtectedRouteLoggedInRestaurant";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
@@ -50,9 +55,12 @@ function App() {
   useEffect(() => {
     async function checkAuthentication() {
       try {
-        const response = await handleHTTPRequestWithToken(`${import.meta.env.VITE_API}/users/check-auth`, {
-          credentials: "include",
-        });
+        const response = await handleHTTPRequestWithToken(
+          `${import.meta.env.VITE_API}/users/check-auth`,
+          {
+            credentials: "include",
+          }
+        );
 
         if (response.ok) {
           const user = await response.json();
@@ -119,7 +127,8 @@ function App() {
   if (isInitialLoad) {
     return (
       <div className="loading-spinner">
-        <BounceLoader color={"#165e4b"} loading={isInitialLoad} size={40} />
+        {/* <BounceLoader color={"#165e4b"} loading={isInitialLoad} size={40} /> */}
+        <CarLoader />
       </div>
     ); // Show the spinner while checking authentication
   }

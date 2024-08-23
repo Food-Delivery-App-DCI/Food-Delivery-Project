@@ -2,9 +2,8 @@
 import "../style/Section.css";
 import hamburguer from "../../assets/hamburguer.webp";
 import indianFood from "../../assets/indian.webp";
-// import pizza1 from "../../assets/pizza.webp";
 import pizza2 from "../../assets/pizza2.webp";
-// import pizza3 from "../../assets/pizza3.webp";
+import deliveryMan from "../../assets/deliveryman.png";
 
 function Section() {
   return (
@@ -47,8 +46,8 @@ function Section() {
             DelivEats difference today!
           </p>
           <img
-            src="https://img.freepik.com/free-photo/busy-deliveryman-driving-yellow-scooter-while-holding-pizza-boxes_273609-31761.jpg?t=st=1724244362~exp=1724247962~hmac=75f4edefe04156b2b5eec1cba789b4dc1174eb91cb98b9cec4f7803fd77d40af&w=740"
-            alt="Customer Satisfaction"
+            src={deliveryMan}
+            alt="Delivery Man Holding Pizzas Boxes"
             className="footer-image"
           />
         </div>

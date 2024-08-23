@@ -1,0 +1,129 @@
+/* CarLoader.css */
+
+.car-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.car {
+  position: absolute;
+  height: auto;
+  animation: drive 5s infinite linear;
+  z-index: 2;
+}
+
+/* .dot {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: rgb(38, 98, 65);
+  border-radius: 50%;
+  animation: dotTrail 0.6s infinite linear;
+  z-index: 1;
+} */
+
+/* Small devices (up to 599px) */
+@media only screen and (max-width: 599px) {
+  .car {
+    /* Center vertically */
+    top: calc(50% - 75px); 
+    width: 80px; /* Car size */
+  }
+
+  /* Adjust the top position based on the car's size */
+  /* .dot {
+    top: calc(
+      50% - 35px + 15px
+    );
+  } */
+}
+
+/* Medium devices (600px to 899px) */
+@media only screen and (min-width: 600px) and (max-width: 899px) {
+  .car {
+    top: calc(50% - 90px); /* Center vertically */
+    width: 100px; /* Car size */
+  }
+
+  /* Adjust the top position based on the car's size */
+  /* .dot {
+    top: calc(
+      50% - 45px + 15px
+    ); 
+  } */
+}
+
+/* Large devices (900px and above) */
+@media only screen and (min-width: 900px) {
+  .car {
+    top: calc(50% - 100px); /* Center vertically */
+    width: 100px; /* Car size */
+  }
+
+  /* Adjust the top position based on the car's size */
+  /* .dot {
+    top: calc(
+      50% - 50px + 15px
+    ); 
+  } */
+}
+
+/* Dot positions */
+/* .dot-1 {
+  left: calc(50% - 30px);
+  animation-delay: 0s;
+}
+
+.dot-2 {
+  left: calc(50% - 34px);
+  animation-delay: 0.2s;
+}
+
+.dot-3 {
+  left: calc(50% - 38px);
+  animation-delay: 0.4s;
+} */
+
+/* Car driving across the screen */
+@keyframes drive {
+  from {
+    left: 50%;
+    /* left: -200px */
+  }
+  to {
+    /* left: 100%; */
+    /* Drive to the right side of the screen */
+    left: calc(100% + 400px);
+  }
+}
+
+/* Dot trail animation */
+/* @keyframes dotTrail {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+    left: 50%;
+  }
+  30% {
+    opacity: 0.4;
+    transform: translateX(-30px);
+  }
+  40% {
+    opacity: 0.3;
+    transform: translateX(-40px);
+  }
+  50% {
+    opacity: 0.2;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-150px); 
+    left: calc(100% + 400px);
+  }
+} */
