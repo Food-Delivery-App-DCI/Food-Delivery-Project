@@ -284,9 +284,12 @@ export async function updateRestaurant(req, res, next) {
       case "basicInfo":
         restaurant.basicInfo = updateData;
         if (req.file) {
+          console.log(req.file);
           const cloudImageUrl = await cloudinary.uploader.upload(req.file.path, {
             folder: "/delivEats-food-delivery-app",
           });
+
+          // console.log(cloudImageUrl);
           restaurant.basicInfo.coverImage = cloudImageUrl.secure_url; // If an image file is provided, update the cover image path
         }
         break;

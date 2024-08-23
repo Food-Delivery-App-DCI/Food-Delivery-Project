@@ -76,6 +76,8 @@ function RSProfile() {
 
     const formData = new FormData();
 
+    console.log(image);
+
     if (section === "basicInfo" && image) {
       formData.append("image", image);
     }

@@ -20,7 +20,7 @@ function RestaurantMenu() {
     toggleRegisterOrLoginUser,
     setLoggedInUser,
   } = useContext(DataContext);
-  const { addItemToBasket } = useContext(BasketContext);
+  const { addItemToBasket, setBasket } = useContext(BasketContext);
   const [isFavorited, setIsFavorited] = useState(loggedInUser?.favoriteRestaurants?.includes(id));
 
   useEffect(() => {
@@ -42,6 +42,13 @@ function RestaurantMenu() {
       }
     }
   }, [id, restaurant, restaurants, getSearchedRestaurants, setRestaurant]);
+
+  // Detect when the component unmounts (e.g., when user navigates away)
+  useEffect(() => {
+    return () => {
+      setBasket([]);
+    };
+  }, [setBasket]);
 
   async function handleSetFavoriteRestaurant(id) {
     try {
