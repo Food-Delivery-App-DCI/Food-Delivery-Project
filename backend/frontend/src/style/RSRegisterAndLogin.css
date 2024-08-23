@@ -139,3 +139,8 @@
   background-color: var(--button-secondary-active-color);
 }
 
+@media screen and (max-width: 768px) {
+  .rs-register-login-page .rs-form {
+    width: 90%;
+  }
+}

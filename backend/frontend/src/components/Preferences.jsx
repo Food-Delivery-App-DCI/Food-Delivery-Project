@@ -6,7 +6,7 @@ import { BasketContext } from "../contexts/BasketContext";
 
 function Preferences() {
   const { userOrderHistory, loggedInUser, setRestaurant, getUserOrderHistory } = useContext(DataContext);
-  const { /* isBasketModalOpen, */ setIsBasketModalOpen, setBasket /* setIsOrderAgain */ } = useContext(BasketContext);
+  const { setIsBasketModalOpen, setBasket } = useContext(BasketContext);
   const [favorites, setFavorites] = useState([]);
   const navigate = useNavigate();
 
@@ -81,7 +81,6 @@ function Preferences() {
 
   return (
     <>
-      {/* <p>Preferences</p> */}
       <div className="favorites-container">
         <h3>Your favorites</h3>
         {favorites.length === 0 ? (
@@ -127,6 +126,7 @@ function Preferences() {
           </>
         )}
       </div>
+
       <div className="order-again-container">
         <h3>Order again</h3>
         {userOrderHistory?.length === 0 ? (

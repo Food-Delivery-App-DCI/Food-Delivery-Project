@@ -94,7 +94,7 @@
 }
 
 /* SEARCH BAR IN THE SEARCH-RESULTS PAGE */
-/* results-searchbar = that is the className pass in the function */
+/* results-searchbar = that is the className passed in the function */
 
 .results-searchbar {
   background-color: transparent;
@@ -128,29 +128,15 @@
   display: none;
 }
 
-/* 
-@media (min-width: 300px) {
-  .container {
-  width: 80%
-  }
-}
-
-@media (min-width: 800px) {
-  .container {
-  width: 100%
-  }
-}
-*/
-
 @media (max-width: 1200px) {
   .search-container {
-    /* background-image: url("https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); */
     padding: 20rem 2rem;
-    /* background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  height: 70vh; */
+  }
+}
+
+@media (max-width: 1050px) {
+  .results-searchbar .search-form {
+    width: 80%;
   }
 }
 

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../contexts/DataContext";
 import { BasketContext } from "../contexts/BasketContext";
@@ -22,6 +22,7 @@ function Navbar() {
     setCurrentStage,
   } = useContext(DataContext);
   const { totalItemCount, isBasketModalOpen, setIsBasketModalOpen, setBasket } = useContext(BasketContext);
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
@@ -69,6 +70,10 @@ function Navbar() {
 
     // Navigate back to the main page
     navigate("/");
+  };
+
+  const handleOpen = () => {
+    setIsHamburgerOpen(!isHamburgerOpen);
   };
 
   return (
@@ -125,7 +130,64 @@ function Navbar() {
             <span className="item-count">{totalItemCount}</span>
           </div>
         </div>
-        <FaHamburger size="3rem" style={{ color: "#266241" }} />
+        <div className="container">
+          <FaHamburger size="2rem" onClick={handleOpen} className="hamburger" />
+          <div className="mobile-cart-logo" onClick={openBasketModal}>
+            <FontAwesomeIcon icon={faCartShopping} style={{ color: "#266241" }} />
+            <span className="item-count">{totalItemCount}</span>
+          </div>
+        </div>
+        {isHamburgerOpen && (
+          <>
+            <div className="mobile-basket-and-register-container">
+              {loggedInUser ? (
+                <div className="user-info" ref={dropdownRef}>
+                  {/* <span className="mobile-welcome-message" onClick={toggleDropdown}>
+                    Welcome, {loggedInUser.firstName}! {""}
+                    <FontAwesomeIcon icon={faCaretDown} style={{ color: "#296341" }} />
+                  </span> */}
+
+                  {/* {isDropdownOpen && ( */}
+                  <div className="mobile-dropdown-menu">
+                    <Link to="/profile/preferences" className="mobile-dropdown-item" onClick={handleOpen}>
+                      Profile
+                    </Link>
+
+                    <button className="logout-button" onClick={logout}>
+                      Logout
+                    </button>
+                  </div>
+                  {/* )} */}
+                </div>
+              ) : (
+                <>
+                  <div className="button-container">
+                    <button
+                      className="login-button"
+                      onClick={() => {
+                        setIsToRegister(false);
+                        setToggleRegisterOrLoginUser(true);
+                        setIsHamburgerOpen(!isHamburgerOpen);
+                      }}
+                    >
+                      Login
+                    </button>
+                    <button
+                      className="register-button"
+                      onClick={() => {
+                        setIsToRegister(true);
+                        setToggleRegisterOrLoginUser(true);
+                        setIsHamburgerOpen(!isHamburgerOpen);
+                      }}
+                    >
+                      Register
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          </>
+        )}
       </nav>
 
       <CustomModal isOpen={isBasketModalOpen} onClose={closeBasketModal}>

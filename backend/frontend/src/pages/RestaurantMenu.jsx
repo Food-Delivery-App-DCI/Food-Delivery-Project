@@ -20,7 +20,7 @@ function RestaurantMenu() {
     toggleRegisterOrLoginUser,
     setLoggedInUser,
   } = useContext(DataContext);
-  const { addItemToBasket } = useContext(BasketContext);
+  const { addItemToBasket, setBasket } = useContext(BasketContext);
   const [isFavorited, setIsFavorited] = useState(loggedInUser?.favoriteRestaurants?.includes(id));
 
   useEffect(() => {
@@ -42,6 +42,13 @@ function RestaurantMenu() {
       }
     }
   }, [id, restaurant, restaurants, getSearchedRestaurants, setRestaurant]);
+
+  // Detect when the component unmounts (e.g., when user navigates away)
+  useEffect(() => {
+    return () => {
+      setBasket([]);
+    };
+  }, [setBasket]);
 
   async function handleSetFavoriteRestaurant(id) {
     try {
@@ -166,15 +173,7 @@ function RestaurantMenu() {
                       <h2>{item.category}</h2>
                       {item.items.map((food) => (
                         <div className="item-details" key={food._id}>
-                          <img
-                            src={
-                              food.image.startsWith("uploads")
-                                ? `${import.meta.env.VITE_API}/${food.image}`
-                                : food.image
-                            }
-                            alt=""
-                            width={100}
-                          />
+                          <img src={food.image} alt="" width={100} />
 
                           <div>
                             <p className="item-name">{food.name}</p>

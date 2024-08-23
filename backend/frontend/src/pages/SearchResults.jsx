@@ -48,19 +48,16 @@ function SearchResults() {
                     {" "}
                     <div className="restaurant-image">
                       <img
-                        src={
-                          restaurant.basicInfo.coverImage.startsWith("uploads")
-                            ? `${import.meta.env.VITE_API}/${restaurant.basicInfo.coverImage}`
-                            : restaurant.basicInfo.coverImage
-                        }
+                        src={restaurant.basicInfo.coverImage}
                         alt=""
                         // width={100}
                       />
                     </div>
                     <div className="restaurant-info">
                       <div className="restaurant-card">
-                        <h1>{restaurant.basicInfo.venueName}</h1>
+                      <h1>{restaurant.basicInfo.venueName}</h1>
                         <div className="restaurant-details">
+                        
                           <p>
                             {restaurant.basicInfo.address.street}, {restaurant.basicInfo.address.postalCode},{" "}
                             {restaurant.basicInfo.address.city}
