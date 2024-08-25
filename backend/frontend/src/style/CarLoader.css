@@ -92,7 +92,7 @@
 /* Car driving across the screen */
 @keyframes drive {
   from {
-    left: 50%;
+    left: 20%;
     /* left: -200px */
   }
   to {
