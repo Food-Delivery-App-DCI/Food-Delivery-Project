@@ -144,3 +144,22 @@
 .order-history-container .delete-order-button:active {
   background-color: var(--button-delete-active-color);
 }
+
+@media (max-width: 480px) {
+  .order-history-container .orders-container {
+    /* display: grid; */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* gap: 4rem;
+    padding-top: 2rem; */
+  }
+
+  .order-history-container .order {
+    padding: 1rem;
+  }
+
+  .order-history-container .items-container p,
+  .order-history-container .payment-details p,
+  .order-history-container .additional-info p {
+    font-size: 1.4rem;
+  }
+}

@@ -1,25 +1,39 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet /* useLocation */ } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../style/Profile.css";
-import { useEffect, useState } from "react";
-import { BounceLoader } from "react-spinners";
+// import { useEffect, /* useLayoutEffect */ useState } from "react";
+// import { BounceLoader } from "react-spinners";
+// import CarLoader from "../components/CarLoader";
 
 function Profile() {
-  const [loading, setLoading] = useState(true);
-  const location = useLocation();
+  // const [loading, setLoading] = useState(true);
+  // const location = useLocation();
 
-  useEffect(() => {
-    // Set loading to true when the location (route) changes
-    setLoading(true);
+  // useEffect(() => {
+  //   // Set loading to true when the location (route) changes
+  //   setLoading(true);
 
-    // Simulate data loading with a timeout or trigger actual data fetching here
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 500); // Adjust this duration based on actual data loading time
+  //   // Simulate data loading with a timeout or trigger actual data fetching here
+  //   const timeout = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 500); // Adjust this duration based on actual data loading time
 
-    return () => clearTimeout(timeout);
-  }, [location]);
+  //   return () => clearTimeout(timeout);
+  // }, [location]);
+
+  // This prevents the browser screen from flashing before showing the component in the Outlet.
+  // useLayoutEffect(() => {
+  //   // Set loading to true when the location (route) changes
+  //   setLoading(true);
+
+  //   // Simulate data loading with a timeout or trigger actual data fetching here
+  //   const timeout = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 500); // Adjust this duration based on actual data loading time
+
+  //   return () => clearTimeout(timeout);
+  // }, [location]);
 
   return (
     <>
@@ -42,13 +56,7 @@ function Profile() {
           </ul>
         </div>
         <div className="content-profile">
-          {loading ? (
-            <div className="loading-spinner">
-              <BounceLoader color={"#165e4b"} loading={loading} size={40} />
-            </div>
-          ) : (
-            <Outlet />
-          )}
+          <Outlet />
         </div>
       </div>
       <Footer />

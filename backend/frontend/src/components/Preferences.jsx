@@ -3,11 +3,13 @@ import { DataContext } from "../contexts/DataContext";
 import "../style/Preferences.css";
 import { useNavigate } from "react-router-dom";
 import { BasketContext } from "../contexts/BasketContext";
+import CarLoader from "./CarLoader";
 
 function Preferences() {
   const { userOrderHistory, loggedInUser, setRestaurant, getUserOrderHistory } = useContext(DataContext);
   const { setIsBasketModalOpen, setBasket } = useContext(BasketContext);
   const [favorites, setFavorites] = useState([]);
+  const [loadingFavorites, setLoadingFavorites] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,6 +32,8 @@ function Preferences() {
         }
       } catch (error) {
         console.log(error.message);
+      } finally {
+        setLoadingFavorites(false); // Set loading to false after fetching
       }
     }
 
@@ -77,6 +81,14 @@ function Preferences() {
     }
   }
 
+  if (loadingFavorites) {
+    return (
+      <div className="loading-spinner">
+        {/* <BounceLoader color={"#165e4b"} loading={isInitialLoad} size={40} /> */}
+        <CarLoader />
+      </div>
+    ); // Show the spinner while checking authentication
+  }
   // console.log(userOrderHistory);
 
   return (

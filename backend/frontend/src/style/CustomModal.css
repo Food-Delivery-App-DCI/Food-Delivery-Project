@@ -9,15 +9,12 @@
   justify-content: center;
   align-items: center;
   z-index: 10;
-  
 }
 
 .modal-content {
-
   background: var(--background-color);
   padding: 2rem;
   border-radius: 0.5rem;
-
   position: relative;
   color: black;
 }
@@ -36,7 +33,6 @@
   /* background-color: transparent; */
   background-color: var(--button-delete-color);
   transition: background-color 0.3s ease;
-  
 }
 
 .modal-close-button:hover {
@@ -47,3 +43,18 @@
   background-color: var(--button-delete-active-color);
 }
 
+@media (max-width: 420px) {
+  .modal-content {
+    background: var(--background-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    position: relative;
+    color: black;
+    max-width: 95%;
+    /* overflow-y: auto; */
+  }
+
+  .modal-content .basket {
+    padding: 1rem;
+  }
+}

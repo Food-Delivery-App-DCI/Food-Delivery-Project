@@ -71,3 +71,20 @@
 .navbar-profile ul li button:hover {
   border-bottom: 2px solid #000;
 }
+
+@media (max-width: 680px) {
+  .navbar-profile ul {
+    flex-direction: column;
+  }
+
+  .navbar-profile ul li a:hover {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .container-profile {
+    margin: 10rem 2rem;
+    min-height: 100vh;
+  }
+}

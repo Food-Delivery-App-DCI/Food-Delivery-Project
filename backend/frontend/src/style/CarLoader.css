@@ -13,7 +13,7 @@
 .car {
   position: absolute;
   height: auto;
-  animation: drive 5s infinite linear;
+  animation: drive 3s infinite linear;
   z-index: 2;
 }
 
@@ -31,7 +31,7 @@
 @media only screen and (max-width: 599px) {
   .car {
     /* Center vertically */
-    top: calc(50% - 75px); 
+    top: calc(50% - 75px);
     width: 80px; /* Car size */
   }
 

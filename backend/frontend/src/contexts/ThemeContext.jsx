@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // src/contexts/ThemeContext.js
 import { createContext, useState, useEffect } from "react";
 
@@ -15,9 +16,5 @@ export const ThemeProvider = ({ children }) => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };

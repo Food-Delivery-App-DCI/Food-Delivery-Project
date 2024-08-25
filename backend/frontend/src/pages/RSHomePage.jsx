@@ -7,8 +7,8 @@ function RSHomePage() {
   return (
     <>
       <RSNavbar />
-      <div className="container-profile">
-        <div className="navbar-profile">
+      <div className="rs-container-profile">
+        <div className="restaurant-nav-profile">
           <ul>
             <li>
               <NavLink to="orders-active">Active Orders</NavLink>
