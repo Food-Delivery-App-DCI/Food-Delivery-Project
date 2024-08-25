@@ -403,9 +403,9 @@
     display: none;
   }
 
-  .main-content {
+  /* .main-content {
     overflow-y: hidden;
-  }
+  } */
 
   .restaurant-menu-page-container .menu-card {
     position: relative;
