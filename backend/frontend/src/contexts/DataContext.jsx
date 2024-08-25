@@ -72,11 +72,11 @@ function DataContextProvider({ children }) {
     }
   }
 
-  useEffect(() => {
-    if (loggedInUser) {
-      getUserOrderHistory();
-    }
-  }, [loggedInUser, setUserOrderHistory]);
+  // useEffect(() => {
+  //   if (loggedInUser) {
+  //     getUserOrderHistory();
+  //   }
+  // }, [loggedInUser, setUserOrderHistory]);
 
   async function logout() {
     try {

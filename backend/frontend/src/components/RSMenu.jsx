@@ -6,9 +6,10 @@ import { FaSquarePlus } from "react-icons/fa6";
 import { FaSquareMinus } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
 import RSOffers from "./RSOffers";
+import CarLoader from "./CarLoader";
 
 function RSMenu() {
-  const { loggedInRestaurant, setLoggedInRestaurant } = useContext(DataContext);
+  const { loggedInRestaurant, setLoggedInRestaurant, loading, setLoading } = useContext(DataContext);
   const [editingCategory, setEditingCategory] = useState(null);
   const [newMenuData, setNewMenuData] = useState({});
   const [newCategory, setNewCategory] = useState("");
@@ -110,6 +111,9 @@ function RSMenu() {
   };
 
   const handleSaveClick = async () => {
+    // Start loading
+    setLoading(true);
+
     const updatedMenuData = { ...newMenuData, category: newCategoryName };
 
     const updatedItems = await Promise.all(
@@ -120,14 +124,25 @@ function RSMenu() {
           const formData = new FormData();
           formData.append("image", item.newImage);
 
-          const imageUploadResponse = await fetch(`${import.meta.env.VITE_API}/restaurants/upload-image`, {
-            method: "POST",
-            body: formData,
-          });
+          try {
+            const imageUploadResponse = await fetch(`${import.meta.env.VITE_API}/restaurants/upload-image`, {
+              method: "POST",
+              body: formData,
+            });
 
-          if (imageUploadResponse.ok) {
-            const imageData = await imageUploadResponse.json();
-            imageURL = imageData.cloudImageUrl;
+            if (imageUploadResponse.ok) {
+              const imageData = await imageUploadResponse.json();
+              imageURL = imageData.cloudImageUrl;
+            } else {
+              const { error } = await imageUploadResponse.json();
+              throw new Error(error.message);
+            }
+          } catch (error) {
+            if (error.status === 500) {
+              console.log(error.message);
+            } else {
+              alert("File size is too large. File size should be less than 2MB");
+            }
           }
         }
 
@@ -169,6 +184,9 @@ function RSMenu() {
       }
     } catch (error) {
       console.log(error.message);
+    } finally {
+      // Stop loading after the request is complete
+      setLoading(false);
     }
   };
 
@@ -266,13 +284,24 @@ function RSMenu() {
       const formData = new FormData();
       formData.append("image", image);
 
-      const imageUploadResponse = await fetch(`${import.meta.env.VITE_API}/restaurants/upload-image`, {
-        method: "POST",
-        body: formData,
-      });
-      if (imageUploadResponse.ok) {
-        const imageData = await imageUploadResponse.json();
-        imageURL = imageData.cloudImageUrl;
+      try {
+        const imageUploadResponse = await fetch(`${import.meta.env.VITE_API}/restaurants/upload-image`, {
+          method: "POST",
+          body: formData,
+        });
+        if (imageUploadResponse.ok) {
+          const imageData = await imageUploadResponse.json();
+          imageURL = imageData.cloudImageUrl;
+        } else {
+          const { error } = await imageUploadResponse.json();
+          throw new Error(error.message);
+        }
+      } catch (error) {
+        if (error.status === 500) {
+          console.log(error.message);
+        } else {
+          alert("File size is too large. File size should be less than 2MB");
+        }
       }
     }
 
@@ -340,6 +369,14 @@ function RSMenu() {
       setNewMenuData({ ...newMenuData, items: updatedItems });
     }
   };
+
+  if (loading) {
+    return (
+      <div className="loading-spinner">
+        <CarLoader />
+      </div>
+    ); // Show the spinner while checking authentication
+  }
 
   return (
     <div className="rs-menu-container">
@@ -500,14 +537,17 @@ function RSMenu() {
                           onChange={(e) => handleInputChange(index, "price", e.target.value)}
                         />
                       </label>
-                      <label>
+                      <label className="image-label">
                         Image:
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={(e) => handleImageChange(e, index)}
-                          ref={editedImageInput}
-                        />
+                        <div>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => handleImageChange(e, index)}
+                            ref={editedImageInput}
+                          />
+                          <p>File size should be less than 2MB</p>
+                        </div>
                       </label>
                     </div>
                     <MdOutlineDeleteForever
@@ -566,13 +606,16 @@ function RSMenu() {
                         placeholder="Item Price"
                         required
                       />
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => setImage(e.target.files[0])}
-                        required
-                        ref={imageInput}
-                      />
+                      <div>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => setImage(e.target.files[0])}
+                          required
+                          ref={imageInput}
+                        />
+                        <p style={{ fontSize: "1.4rem" }}>File size should be less than 2MB</p>
+                      </div>
                       <button>Add Item</button>
                     </form>
                   )}

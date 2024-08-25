@@ -1,22 +1,56 @@
 /* SuccessPage.css */
 
+.notification {
+  position: absolute;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  top: 120px;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  /* margin: 0 auto; */
+  padding: 1rem 3rem;
+  border-radius: 4rem;
+  background-color: var(--color-4);
+  animation: notice 3s linear 3;
+  /* font-size: 1.6rem; */
+  /* opacity: 1; */
+}
+
+@keyframes notice {
+  0% {
+    color: black;
+    font-weight: normal;
+    transform: translate(-50%, -50%) scale(1);
+    background-color: var(--color-4);
+  }
+
+  50% {
+    color: black;
+    font-weight: medium;
+    transform: translate(-50%, -50%) scale(1.02);
+    background-color: var(--color-3);
+  }
+}
+
 .successPage {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   align-items: flex-start;
   justify-content: center;
   padding: 6rem 0;
   background-color: #f9f9f9;
   min-height: 80vh;
-  margin-top: 7rem;
+  margin-top: 11rem;
   gap: 15rem;
 }
 
 .success-card-container {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+  /* max-width: 300px; */
 }
 
 .success-card {
@@ -72,10 +106,10 @@
   text-align: end;
 }
 
-.success-trackerContainer {
+/* .success-trackerContainer {
   flex-grow: 1;
   max-width: 420px;
-}
+} */
 
 .back-to-main-button {
   background-color: var(--button-primary-color);
@@ -83,7 +117,7 @@
   border-radius: var(--button-border-radius);
   transition: background-color 0.3s ease;
 }
- 
+
 .back-to-main-button:hover {
   background-color: var(--button-primary-hover-color);
 }
@@ -92,11 +126,59 @@
   background-color: var(--button-primary-active-color);
 }
 
-@media (max-width: 530px) {
-  .successPage .tracking-container, 
-  .successPage .success-card-container .succes-card,
-  .successPage .success-card-container .success-card-order-details{
+@media (max-width: 990px) {
+  .successPage {
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .successPage {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12rem;
+  }
+
+  .successPage .success-card-container {
+    width: 70%;
+  }
+
+  .notification {
+    /* position: absolute; */
+    width: 70%;
+    /* max-width: 800px;
+  text-align: center; */
+    top: 130px;
+    /* left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 2rem;
+  border-radius: 4rem;
+  background-color: var(--color-4); */
+  }
+}
+
+@media (max-width: 600px) {
+  .successPage .success-card-container {
+    width: 90%;
+  }
+
+  .notification {
+    width: 90%;
+  }
+}
+
+@media (max-width: 440px) {
+  .successPage {
+    margin-top: 14rem;
+  }
+}
+
+/* @media (max-width: 530px) {
+  .successPage .tracking-container,
+  .successPage .success-card-container .success-card,
+  .successPage .success-card-container .success-card-order-details {
     padding-left: 3rem;
     padding-right: 3rem;
   }
-}
+} */

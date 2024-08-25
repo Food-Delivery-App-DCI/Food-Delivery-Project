@@ -7,6 +7,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Basket from "../components/Basket";
 import RegisterAndLogin from "../components/RegisterAndLogin";
+import CarLoader from "../components/CarLoader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import "../style/RestaurantMenu.css";
 
 function RestaurantMenu() {
@@ -19,9 +22,23 @@ function RestaurantMenu() {
     loggedInUser,
     toggleRegisterOrLoginUser,
     setLoggedInUser,
+    loading,
+    setLoading,
   } = useContext(DataContext);
-  const { addItemToBasket, setBasket } = useContext(BasketContext);
+  const { addItemToBasket, setBasket, setIsBasketModalOpen, totalItemCount, totalSum } = useContext(BasketContext);
   const [isFavorited, setIsFavorited] = useState(loggedInUser?.favoriteRestaurants?.includes(id));
+
+  useEffect(() => {
+    // Set loading to true when the location (route) changes
+    setLoading(true);
+
+    // Simulate data loading with a timeout or trigger actual data fetching here
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 500); // Adjust this duration based on actual data loading time
+
+    return () => clearTimeout(timeout);
+  }, [setLoading]);
 
   useEffect(() => {
     if (!restaurants.length) {
@@ -49,6 +66,10 @@ function RestaurantMenu() {
       setBasket([]);
     };
   }, [setBasket]);
+
+  const openBasketModal = () => {
+    setIsBasketModalOpen(true);
+  };
 
   async function handleSetFavoriteRestaurant(id) {
     try {
@@ -93,106 +114,124 @@ function RestaurantMenu() {
       {toggleRegisterOrLoginUser ? (
         <RegisterAndLogin />
       ) : (
-        <div className="restaurant-menu-page-container">
-          <div className="main-content">
-            <div className="menu-card">
-              {loggedInUser ? (
-                <div className="favorite-icon-container">
-                  {isFavorited ? (
-                    <FaHeart
-                      size="2.4rem"
-                      color="red"
-                      onClick={() => handleSetFavoriteRestaurant(restaurant._id)}
-                      className="favorite-icon"
-                    />
-                  ) : (
-                    <FaRegHeart
-                      className="favorite-icon"
-                      size="2.4rem"
-                      color="black"
-                      onClick={() => handleSetFavoriteRestaurant(restaurant._id)}
-                    />
-                  )}
-                </div>
-              ) : null}
-              <div className="restaurant-info">
-                <h1 className="restaurant-name">{restaurant.basicInfo.venueName}</h1>
-                <p className="restaurant-address">
-                  {restaurant.basicInfo.address.street}, {restaurant.basicInfo.address.postalCode},{" "}
-                  {restaurant.basicInfo.address.city}
-                </p>
-              </div>
+        <>
+          {loading ? (
+            <div className="loading-spinner">
+              <CarLoader />
+            </div>
+          ) : (
+            <div className="restaurant-menu-page-container">
+              <div className="main-content">
+                <div className="menu-card">
+                  {loggedInUser ? (
+                    <div className="favorite-icon-container">
+                      {isFavorited ? (
+                        <FaHeart
+                          size="2.4rem"
+                          color="red"
+                          onClick={() => handleSetFavoriteRestaurant(restaurant._id)}
+                          className="favorite-icon"
+                        />
+                      ) : (
+                        <FaRegHeart
+                          className="favorite-icon"
+                          size="2.4rem"
+                          color="black"
+                          onClick={() => handleSetFavoriteRestaurant(restaurant._id)}
+                        />
+                      )}
+                    </div>
+                  ) : null}
+                  <div className="restaurant-info">
+                    <h1 className="restaurant-name">{restaurant.basicInfo.venueName}</h1>
+                    <p className="restaurant-address">
+                      {restaurant.basicInfo.address.street}, {restaurant.basicInfo.address.postalCode},{" "}
+                      {restaurant.basicInfo.address.city}
+                    </p>
+                  </div>
 
-              <div className="menu-offers">
-                <div className="current-offers">
-                  {restaurant?.promotionalInfo?.currentOffers?.map((offer, index) => {
-                    const totalOfferPrice = offer.items.reduce((total, item) => total + item.price, 0);
+                  <div className="menu-offers">
+                    <div className="current-offers">
+                      {restaurant?.promotionalInfo?.currentOffers?.map((offer, index) => {
+                        const totalOfferPrice = offer.items.reduce((total, item) => total + item.price, 0);
 
-                    const itemNames = offer.items.map((item) => item.name).join(", ");
+                        const itemNames = offer.items.map((item) => item.name).join(", ");
 
-                    const offerCategoryMenu = {
-                      _id: offer._id,
-                      name: offer.category,
-                      description: itemNames,
-                      price: totalOfferPrice,
-                      items: offer.items,
-                    };
+                        const offerCategoryMenu = {
+                          _id: offer._id,
+                          name: offer.category,
+                          description: itemNames,
+                          price: totalOfferPrice,
+                          items: offer.items,
+                        };
 
-                    return (
-                      <div key={index} className="offer-category">
-                        <h3>{offer.category}</h3>
-                        <div className="offer-items">
-                          {offer.items.map((item) => (
-                            <div key={item._id} className="offer-item-card">
-                              <div>
-                                <p className="offer-name">{item.name}</p>
-                                <p className="offer-description">{item.description}</p>
+                        return (
+                          <div key={index} className="offer-category">
+                            <h3>{offer.category}</h3>
+                            <div className="offer-items">
+                              {offer.items.map((item) => (
+                                <div key={item._id} className="offer-item-card">
+                                  <div>
+                                    <p className="offer-name">{item.name}</p>
+                                    <p className="offer-description">{item.description}</p>
+                                  </div>
+                                  <div>
+                                    <p className="offer-price">€{item.price.toFixed(2)}</p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="offer-total-price">
+                              <p>Offer: €{totalOfferPrice.toFixed(2)}</p>
+                              <button className="offer-add-button" onClick={() => addItemToBasket(offerCategoryMenu)}>
+                                Add
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="menu-items">
+                    {restaurant?.menu?.map((item) => (
+                      <div key={item._id} className="menu-item-card">
+                        <div className="item-info">
+                          <h2>{item.category}</h2>
+                          {item.items.map((food) => (
+                            <div className="item-details" key={food._id}>
+                              <div className="image-and-details">
+                                <img src={food.image} alt="" width={100} />
+                                <div>
+                                  <p className="item-name">{food.name}</p>
+                                  <p className="item-description">{food.description}</p>
+                                  <p className="item-price">€{food.price.toFixed(2)}</p>
+                                </div>
                               </div>
-                              <div>
-                                <p className="offer-price">€{item.price.toFixed(2)}</p>
-                              </div>
+                              <button className="add-button" onClick={() => addItemToBasket(food)}>
+                                Add
+                              </button>
                             </div>
                           ))}
                         </div>
-                        <div className="offer-total-price">
-                          <p>Offer: €{totalOfferPrice.toFixed(2)}</p>
-                          <button className="offer-add-button" onClick={() => addItemToBasket(offerCategoryMenu)}>
-                            Add
-                          </button>
-                        </div>
                       </div>
-                    );
-                  })}
+                    ))}
+                  </div>
                 </div>
               </div>
-
-              <div className="menu-items">
-                {restaurant?.menu?.map((item) => (
-                  <div key={item._id} className="menu-item-card">
-                    <div className="item-info">
-                      <h2>{item.category}</h2>
-                      {item.items.map((food) => (
-                        <div className="item-details" key={food._id}>
-                          <img src={food.image} alt="" width={100} />
-
-                          <div>
-                            <p className="item-name">{food.name}</p>
-                            <p className="item-description">{food.description}</p>
-                            <p className="item-price">€{food.price.toFixed(2)}</p>
-                          </div>
-                          <button className="add-button" onClick={() => addItemToBasket(food)}>
-                            Add
-                          </button>
-                        </div>
-                      ))}
-                    </div>
+              <Basket id={id} />
+              {totalSum > 0 && (
+                <div className="floating-basket" onClick={openBasketModal}>
+                  <div className="cart-logo">
+                    <FontAwesomeIcon icon={faCartShopping} style={{ color: "#266241" }} />
+                    <span className="item-count">{totalItemCount}</span>
                   </div>
-                ))}
-              </div>
+                  <h3>Basket (€{totalSum.toFixed(2)})</h3>
+                </div>
+              )}
             </div>
-          </div>
-          <Basket id={id} />
-        </div>
+          )}
+        </>
       )}
       <Footer />
     </>

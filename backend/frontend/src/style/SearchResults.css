@@ -51,6 +51,7 @@
   .restaurant-info {
     display: flex;
     flex-direction: row;
+    width: 100%;
   }
 
   .restaurant-info h1 {
@@ -82,8 +83,9 @@
     text-align: left;
   }
   .restaurant-current-offers {
-    padding: 1rem;
+    padding: 1rem 2rem 1rem 1rem;
     margin-top: 2rem;
+    width: 100%;
   }
   .restaurant-current-offers div {
     font-size: 1.8rem;
@@ -93,14 +95,17 @@
 
   .restaurant-current-offers ul {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex;
+    flex-wrap: wrap; */
     gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    width: 100%;
   }
 
   .restaurant-current-offers li {
     background-color: var(--color-4);
-    padding: 0.4rem 1rem;
+    padding: 0.4rem 0.6rem;
     margin: 0;
     border-radius: 0.8rem;
     text-align: center;
@@ -109,6 +114,10 @@
 }
 
 @media (max-width: 1050px) {
+  .cards-results-container .restaurant-card h1 {
+    width: 100%;
+  }
+
   .cards-results-container .restaurant-info {
     /* display: flex; */
     flex-direction: column;
@@ -127,6 +136,24 @@
     object-fit: cover;
     border-bottom: 1px solid #eee;
   }
+
+  .restaurant-current-offers div {
+    /* font-size: 1.8rem;
+    font-weight: 600;
+    padding-bottom: 1rem; */
+    padding-left: 1rem;
+  }
+
+  .restaurant-current-offers ul {
+    /* list-style: none; */
+    /* display: flex;
+    flex-wrap: wrap; */
+    /* gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    width: 100%; */
+    padding: 0 1rem;
+  }
 }
 
 @media (max-width: 860px) {
@@ -137,10 +164,10 @@
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 700px) {
   .cards-results-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 5rem;
     padding: 2rem;
   }
@@ -160,12 +187,13 @@
 
   .cards-results-container .restaurant-info {
     width: 100%;
+    flex: 0;
   }
 
   .cards-results-container .restaurant-card h1 {
     width: 100%;
     text-align: center;
-    font-size: 2.4rem;
+    font-size: 4rem;
   }
 
   .cards-results-container .restaurant-details {
@@ -180,71 +208,3 @@
     justify-content: center;
   }
 }
-
-@media (max-width: 630px) {
-  .cards-results-container .restaurant-card h1 {
-    font-size: 4rem;
-  }
-}
-
-/* @media (max-width: 780px) {
-  .card-results {
-    flex-direction: column;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    align-items: center;
-    width: fit-content;
-  }
-  .card-results .restaurant-info,
-  .card-results .restaurant-info .restaurant-card {
-    text-align: center;
-  }
-  .card-results .restaurant-info .restaurant-card h1 {
-    align-self: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .restaurants-current-offers {
-    width: 60%;
-  }
-
-  .restaurants-current-offers ul {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-left: 7rem;
-    padding-right: 7rem;
-    margin-left: 2rem;
-    flex-direction: row;
-    width: 60%;
-  }
-}
-@media (max-width: 674px) {
-  .restaurants-current-offers ul {
-    align-items: center;
-    text-align: center;
-    padding-left: 7rem;
-    padding-right: 7rem;
-    margin-left: 2rem;
-    flex-direction: row;
-  }
-  .restaurants-current-offers ul li {
-    text-align: center;
-  }
-}
-
-@media (max-width: 609px) {
-  .restaurant-current-offers ul {
-    text-align: center;
-    padding-left: 4.5rem;
-    padding-right: 4.5rem;
-  }
-
-  .card-results {
-    flex-direction: column;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    align-items: center;
-  }
-} */

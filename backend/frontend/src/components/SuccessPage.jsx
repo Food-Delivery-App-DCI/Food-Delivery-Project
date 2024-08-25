@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { BasketContext } from "../contexts/BasketContext";
 import DeliveryTracker from "./DeliveryTracker";
 import Navbar from "./Navbar";
@@ -28,11 +28,12 @@ function SuccessPage() {
   const [newOrderId, setNewOrderId] = useState("");
   // const navigate = useNavigate();
 
-  useEffect(() => {
+  // The useLayoutEffect makes sure that the data is fetched from the localStorage before all the other codes run.
+  // This prevents the browser screen from flashing before moving to the successPage.
+  useLayoutEffect(() => {
     const getRestaurantName = JSON.parse(localStorage.getItem("restaurantName"));
     const getRestaurantId = JSON.parse(localStorage.getItem("restaurantId"));
     const getRestaurantAddress = JSON.parse(localStorage.getItem("restaurantAddress"));
-    // const getPurchasedItems = JSON.parse(localStorage.getItem("purchasedItems"));
 
     if (getRestaurantName) {
       setRestaurantName(getRestaurantName);
@@ -45,10 +46,6 @@ function SuccessPage() {
     if (getRestaurantAddress) {
       setRestaurantAddress(getRestaurantAddress);
     }
-
-    // if (getPurchasedItems) {
-    //   setPurchasedItems(getPurchasedItems);
-    // }
   }, []);
 
   useEffect(() => {
@@ -161,6 +158,10 @@ function SuccessPage() {
   return (
     <>
       <Navbar />
+      <p className="notification">
+        You will receive live updates on the status of your order as it is being prepared{" "}
+        {deliveryOption === "Delivery" ? "for delivery!" : "for pickup!"}{" "}
+      </p>
       <div className="successPage">
         <div className="success-card-container">
           <div className="success-card">
@@ -182,9 +183,9 @@ function SuccessPage() {
             <p className="success-total">Total: €{totalSumPurchasedItems.toFixed(2)}</p>
           </div>
         </div>
-        <div className="success-trackerContainer">
-          <DeliveryTracker />
-        </div>
+        {/* <div className="success-trackerContainer"> */}
+        <DeliveryTracker />
+        {/* </div> */}
       </div>
       <Footer />
     </>

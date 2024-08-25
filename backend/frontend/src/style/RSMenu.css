@@ -104,13 +104,14 @@
   color: var(--button-primary-color);
   transition: color 0.3s ease;
 }
+
 .rs-menu-container .edit-keywords .add-keywords-icon:hover {
   color: var(--button-primary-hover-color);
 }
+
 .rs-menu-container .edit-keywords .add-keywords-icon:active {
   color: var(--button-primary-active-color);
 }
-
 
 .rs-menu-container .edit-keywords .buttons-container {
   display: flex;
@@ -122,9 +123,11 @@
   font-size: 1.4rem;
   border-radius: var(--button-border-radius);
 }
+
 .rs-menu-container .menu-category .edit-form .buttons-container .save1-button:hover {
   background-color: var(--button-primary-hover-color);
 }
+
 .rs-menu-container .menu-category .edit-form .buttons-container .save1-button:active {
   background-color: var(--button-primary-active-color);
 }
@@ -235,7 +238,7 @@
 .rs-menu-container .edit-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 2rem 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -251,6 +254,16 @@
   display: flex;
   gap: 1rem;
   align-items: center;
+}
+
+.rs-menu-container .image-label div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.rs-menu-container .image-label p {
+  font-size: 1.4rem;
 }
 
 .rs-menu-container .edit-item label input {
@@ -302,7 +315,7 @@
   padding: var(--button-padding);
   border: none;
   transition: background-color 0.3s ease;
-  
+  align-self: center;
 }
 .rs-menu-container .new-item-form button:hover {
   background-color: var(--button-primary-hover-color);
@@ -379,7 +392,6 @@
   border: 1px solid var(--button-primary-color);
 
   transition: background-color 0.3s ease;
-
 }
 .rs-menu-container .buttons-container .cancel-keywords-button:hover {
   background-color: var(--button-secondary-hover-color);
@@ -424,9 +436,9 @@
 
 .update-button:hover {
   /* background-color: #3c3572; */
-  background-color: var(--button-primary-hover-color)
+  background-color: var(--button-primary-hover-color);
 }
 .update-button:active {
   /* background-color: #3c3572; */
-  background-color: var(--button-primary-active-color)
+  background-color: var(--button-primary-active-color);
 }

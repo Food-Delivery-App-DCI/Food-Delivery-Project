@@ -2,6 +2,7 @@ import "../style/RSProfile.css";
 import { useContext, useRef, useState } from "react";
 import { DataContext } from "../contexts/DataContext";
 import { useNavigate } from "react-router-dom";
+import CarLoader from "./CarLoader";
 
 function RSProfile() {
   const {
@@ -9,6 +10,8 @@ function RSProfile() {
     handleHTTPRequestWithTokenRestaurant,
     setLoggedInRestaurant,
     setToggleRegisterOrLoginRestaurant,
+    loading,
+    setLoading,
   } = useContext(DataContext);
 
   // State for editing modes
@@ -66,17 +69,10 @@ function RSProfile() {
 
   // Handle save button click
   const handleSave = async (section) => {
-    // const settings = {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/JSON",
-    //   },
-    //   body: JSON.stringify({ [section]: eval(section) }),
-    // };
+    // Start loading
+    setLoading(true);
 
     const formData = new FormData();
-
-    console.log(image);
 
     if (section === "basicInfo" && image) {
       formData.append("image", image);
@@ -128,7 +124,14 @@ function RSProfile() {
         throw new Error(error.message);
       }
     } catch (error) {
-      console.log(error.message);
+      if (error.status === 500) {
+        console.log(error.message);
+      } else {
+        alert("File size is too large. File size should be less than 2MB");
+      }
+    } finally {
+      // Stop loading after the request is complete
+      setLoading(false);
     }
   };
 
@@ -181,6 +184,14 @@ function RSProfile() {
     }
   }
 
+  if (loading) {
+    return (
+      <div className="loading-spinner">
+        <CarLoader />
+      </div>
+    ); // Show the spinner while checking authentication
+  }
+
   return (
     <div className="rs-profile-container">
       <div className="basic-info">
@@ -222,13 +233,16 @@ function RSProfile() {
               </div>
               <div className="label">
                 <strong>Cover Image:</strong>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => setImage(e.target.files[0])}
-                  required
-                  ref={imageInput}
-                />
+                <div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    required
+                    ref={imageInput}
+                  />
+                  <p style={{ fontSize: "1.4rem" }}>File size should be less than 2MB</p>
+                </div>
               </div>
               <div className="buttons-container">
                 <button className="cancel-button" onClick={() => handleCancel("basicInfo")}>

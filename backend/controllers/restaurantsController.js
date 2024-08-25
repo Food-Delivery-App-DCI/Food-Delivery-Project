@@ -3,7 +3,6 @@ import Restaurant from "../models/RestaurantModel.js";
 import OrderHistory from "../models/OrderHistoryModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-// import SearchedRestaurant from "../models/SearchedRestaurantsModel.js";
 import cloudinary from "../middlewares/cloudinaryConfig.js";
 import { io } from "../index.js";
 
@@ -88,24 +87,6 @@ export async function getAllRestaurants(req, res, next) {
       return next(createHttpError(404, "We don't have any restaurant with your search query in our database")); // Error if no match
     }
 
-    //*removed code
-    // Map filtered results to the SearchedRestaurant schema
-    // const searchedRestaurantsData = filteredRestaurants.map((restaurant) => ({
-    //   restaurantId: restaurant._id,
-    //   basicInfo: restaurant.basicInfo,
-    //   openAndCloseHours: restaurant.openAndCloseHours,
-    //   keywords: restaurant.keywords,
-    //   restaurantType: restaurant.restaurantType,
-    //   menu: restaurant.menu,
-    //   digitalPresence: restaurant.digitalPresence,
-    //   promotionalInfo: restaurant.promotionalInfo,
-    // }));
-
-    //*removed code
-    // Save filtered results to the database
-    // await SearchedRestaurant.deleteMany({}); // Clear previous search results
-    // await SearchedRestaurant.create(searchedRestaurantsData); // Save new search results
-
     // Send filtered results as response
     res.status(200).json(filteredRestaurants);
   } catch (error) {
@@ -113,23 +94,6 @@ export async function getAllRestaurants(req, res, next) {
     return next(createHttpError(500, "Server error getting all restaurants"));
   }
 }
-
-//* Function to get previously searched restaurants
-//* removed code
-// export async function getSearchedRestaurants(req, res, next) {
-//   try {
-//     const restaurants = await SearchedRestaurant.find(); // Find all previously searched restaurants
-
-//     if (restaurants) {
-//       // Send searched restaurants as response
-//       res.json(restaurants);
-//     } else {
-//       return next(createHttpError(404, "No restaurants in database")); // Error if no restaurants found
-//     }
-//   } catch (error) {
-//     next(createHttpError(500, "Server error getting restaurants"));
-//   }
-// }
 
 //* Function to register a new restaurant
 export async function registerRestaurant(req, res, next) {
@@ -284,10 +248,13 @@ export async function updateRestaurant(req, res, next) {
       case "basicInfo":
         restaurant.basicInfo = updateData;
         if (req.file) {
-          console.log(req.file);
           const cloudImageUrl = await cloudinary.uploader.upload(req.file.path, {
             folder: "/delivEats-food-delivery-app",
           });
+
+          if (!cloudImageUrl) {
+            return next(createHttpError(400, "File size is too large. File size should be less than 2MB"));
+          }
 
           // console.log(cloudImageUrl);
           restaurant.basicInfo.coverImage = cloudImageUrl.secure_url; // If an image file is provided, update the cover image path

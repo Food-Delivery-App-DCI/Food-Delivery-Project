@@ -5,6 +5,7 @@ import Autocomplete from "react-google-autocomplete";
 import { DataContext } from "../contexts/DataContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import CarLoader from "./CarLoader";
 
 function Addresses() {
   const { loggedInUser, handleHTTPRequestWithToken } = useContext(DataContext);
@@ -15,6 +16,7 @@ function Addresses() {
   const [label, setLabel] = useState("");
   const [address, setAddress] = useState("");
   const [addingNew, setAddingNew] = useState(false);
+  const [loadingAddresses, setLoadingAddresses] = useState(true);
 
   function handleEdit(id) {
     setEditingId(id);
@@ -50,6 +52,8 @@ function Addresses() {
         }
       } catch (error) {
         console.log(error.message);
+      } finally {
+        setLoadingAddresses(false); // Set loading to false after fetching
       }
     }
 
@@ -143,6 +147,15 @@ function Addresses() {
     setAddingNew(false); // Hide the form after adding the address
   }
 
+  if (loadingAddresses) {
+    return (
+      <div className="loading-spinner">
+        {/* <BounceLoader color={"#165e4b"} loading={isInitialLoad} size={40} /> */}
+        <CarLoader />
+      </div>
+    ); // Show the spinner while checking authentication
+  }
+
   return (
     <>
       <div className="address-book">
@@ -227,7 +240,6 @@ function Addresses() {
             Add New Address
           </button>
         )}
-
       </div>
     </>
   );

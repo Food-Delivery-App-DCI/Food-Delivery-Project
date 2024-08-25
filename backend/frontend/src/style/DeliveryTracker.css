@@ -1,10 +1,10 @@
 /* DeliveryTracker.css */
 
-.tracking-container {
+/* .tracking-container {
   max-width: 600px;
   margin: 0 auto;
   width: 100%;
-}
+} */
 
 .tracking-container h2 {
   font-size: 1.5em;
@@ -92,4 +92,21 @@
 
 .back-to-main-button:active {
   background-color: var(--button-primary-active-color);
+}
+
+@media (max-width: 860px) {
+  .tracking-container {
+    max-width: 600px;
+    /* margin: 0 auto; */
+    width: 70%;
+  }
+}
+
+@media (max-width: 600px) {
+  .tracking-container {
+    max-width: 600px;
+    padding: 0;
+    /* margin: 0 auto; */
+    width: 90%;
+  }
 }

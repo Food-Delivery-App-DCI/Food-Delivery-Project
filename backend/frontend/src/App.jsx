@@ -1,10 +1,6 @@
 import "./App.css";
 import Home from "./pages/Home";
-import {
-  Routes,
-  Route /* useLocation, useNavigate */,
-  useLocation,
-} from /* Navigate */ "react-router-dom";
+import { Routes, Route /* useLocation, useNavigate */, useLocation } from /* Navigate */ "react-router-dom";
 import SearchResults from "./pages/SearchResults";
 import RestaurantMenu from "./pages/RestaurantMenu";
 import SuccessPage from "./components/SuccessPage";
@@ -16,7 +12,7 @@ import OrderHistory from "./components/OrderHistory";
 import Settings from "./components/Settings";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "./contexts/DataContext";
-import { BounceLoader } from "react-spinners";
+// import { BounceLoader } from "react-spinners";
 import ProtectedRouteLoggedInUser from "./components/ProtectedRouteLoggedInUser";
 import CarLoader from "./components/CarLoader";
 
@@ -55,12 +51,9 @@ function App() {
   useEffect(() => {
     async function checkAuthentication() {
       try {
-        const response = await handleHTTPRequestWithToken(
-          `${import.meta.env.VITE_API}/users/check-auth`,
-          {
-            credentials: "include",
-          }
-        );
+        const response = await handleHTTPRequestWithToken(`${import.meta.env.VITE_API}/users/check-auth`, {
+          credentials: "include",
+        });
 
         if (response.ok) {
           const user = await response.json();

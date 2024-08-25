@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { DataContext } from "../contexts/DataContext";
 import { BasketContext } from "../contexts/BasketContext";
 import CustomModal from "./CustomModal";
@@ -11,6 +11,7 @@ import "../style/Navbar.css";
 import { FaHamburger } from "react-icons/fa";
 
 function Navbar() {
+  const { pathname } = useLocation();
   const {
     loggedInUser,
     logout,
@@ -36,7 +37,10 @@ function Navbar() {
 
   const closeBasketModal = () => {
     setIsBasketModalOpen(false);
-    setBasket([]);
+    if (!pathname.startsWith("/restaurant/")) {
+      setBasket([]);
+    }
+    // setBasket([]);
   };
 
   useEffect(() => {
