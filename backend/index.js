@@ -26,7 +26,10 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://deliveats-food-delivery-app.onrender.com"],
+    origin: [
+      "http://localhost:5173",
+      "https://deliveats-food-delivery-app.onrender.com",
+    ],
     credentials: true,
   },
 });
@@ -36,7 +39,10 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://deliveats-food-delivery-app.onrender.com"],
+    origin: [
+      "http://localhost:5173",
+      "https://deliveats-food-delivery-app.onrender.com",
+    ],
     credentials: true,
   })
 );
@@ -55,9 +61,21 @@ app.use("/refresh-token", refreshTokenRouter);
 app.use("/restaurants", restaurantsRouter);
 app.use("/logout", logoutRouter);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/dist", "index.html"));
-});
+// Health check for Coolify
+app.get("/health", (_, res) => res.send("OK"));
+
+// Serve frontend only in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.join(__dirname, "frontend/dist/index.html"))
+  );
+}
+
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "frontend/dist", "index.html"));
+// });
 
 const port = process.env.PORT || 5002;
 server.listen(port, () => console.log(`Server is running on port ${port}`));
