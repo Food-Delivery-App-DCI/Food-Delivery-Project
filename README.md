@@ -57,7 +57,7 @@ Restaurant apps have become an integral part of modern business operations. The 
 ## Live Demo
 You can view a live demo of the DelivEats Food Delivery App at the following link: 
 
-[DelivEats Demo](https://deliveats-food-delivery-app.onrender.com/)
+[DelivEats Demo](https://deliveats-food-delivery-app.apps.worlanyokwablakporfeame.com/)
 
 ## Usage
 - You can place an order through the app, whether you have an account or not.
