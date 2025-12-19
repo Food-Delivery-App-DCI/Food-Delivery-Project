@@ -36,11 +36,13 @@ export async function checkout(req, res, next) {
       },
       success_url:
         process.env.NODE_ENV === "production"
-          ? "https://deliveats-food-delivery-app.onrender.com/success"
+          ? "https://deliveats-food-delivery-app.onrender.com/success" ||
+            "https://deliveats-food-delivery-app.apps.worlanyokwablakporfeame.com/"
           : "http://localhost:5173/success", // URL to redirect to upon successful payment.
       cancel_url:
         process.env.NODE_ENV === "production"
-          ? `https://deliveats-food-delivery-app.onrender.com/restaurant/${id}`
+          ? `https://deliveats-food-delivery-app.onrender.com/restaurant/${id}` ||
+            `https://deliveats-food-delivery-app.apps.worlanyokwablakporfeame.com/restaurant/${id}`
           : `http://localhost:5173/restaurant/${id}`, // URL to redirect to if payment is canceled.
     });
 
@@ -54,7 +56,14 @@ export async function checkout(req, res, next) {
 
 //* This function receives the basket, total sum, delivery option, and restaurant details, and saves them in the order history collection.
 export async function setOrder(req, res, next) {
-  const { basket, totalSum, deliveryOption, restaurantName, restaurantAddress, restaurantId } = req.body;
+  const {
+    basket,
+    totalSum,
+    deliveryOption,
+    restaurantName,
+    restaurantAddress,
+    restaurantId,
+  } = req.body;
 
   try {
     // Format the basket items for saving in the order history.
@@ -166,7 +175,9 @@ export async function sendOrderToRestaurant(req, res, next) {
     const foundRestaurant = await Restaurant.findById(id);
 
     if (!foundRestaurant) {
-      return next(createHttpError(404, "No Restaurant found to process your order")); // If no restaurant is found, return a 404 error.
+      return next(
+        createHttpError(404, "No Restaurant found to process your order")
+      ); // If no restaurant is found, return a 404 error.
     }
 
     // Retrieve the session and line items from Stripe using Promise.all to run both async functions concurrently.
@@ -195,7 +206,11 @@ export async function sendOrderToRestaurant(req, res, next) {
     };
 
     // Update the restaurant's active orders by adding the new order.
-    await Restaurant.findByIdAndUpdate(id, { $push: { activeOrders: orderObj } }, options);
+    await Restaurant.findByIdAndUpdate(
+      id,
+      { $push: { activeOrders: orderObj } },
+      options
+    );
 
     // Retrieve the updated restaurant document.
     const updatedRestaurant = await Restaurant.findById(id);
@@ -210,7 +225,10 @@ export async function sendOrderToRestaurant(req, res, next) {
     // console.log(`Emitting newOrder to room: restaurant_${id} with data:`, updatedRestaurant);
 
     // Respond with a success message and the order ID.
-    res.json({ message: `Your Order has been sent to the restaurant successfully`, orderId: orderObj.order });
+    res.json({
+      message: `Your Order has been sent to the restaurant successfully`,
+      orderId: orderObj.order,
+    });
   } catch (error) {
     console.error(error);
     next(createHttpError(500, "Order could not be sent to the restaurant"));
